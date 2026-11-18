@@ -197,8 +197,33 @@ $(document).ready(function () {
         pop($("#clicked-time-output").text(t("timePrefix") + new Date().toLocaleTimeString(LOCALES[currentLang])));
     });
 
-    /* ---------------- Keyboard navigation in the menu ---------------- */
-    const $navLinks = $("#keyboard-nav-menu .nav-link");
+    /* ---------------- Context-aware navbar on Profile & Keyboard navigation ---------------- */
+    if ($('[data-i18n="navHome"]').length) {
+        sessionStorage.setItem("kzNavContext", "astana");
+    } else if ($('[data-i18n="navKzMap"]').length && !$("#auth-section").length) {
+        sessionStorage.setItem("kzNavContext", "kz");
+    }
+
+    if ($("#auth-section").length) {
+        const ref = document.referrer;
+        let fromAstana = sessionStorage.getItem("kzNavContext") === "astana";
+        if (/astana\.html|attractions\.html|tours\.html/i.test(ref)) {
+            fromAstana = true;
+            sessionStorage.setItem("kzNavContext", "astana");
+        } else if (/index\.html|history\.html|seasons\.html/i.test(ref)) {
+            fromAstana = false;
+            sessionStorage.setItem("kzNavContext", "kz");
+        }
+        if (fromAstana) {
+            $("#keyboard-nav-menu").html(`
+                <li class="nav-item"><a class="nav-link" href="astana.html" data-i18n="navHome">Astana</a></li>
+                <li class="nav-item"><a class="nav-link" href="attractions.html" data-i18n="navAttractions">Attractions</a></li>
+                <li class="nav-item"><a class="nav-link" href="tours.html" data-i18n="navTours">Tours</a></li>
+            `);
+        }
+    }
+
+    const $navLinks = $("#keyboard-nav-menu .nav-link, .nav-profile-right");
     $navLinks.on("keydown", function (e) {
         const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
         if (!step) return;
