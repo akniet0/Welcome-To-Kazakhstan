@@ -9,20 +9,143 @@ const uiTranslations = {
     en: {
         brandTitle: "Visit Astana",
         brandSub: "Heart of the Great Steppe",
+        kzBrandTitle: "Visit Kazakhstan",
+        kzBrandSub: "Explore the Great Steppe",
         bgBtn: "Change Background",
         nightMode: "🌙 Night Mode",
         dayMode: "☀️ Day Mode",
-        navHome: "Home",
+        navKzMap: "Kazakhstan Map",
+        navHome: "Astana",
         navHistory: "History & Culture",
+        navSeasons: "Seasons & Calendar",
         navAttractions: "Attractions",
         navTours: "Tours",
+        seasonsBadge: "🗓️ Year-Round Kazakhstan Travel Planner",
+        seasonsPageTitle: "Four Seasons & Interactive Calendar of Kazakhstan",
+        seasonsPageDesc: "From wild tulip blooms across the southern steppe and turquoise alpine lakes in summer to golden autumn canyons and snowy mountain peaks—plan the ideal time for your journey across Kazakhstan.",
+        btnExploreCalendar: "Explore Interactive Calendar ↓",
+        btnFindSeasonHero: "Find My Perfect Season ✨",
+        seasonsExplorerTitle: "Explore Kazakhstan by Season",
+        seasonsExplorerSub: "Select a season below to inspect temperatures, top destinations across Kazakhstan, seasonal activities, and an interactive packing checklist:",
+        seasonSpringName: "Spring",
+        seasonSpringMonths: "March – May",
+        seasonSummerName: "Summer",
+        seasonSummerMonths: "June – August",
+        seasonAutumnName: "Autumn",
+        seasonAutumnMonths: "September – November",
+        seasonWinterName: "Winter",
+        seasonWinterMonths: "December – February",
+        seasonBestPlacesLabel: "📍 Best Places to Visit",
+        seasonHighlightsLabel: "✨ Top Seasonal Highlights",
+        packingTitle: "🎒 Interactive Seasonal Packing Checklist (Click to pack):",
+        calHeading: "Interactive 12-Month Festival & Weather Calendar",
+        calSubheading: "Click any month below to discover national holidays, cultural festivals, average temperatures across Kazakhstan, and travel tips:",
+        btnJumpCurrentMonth: "Jump to Current Month",
+        calHolidayLabel: "🎉 Key Holidays & Cultural Events",
+        btnGoToMonthSeason: "Explore Matching Season ↑",
+        btnSaveMonthPlan: "⭐ Bookmark",
+        monthSavedToast: "Saved {month} to your Kazakhstan travel plan!",
+        wizardBadge: "🧭 Interactive Trip Compass",
+        matcherHeading: "Not Sure When to Visit? Find Your Perfect Season",
+        matcherSub: "Tap your dream landscape, comfort temperature, and travel vibe—your custom Kazakhstan season match updates live on the right!",
+        matcherActivityLabel: "1. Choose Your Dream Kazakhstan Experience",
+        vibeSpringTitle: "Nauryz & Blooming Steppe",
+        vibeSpringSub: "Wild tulips, yurts & Silk Road cities",
+        vibeSummerTitle: "Turquoise Lakes & City Nights",
+        vibeSummerSub: "Kolsai, Burabay, Caspian & Astana",
+        vibeAutumnTitle: "Golden Canyons & Eagle Hunters",
+        vibeAutumnSub: "Charyn Canyon, harvest & foliage",
+        vibeWinterTitle: "Snow Peaks & Winter Magic",
+        vibeWinterSub: "Skiing, ice rinks & indoor oases",
+        matcherWeatherLabel: "2. Pick Your Comfort Temperature",
+        optWeatherWarm: "☀️ Warm & Sunny (+22°C to +32°C)",
+        optWeatherMild: "🌤️ Mild & Breezy (+10°C to +22°C)",
+        optWeatherSnow: "❄️ Crisp & Snowy (Below 0°C)",
+        matcherStyleLabel: "3. Your Travel Style",
+        styleCulture: "🎭 Culture, Festivals & Cuisine",
+        styleNature: "📸 Nature & Scenic Landscapes",
+        styleAdventure: "🥾 Active Trekking & Adventure",
+        matcherBestMatchBadge: "✓ Your Custom Kazakhstan Match",
+        ticketRouteLabel: "🗺️ Recommended Route for You",
+        btnViewSeasonAbove: "Open Season Guide ↑",
+        btnInspectMonth: "View Best Month ↑",
+        mJanShort: "JAN", mFebShort: "FEB", mMarShort: "MAR", mAprShort: "APR", mMayShort: "MAY", mJunShort: "JUN",
+        mJulShort: "JUL", mAugShort: "AUG", mSepShort: "SEP", mOctShort: "OCT", mNovShort: "NOV", mDecShort: "DEC",
+        mJan: "January", mFeb: "February", mMar: "March", mApr: "April", mMay: "May", mJun: "June",
+        mJul: "July", mAug: "August", mSep: "September", mOct: "October", mNov: "November", mDec: "December",
+        kzHeroBadge: "🌏 National Travel Portal · Step-by-Step Guide",
+        kzHeroTitle: "Discover Kazakhstan: From the Caspian Sea to the Altai Peaks",
+        kzHeroDesc: "Welcome to the interactive travel guide to Kazakhstan, the world's ninth-largest country. Click any region on the map below to inspect its history, landmarks, and travel highlights, then jump straight into its dedicated guide—starting with our capital, Astana!",
+        kzBtnExploreMap: "Explore Interactive Map ↓",
+        kzBtnJumpAstana: "Jump to Astana Website →",
+        kzFeaturedNow: "★ Great Steppe & Mountains",
+        kzSpotlightTitle: "Republic of Kazakhstan",
+        kzSpotlightDesc: "Select a region on the interactive map below to open its travel guide.",
+        kzOpenAstanaBtn: "Open Astana Guide →",
+        kzMapHeading: "Interactive Map of Kazakhstan",
+        kzMapInstructions: "Click any region or city pin on the map to view detailed information on the right. Click Astana to preview the capital and jump directly to the full Astana website.",
+        legendAvailable: "Available Now (Astana)",
+        legendSelected: "Selected Region",
+        legendSoon: "Coming Soon",
+        pillAstana: "★ Astana & Capital Region (Live)",
+        pillAlmaty: "Almaty & Zhetysu",
+        pillTurkistan: "Turkistan & South",
+        pillMangystau: "Mangystau & Caspian West",
+        pillEast: "East Kazakhstan & Altai",
+        pillCentral: "Karaganda & Central Steppe",
+        pillNorth: "North & Kostanay",
+        pillKyzylorda: "Aral & Baikonur",
+        kzMapCoordLabel: "40°N – 55°N · 46°E – 87°E · Republic of Kazakhstan",
+        kzMapHoverDefault: "Click an area on the map",
+        kzMapTip: "💡 Tip: Click any area on the map to see its details, then click the button on the right to open that city's website!",
+        kzQuickJumpAstana: "Go to Astana →",
+        factLabelCenter: "Key City",
+        factLabelPop: "Population",
+        factLabelHighlight: "Top Icon",
+        factLabelStatus: "Guide Status",
+        kzStatsHeading: "Kazakhstan in Numbers",
+        kzStat1: "Largest country in the world",
+        kzStat2: "Vast steppe, mountains & lakes",
+        kzStat3: "Citizens welcoming travelers",
+        kzStat4: "Year Astana became the capital",
+        kzRoadmapHeading: "Explore Destinations Step by Step",
+        kzRoadmapSub: "We are expanding our travel portal across every region of Kazakhstan. Start with our complete Astana guide today!",
+        badgeAvailableNow: "★ Available Now",
+        badgeComingSoon: "⏳ Coming Soon",
+        destAstanaTitle: "Astana & Akmola Region",
+        destAstanaDesc: "Full city guide featuring Astana's 14 searchable landmarks, interactive photo galleries, and guided tour bookings.",
+        destAlmatyTitle: "Almaty & Zhetysu",
+        destAlmatyDesc: "Snow-capped Tian Shan peaks, Shymbulak ski resort, Charyn Canyon, and the alpine Kolsai & Kaindy Lakes.",
+        destTurkistanTitle: "Turkistan & Silk Road South",
+        destTurkistanDesc: "UNESCO-listed Mausoleum of Khoja Ahmed Yasawi, ancient Otrar ruins, and vibrant southern bazaars.",
+        btnPreviewOnMap: "Preview on Map ↑",
+        statusBadgeLive: "★ Available Now · Full Website Live",
+        statusBadgeSoon: "⏳ Coming Soon · Step-by-Step Expansion",
+        btnExploreAstana: "Explore Astana Website →",
+        btnRegionSoon: "Region Guide Coming Soon (In Progress)",
         heroTitle: "Welcome to Astana",
         heroDesc: "Astana is a unique blend of futuristic architecture, rich nomadic heritage, and warm steppe hospitality.",
         btnLandmarks: "View Landmarks",
         btnBookTour: "Book a Tour",
         btnSupport: "Contact Support",
         factHeading: "Did You Know? Astana Cultural & Architecture Facts",
-        historyTitle: "The Story of the Capital",
+        historyTitle: "History & Culture of Kazakhstan",
+        historyIntro: "From ancient nomadic civilizations of the Great Steppe and flourishing Silk Road cities to the founding of the Kazakh Khanate and modern independence, explore the shared heritage uniting all of Kazakhstan.",
+        histEra1Badge: "1st Millennium BC",
+        histEra1Title: "Saka & Scythian Nomads (\"The Golden Man\")",
+        histEra1Desc: "Master horsemen and goldsmiths roamed the Eurasian steppe, leaving behind royal burial mounds (kurgans) and the iconic Golden Warrior (Altyn Adam), now a national symbol of Kazakhstan.",
+        histEra2Badge: "6th – 15th Century",
+        histEra2Title: "The Great Silk Road & Steppe Cities",
+        histEra2Desc: "Caravan cities such as Turkistan, Otrar, Taraz, and Saraishyk connected East and West, fostering trade, science, philosophy (Al-Farabi), and architectural masterpieces like the Mausoleum of Khoja Ahmed Yasawi.",
+        histEra3Badge: "1465",
+        histEra3Title: "Founding of the Kazakh Khanate",
+        histEra3Desc: "Kerey Khan and Zhanibek Khan established the Kazakh Khanate, uniting the tribes across the vast territory from the Caspian Sea to the Altai Mountains with a shared language, dombra music, and nomadic code of laws.",
+        histEra4Badge: "1991",
+        histEra4Title: "Independence of the Republic of Kazakhstan",
+        histEra4Desc: "Kazakhstan proclaimed its independence in December 1991, embarking on nation-building, global nuclear non-proliferation leadership, and transferring the national capital from Almaty to Astana in 1997.",
+        histEra5Badge: "Today",
+        histEra5Title: "Modern Cultural & Innovation Crossroads",
+        histEra5Desc: "Today's Kazakhstan preserves its sacred nomadic hospitality, eagle hunting, and UNESCO World Heritage sites while welcoming global travelers to futuristic cities, spaceports, and national parks.",
         attractionsTitle: "Must-See Landmarks in Astana",
         toursTitle: "Available Tour Packages",
         morningGreeting: "☀️ Good Morning from Astana!",
@@ -65,20 +188,143 @@ const uiTranslations = {
     ru: {
         brandTitle: "Посетите Астану",
         brandSub: "Сердце Великой Степи",
+        kzBrandTitle: "Посетите Казахстан",
+        kzBrandSub: "Исследуйте Великую Степь",
         bgBtn: "Сменить фон",
         nightMode: "🌙 Ночной режим",
         dayMode: "☀️ Дневной режим",
-        navHome: "Главная",
+        navKzMap: "Карта Казахстана",
+        navHome: "Астана",
         navHistory: "История и Культура",
+        navSeasons: "Сезоны и Календарь",
         navAttractions: "Достопримечательности",
         navTours: "Туры",
+        seasonsBadge: "🗓️ Круглогодичный планировщик по Казахстану",
+        seasonsPageTitle: "Четыре сезона и интерактивный календарь Казахстана",
+        seasonsPageDesc: "От цветения тюльпанов в южной степи и бирюзовых горных озер летом до золотых осенних каньонов и снежных вершин — выберите идеальное время для путешествия по Казахстану.",
+        btnExploreCalendar: "К интерактивному календарю ↓",
+        btnFindSeasonHero: "Подобрать идеальный сезон ✨",
+        seasonsExplorerTitle: "Казахстан по временам года",
+        seasonsExplorerSub: "Выберите сезон ниже, чтобы узнать температуру, лучшие направления по стране, активности и интерактивный чек-лист вещей:",
+        seasonSpringName: "Весна",
+        seasonSpringMonths: "Март – Май",
+        seasonSummerName: "Лето",
+        seasonSummerMonths: "Июнь – Август",
+        seasonAutumnName: "Осень",
+        seasonAutumnMonths: "Сентябрь – Ноябрь",
+        seasonWinterName: "Зима",
+        seasonWinterMonths: "Декабрь – Февраль",
+        seasonBestPlacesLabel: "📍 Лучшие места для поездки",
+        seasonHighlightsLabel: "✨ Главные впечатления сезона",
+        packingTitle: "🎒 Интерактивный список вещей (нажмите, чтобы отметить):",
+        calHeading: "Интерактивный календарь праздников и погоды на 12 месяцев",
+        calSubheading: "Нажмите на любой месяц, чтобы узнать о национальных праздниках, фестивалях, погоде по регионам Казахстана и советах туристам:",
+        btnJumpCurrentMonth: "Текущий месяц",
+        calHolidayLabel: "🎉 Главные праздники и культурные события",
+        btnGoToMonthSeason: "Перейти к сезону этого месяца ↑",
+        btnSaveMonthPlan: "⭐ Сохранить",
+        monthSavedToast: "Месяц «{month}» сохранен в ваш план поездки по Казахстану!",
+        wizardBadge: "🧭 Интерактивный компас путешественника",
+        matcherHeading: "Не знаете, когда поехать? Подберите идеальный сезон",
+        matcherSub: "Выберите пейзаж мечты, комфортную температуру и стиль отдыха — персональный маршрут по Казахстану обновится справа!",
+        matcherActivityLabel: "1. Выберите главное впечатление в Казахстане",
+        vibeSpringTitle: "Наурыз и цветущая степь",
+        vibeSpringSub: "Дикие тюльпаны, юрты и города Шелкового пути",
+        vibeSummerTitle: "Бирюзовые озера и летние бульвары",
+        vibeSummerSub: "Кольсай, Бурабай, Каспий и Астана",
+        vibeAutumnTitle: "Золотые каньоны и беркутчи",
+        vibeAutumnSub: "Чарынский каньон, урожай и золотая осень",
+        vibeWinterTitle: "Снежные пики и зимняя сказка",
+        vibeWinterSub: "Горные лыжи, катки и крытые оазисы",
+        matcherWeatherLabel: "2. Комфортная температура",
+        optWeatherWarm: "☀️ Тепло и солнечно (+22°C … +32°C)",
+        optWeatherMild: "🌤️ Мягкая и свежая (+10°C … +22°C)",
+        optWeatherSnow: "❄️ Морозная и снежная (ниже 0°C)",
+        matcherStyleLabel: "3. Ваш стиль путешествия",
+        styleCulture: "🎭 Культура, праздники и кухня",
+        styleNature: "📸 Природа и фотопейзажи",
+        styleAdventure: "🥾 Активный треккинг и спорт",
+        matcherBestMatchBadge: "✓ Ваш персональный выбор",
+        ticketRouteLabel: "🗺️ Рекомендуемый маршрут для вас",
+        btnViewSeasonAbove: "Открыть гид по сезону ↑",
+        btnInspectMonth: "Смотреть лучший месяц ↑",
+        mJanShort: "ЯНВ", mFebShort: "ФЕВ", mMarShort: "МАР", mAprShort: "АПР", mMayShort: "МАЙ", mJunShort: "ИЮН",
+        mJulShort: "ИЮЛ", mAugShort: "АВГ", mSepShort: "СЕН", mOctShort: "ОКТ", mNovShort: "НОЯ", mDecShort: "ДЕК",
+        mJan: "Январь", mFeb: "Февраль", mMar: "Март", mApr: "Апрель", mMay: "Май", mJun: "Июнь",
+        mJul: "Июль", mAug: "Август", mSep: "Сентябрь", mOct: "Октябрь", mNov: "Ноябрь", mDec: "Декабрь",
+        kzHeroBadge: "🌏 Национальный туристический портал · Пошаговый гид",
+        kzHeroTitle: "Откройте Казахстан: от Каспийского моря до вершин Алтая",
+        kzHeroDesc: "Добро пожаловать в интерактивный путеводитель по Казахстану — девятой по величине стране мира. Нажмите на любой регион на карте ниже, чтобы узнать о его истории и достопримечательностях, и перейдите на страницу региона — начиная с нашей столицы Астаны!",
+        kzBtnExploreMap: "К интерактивной карте ↓",
+        kzBtnJumpAstana: "Перейти на сайт Астаны →",
+        kzFeaturedNow: "★ Великая степь и горы",
+        kzSpotlightTitle: "Республика Казахстан",
+        kzSpotlightDesc: "Выберите регион на интерактивной карте ниже, чтобы открыть путеводитель.",
+        kzOpenAstanaBtn: "Открыть гид по Астане →",
+        kzMapHeading: "Интерактивная карта Казахстана",
+        kzMapInstructions: "Нажмите на любой регион или город на карте, чтобы увидеть подробную информацию справа. Нажмите на Астану, чтобы перейти к полному путеводителю по столице.",
+        legendAvailable: "Доступно сейчас (Астана)",
+        legendSelected: "Выбранный регион",
+        legendSoon: "Скоро появится",
+        pillAstana: "★ Астана и столичный регион (Доступно)",
+        pillAlmaty: "Алматы и Жетысу",
+        pillTurkistan: "Туркестан и Юг",
+        pillMangystau: "Мангистау и Каспий",
+        pillEast: "Восточный Казахстан и Алтай",
+        pillCentral: "Караганда и Сарыарка",
+        pillNorth: "Север и Костанай",
+        pillKyzylorda: "Арал и Байконур",
+        kzMapCoordLabel: "40°N – 55°N · 46°E – 87°E · Республика Казахстан",
+        kzMapHoverDefault: "Выберите область на карте",
+        kzMapTip: "💡 Совет: Нажмите на любую область на карте для просмотра деталей, а затем перейдите на страницу города!",
+        kzQuickJumpAstana: "Перейти к Астане →",
+        factLabelCenter: "Главный город",
+        factLabelPop: "Население",
+        factLabelHighlight: "Главный символ",
+        factLabelStatus: "Статус гида",
+        kzStatsHeading: "Казахстан в цифрах",
+        kzStat1: "Крупнейшая страна в мире",
+        kzStat2: "Бескрайние степи, горы и озера",
+        kzStat3: "Жителей встречают гостей",
+        kzStat4: "Год переноса столицы в Астану",
+        kzRoadmapHeading: "Изучайте регионы шаг за шагом",
+        kzRoadmapSub: "Мы постепенно расширяем наш портал на все регионы Казахстана. Начните с полного гида по Астане уже сегодня!",
+        badgeAvailableNow: "★ Доступно сейчас",
+        badgeComingSoon: "⏳ Скоро",
+        destAstanaTitle: "Астана и Акмолинский регион",
+        destAstanaDesc: "Полный гид по городу: 14 достопримечательностей Астаны, интерактивная фотогалерея и бронирование туров.",
+        destAlmatyTitle: "Алматы и Жетысу",
+        destAlmatyDesc: "Снежные пики Тянь-Шаня, курорт Шымбулак, Чарынский каньон и высокогорные озера Кольсай и Каинды.",
+        destTurkistanTitle: "Туркестан и Великий Шелковый путь",
+        destTurkistanDesc: "Мавзолей Ходжи Ахмеда Ясави (ЮНЕСКО), древний Отрар и колоритные восточные базары.",
+        btnPreviewOnMap: "Показать на карте ↑",
+        statusBadgeLive: "★ Доступно сейчас · Полный сайт готов",
+        statusBadgeSoon: "⏳ Скоро · Пошаговое расширение",
+        btnExploreAstana: "Перейти на страницу Астаны →",
+        btnRegionSoon: "Страница региона в разработке",
         heroTitle: "Добро пожаловать в Астану",
         heroDesc: "Астана — уникальное сочетание футуристической архитектуры, богатого кочевого наследия и теплого степного гостеприимства.",
         btnLandmarks: "Смотреть локации",
         btnBookTour: "Забронировать тур",
         btnSupport: "Служба поддержки",
         factHeading: "Знаете ли вы? Культурные и архитектурные факты об Астане",
-        historyTitle: "История столицы",
+        historyTitle: "История и Культура Казахстана",
+        historyIntro: "От древних кочевых цивилизаций Великой Степи и цветущих городов Шелкового пути до образования Казахского ханства и современной независимости — узнайте об общем наследии Казахстана.",
+        histEra1Badge: "I тысячелетие до н.э.",
+        histEra1Title: "Сакская эпоха («Золотой человек»)",
+        histEra1Desc: "Искусные всадники и мастера золотого дела населяли евразийские степи, оставив курганы и знаменитого «Золотого человека» (Алтын Адам) — национальный символ Казахстана.",
+        histEra2Badge: "VI – XV века",
+        histEra2Title: "Великий Шелковый путь и города степи",
+        histEra2Desc: "Караванные города Туркестан, Отрар, Тараз и Сарайшык связывали Восток и Запад, развивая науку, философию (Аль-Фараби) и архитектуру, включая мавзолей Ходжи Ахмеда Ясави.",
+        histEra3Badge: "1465 год",
+        histEra3Title: "Образование Казахского ханства",
+        histEra3Desc: "Ханы Керей и Жанибек основали Казахское ханство, объединив племена от Каспия до Алтая общим языком, искусством кюя на домбре и степным сводом законов.",
+        histEra4Badge: "1991 год",
+        histEra4Title: "Независимость Республики Казахстан",
+        histEra4Desc: "В декабре 1991 года Казахстан провозгласил независимость, став суверенным государством и перенеся столицу из Алматы в Астану в 1997 году.",
+        histEra5Badge: "Сегодня",
+        histEra5Title: "Современный центр культуры и инноваций",
+        histEra5Desc: "Сегодня Казахстан бережно хранит традиции кочевого гостеприимства и объекты ЮНЕСКО, открывая путешественникам современные мегаполисы, космодром и национальные парки.",
         attractionsTitle: "Главные достопримечательности Астаны",
         toursTitle: "Доступные экскурсионные туры",
         morningGreeting: "☀️ Доброе утро из Астаны!",
@@ -121,20 +367,143 @@ const uiTranslations = {
     kz: {
         brandTitle: "Астанаға саяхат",
         brandSub: "Ұлы Дала жүрегі",
+        kzBrandTitle: "Қазақстанға саяхат",
+        kzBrandSub: "Ұлы Даланы зерттеңіз",
         bgBtn: "Фонды өзгерту",
         nightMode: "🌙 Түнгі режим",
         dayMode: "☀️ Күндізгі режим",
-        navHome: "Басты бет",
+        navKzMap: "Қазақстан картасы",
+        navHome: "Астана",
         navHistory: "Тарих және Мәдениет",
+        navSeasons: "Маусымдар мен Күнтізбе",
         navAttractions: "Көрікті жерлер",
         navTours: "Турлар",
+        seasonsBadge: "🗓️ Қазақстан бойынша жылдық саяхат жоспарлағыш",
+        seasonsPageTitle: "Қазақстанның төрт мезгілі мен интерактивті күнтізбесі",
+        seasonsPageDesc: "Көктемгі қызғалдақ алқаптары мен жазғы тау көлдерінен бастап алтын күздегі шатқалдар мен қарлы шыңдарға дейін — Қазақстанға саяхатыңыз үшін ең қолайлы уақытты таңдаңыз.",
+        btnExploreCalendar: "Интерактивті күнтізбеге өту ↓",
+        btnFindSeasonHero: "Өз маусымымды табу ✨",
+        seasonsExplorerTitle: "Қазақстанды жыл мезгілдері бойынша зерттеңіз",
+        seasonsExplorerSub: "Ауа райын, Қазақстанның үздік бағыттарын және интерактивті жолдорба тізімін көру үшін мезгілді таңдаңыз:",
+        seasonSpringName: "Көктем",
+        seasonSpringMonths: "Наурыз – Мамыр",
+        seasonSummerName: "Жаз",
+        seasonSummerMonths: "Маусым – Тамыз",
+        seasonAutumnName: "Күз",
+        seasonAutumnMonths: "Қыркүйек – Қараша",
+        seasonWinterName: "Қыс",
+        seasonWinterMonths: "Желтоқсан – Ақпан",
+        seasonBestPlacesLabel: "📍 Баруға ең қолайлы жерлер",
+        seasonHighlightsLabel: "✨ Маусымның басты ерекшеліктері",
+        packingTitle: "🎒 Интерактивті заттар тізімі (белгілеу үшін басыңыз):",
+        calHeading: "12 айлық мерекелер мен ауа райының интерактивті күнтізбесі",
+        calSubheading: "Ұлттық мерекелер, фестивальдер және Қазақстан өңірлеріндегі ауа райын көру үшін кез келген айды басыңыз:",
+        btnJumpCurrentMonth: "Ағымдағы айға өту",
+        calHolidayLabel: "🎉 Негізгі мерекелер мен мәдени іс-шаралар",
+        btnGoToMonthSeason: "Осы айдың мезгіліне өту ↑",
+        btnSaveMonthPlan: "⭐ Сақтау",
+        monthSavedToast: "«{month}» айы Қазақстанға саяхат жоспарыңызға сақталды!",
+        wizardBadge: "🧭 Интерактивті саяхат компасы",
+        matcherHeading: "Қашан баруды білмейсіз бе? Өзіңізге сай маусымды табыңыз",
+        matcherSub: "Армандаған табиғатты, қолайлы температураны және демалыс стилін таңдаңыз — сізге арналған бағыт оң жақта бірден көрінеді!",
+        matcherActivityLabel: "1. Қазақстандағы басты әсерді таңдаңыз",
+        vibeSpringTitle: "Наурыз және гүлдеген дала",
+        vibeSpringSub: "Қызғалдақтар, киіз үйлер мен Жібек жолы",
+        vibeSummerTitle: "Көгілдір көлдер мен жазғы серуен",
+        vibeSummerSub: "Көлсай, Бурабай, Каспий және Астана",
+        vibeAutumnTitle: "Алтын шатқалдар мен бүркітшілер",
+        vibeAutumnSub: "Шарын шатқалы, молшылық және алтын күз",
+        vibeWinterTitle: "Қарлы шыңдар мен қысқы ертегі",
+        vibeWinterSub: "Тау шаңғысы, мұз айдындары мен оазистер",
+        matcherWeatherLabel: "2. Қолайлы температура",
+        optWeatherWarm: "☀️ Жылы әрі шуақты (+22°C … +32°C)",
+        optWeatherMild: "🌤️ Жұмсақ әрі салқын (+10°C … +22°C)",
+        optWeatherSnow: "❄️ Аязды әрі қарлы (0°C-тан төмен)",
+        matcherStyleLabel: "3. Саяхат стиліңіз",
+        styleCulture: "🎭 Мәдениет, мерекелер және асхана",
+        styleNature: "📸 Табиғат және фотокөріністер",
+        styleAdventure: "🥾 Белсенді треккинг және спорт",
+        matcherBestMatchBadge: "✓ Сізге арналған таңдау",
+        ticketRouteLabel: "🗺️ Сізге ұсынылатын маршрут",
+        btnViewSeasonAbove: "Маусым гидін ашу ↑",
+        btnInspectMonth: "Үздік айды көру ↑",
+        mJanShort: "ҚАҢ", mFebShort: "АҚП", mMarShort: "НАУ", mAprShort: "СӘУ", mMayShort: "МАМ", mJunShort: "МАУ",
+        mJulShort: "ШІЛ", mAugShort: "ТАМ", mSepShort: "ҚЫР", mOctShort: "ҚАЗ", mNovShort: "ҚАР", mDecShort: "ЖЕЛ",
+        mJan: "Қаңтар", mFeb: "Ақпан", mMar: "Наурыз", mApr: "Сәуір", mMay: "Мамыр", mJun: "Маусым",
+        mJul: "Шілде", mAug: "Тамыз", mSep: "Қыркүйек", mOct: "Қазан", mNov: "Қараша", mDec: "Желтоқсан",
+        kzHeroBadge: "🌏 Ұлттық туристік портал · Қадамдық нұсқаулық",
+        kzHeroTitle: "Қазақстанды ашыңыз: Каспий теңізінен Алтай шыңдарына дейін",
+        kzHeroDesc: "Әлемдегі жер көлемі бойынша тоғызыншы орын алатын Қазақстанның интерактивті саяхат гидіне қош келдіңіз. Төмендегі картадан кез келген өңірді басып, толық ақпарат алыңыз және елордамыз Астанадан бастап арнайы парақшасына өтіңіз!",
+        kzBtnExploreMap: "Интерактивті картаны көру ↓",
+        kzBtnJumpAstana: "Астана сайтына өту →",
+        kzFeaturedNow: "★ Ұлы Дала мен таулар",
+        kzSpotlightTitle: "Қазақстан Республикасы",
+        kzSpotlightDesc: "Саяхат гидін ашу үшін төмендегі интерактивті картадан аймақты таңдаңыз.",
+        kzOpenAstanaBtn: "Астана гидін ашу →",
+        kzMapHeading: "Қазақстанның интерактивті картасы",
+        kzMapInstructions: "Оң жақта толық ақпаратты көру үшін картадағы кез келген аймақты немесе қаланы басыңыз. Елордамен танысып, толық Астана сайтына өту үшін Астананы таңдаңыз.",
+        legendAvailable: "Қазір қолжетімді (Астана)",
+        legendSelected: "Таңдалған аймақ",
+        legendSoon: "Жақында қосылады",
+        pillAstana: "★ Астана және елорда өңірі (Ашық)",
+        pillAlmaty: "Алматы және Жетісу",
+        pillTurkistan: "Түркістан және Оңтүстік",
+        pillMangystau: "Маңғыстау және Каспий",
+        pillEast: "Шығыс Қазақстан және Алтай",
+        pillCentral: "Қарағанды және Сарыарқа",
+        pillNorth: "Солтүстік және Қостанай",
+        pillKyzylorda: "Арал және Байқоңыр",
+        kzMapCoordLabel: "40°N – 55°N · 46°E – 87°E · Қазақстан Республикасы",
+        kzMapHoverDefault: "Картадан аймақты таңдаңыз",
+        kzMapTip: "💡 Кеңес: Толық мәлімет алу үшін картадағы кез келген аймақты басып, оң жақтағы батырма арқылы қала парақшасына өтіңіз!",
+        kzQuickJumpAstana: "Астанаға өту →",
+        factLabelCenter: "Басты қала",
+        factLabelPop: "Халқы",
+        factLabelHighlight: "Басты нысан",
+        factLabelStatus: "Гид мәртебесі",
+        kzStatsHeading: "Қазақстан сандармен",
+        kzStat1: "Әлемдегі ең ірі мемлекеттердің бірі",
+        kzStat2: "Кең дала, таулар мен көлдер",
+        kzStat3: "Қонақжай Қазақстан халқы",
+        kzStat4: "Астана елорда болған жыл",
+        kzRoadmapHeading: "Қазақстан өңірлерін біртіндеп зерттеңіз",
+        kzRoadmapSub: "Біз саяхат порталымызды Қазақстанның барлық аймақтарына біртіндеп кеңейтіп жатырмыз. Бүгін толық Астана гидінен бастаңыз!",
+        badgeAvailableNow: "★ Қазір қолжетімді",
+        badgeComingSoon: "⏳ Жақында",
+        destAstanaTitle: "Астана және Ақмола өңірі",
+        destAstanaDesc: "Қалалық толық гид: Астананың 14 көрікті жері, интерактивті фотогалерея және турларға тапсырыс беру.",
+        destAlmatyTitle: "Алматы және Жетісу",
+        destAlmatyDesc: "Тянь-Шань шыңдары, Шымбұлақ курорты, Шарын шатқалы және Көлсай мен Қайыңды көлдері.",
+        destTurkistanTitle: "Түркістан және Ұлы Жібек жолы",
+        destTurkistanDesc: "Қожа Ахмет Ясауи кесенесі (ЮНЕСКО), ежелгі Отырар қалашығы және шығыс базарлары.",
+        btnPreviewOnMap: "Картадан көру ↑",
+        statusBadgeLive: "★ Қазір қолжетімді · Толық сайт дайын",
+        statusBadgeSoon: "⏳ Жақында · Біртіндеп қосылады",
+        btnExploreAstana: "Астана парақшасына өту →",
+        btnRegionSoon: "Аймақ парақшасы дайындалуда",
         heroTitle: "Астанаға қош келдіңіз",
         heroDesc: "Астана — футуристік сәулет, бай көшпелі мұра мен қонақжайлылықтың бірегей үйлесімі.",
         btnLandmarks: "Көрікті жерлер",
         btnBookTour: "Турға тапсырыс беру",
         btnSupport: "Қолдау қызметі",
         factHeading: "Білесіз бе? Астананың мәдениеті мен сәулеті туралы деректер",
-        historyTitle: "Елорда тарихы",
+        historyTitle: "Қазақстанның тарихы мен мәдениеті",
+        historyIntro: "Ұлы Даланың ежелгі көшпелі өркениеттері мен Жібек жолы қалаларынан бастап Қазақ хандығының құрылуы мен бүгінгі тәуелсіздікке дейінгі бүкіл Қазақстанды біріктіретін ортақ мұрамен танысыңыз.",
+        histEra1Badge: "Б.з.д. I мыңжылдық",
+        histEra1Title: "Сақ және скиф дәуірі («Алтын адам»)",
+        histEra1Desc: "Еуразия даласын мекендеген сақ жауынгерлері мен зергерлері патша қорғандарын және бүгінде Қазақстанның ұлттық символына айналған әйгілі «Алтын адамды» мұра етіп қалдырды.",
+        histEra2Badge: "VI – XV ғасырлар",
+        histEra2Title: "Ұлы Жібек жолы және дала қалалары",
+        histEra2Desc: "Түркістан, Отырар, Тараз және Сарайшық керуен қалалары Шығыс пен Батысты жалғап, ғылым (Әл-Фараби), сауда және Қожа Ахмет Ясауи кесенесі сияқты сәулет жауһарларын дамытты.",
+        histEra3Badge: "1465 жыл",
+        histEra3Title: "Қазақ хандығының құрылуы",
+        histEra3Desc: "Керей мен Жәнібек хандар Каспийден Алтайға дейінгі ұлан-ғайыр өлкедегі ру-тайпаларды ортақ тіл, домбыра күйі және дала заңдары аясында біріктіріп, Қазақ хандығының негізін қалады.",
+        histEra4Badge: "1991 жыл",
+        histEra4Title: "Қазақстан Республикасының Тәуелсіздігі",
+        histEra4Desc: "1991 жылы желтоқсанда Қазақстан өз тәуелсіздігін жариялап, егеменді мемлекет ретінде дамып, 1997 жылы ел астанасын Алматыдан Астанаға көшірді.",
+        histEra5Badge: "Бүгінгі таңда",
+        histEra5Title: "Заманауи мәдениет пен инновация ордасы",
+        histEra5Desc: "Бүгінгі Қазақстан көшпелі қонақжайлылық дәстүрі мен ЮНЕСКО мұраларын сақтай отырып, саяхатшыларды заманауи қалалармен, ғарыш айлағымен және ұлттық парктермен қарсы алады.",
         attractionsTitle: "Астананың басты көрікті жерлері",
         toursTitle: "Қолжетімді тур пакеттері",
         morningGreeting: "☀️ Астанадан қайырлы таң!",
@@ -467,7 +836,8 @@ const astanaFacts = {
 /* Extra dishes added by "Load Traditional Delicacies" on the History page. */
 const extraDishes = [
     {
-        image: "images/besh.jpg",
+        image: "images/kazy_shuzhuk.jpg",
+        alt: "kazy_shuzhuk",
         name: { en: "Kazy & Shuzhuk", ru: "Казы и Шужук", kz: "Қазы мен Шұжық" },
         description: {
             en: "Traditional seasoned horsemeat sausages prized as a centerpiece on festive dastarkhan tables.",
@@ -476,7 +846,8 @@ const extraDishes = [
         }
     },
     {
-        image: "images/baursak.jpg",
+        image: "images/zhent_talkan.jpg",
+        alt: "zhent_talkan",
         name: { en: "Zhent & Talkan", ru: "Жент и Талкан", kz: "Жент пен Талқан" },
         description: {
             en: "Rich nomadic dessert crafted from toasted millet, honey, butter, and crushed raisins.",
@@ -485,7 +856,8 @@ const extraDishes = [
         }
     },
     {
-        image: "images/qymyz.jpg",
+        image: "images/shubat.jpg",
+        alt: "shubat",
         name: { en: "Shubat", ru: "Шубат", kz: "Шұбат" },
         description: {
             en: "Refreshing fermented camel milk packed with vitamins and traditional steppe heritage.",
@@ -547,6 +919,698 @@ const astanaTours = [
             en: "Nur-Alem Sphere, AIFC FinTech Hub, Congress Center",
             ru: "Сфера Нур-Алем, технопарк МФЦА, Конгресс-центр",
             kz: "Нұр-Әлем сферасы, АХҚО хабы, Конгресс-орталық"
+        }
+    }
+];
+
+/* Regions shown on the Interactive Map of Kazakhstan (index.html).
+   Note: Only Astana uses the existing Astana images. All other regions use
+   placeholder image paths where src="images/<alt>.jpg" and alt="<alt>", so
+   photos can be added later with the exact same name as alt. */
+const kazakhstanRegions = {
+    astana: {
+        available: true,
+        url: "astana.html",
+        coords: "51.16° N, 71.43° E",
+        images: [
+            { src: "images/welcome_to_Astana.jpg", alt: "welcome_to_Astana" },
+            { src: "images/baiterek.jpg", alt: "baiterek" },
+            { src: "images/khan-shatyr.jpg", alt: "khan-shatyr" },
+            { src: "images/hazret-sultan.jpg", alt: "hazret-sultan" },
+            { src: "images/nuralem.jpg", alt: "nuralem" }
+        ],
+        title: {
+            en: "Astana (Capital Region)",
+            ru: "Астана (Столичный регион)",
+            kz: "Астана (Елорда өңірі)"
+        },
+        tagline: {
+            en: "Futuristic Capital & Heart of the Great Steppe",
+            ru: "Футуристическая столица и сердце Великой Степи",
+            kz: "Футуристік елорда және Ұлы Дала жүрегі"
+        },
+        description: {
+            en: "Astana is the modern capital of Kazakhstan, renowned for its bold futuristic skyline designed by world-leading architects, vibrant nomadic culture, and warm steppe hospitality. Click below to jump to the Astana website for its landmarks, photo galleries, and guided tours.",
+            ru: "Астана — современная столица Казахстана, известная своей смелой футуристической архитектурой, богатым кочевым наследием и теплым гостеприимством. Перейдите на страницу Астаны, чтобы увидеть достопримечательности, фотогалерею и туры.",
+            kz: "Астана — әлемдік сәулетшілер жобалаған футуристік келбетімен, бай көшпелі мәдениетімен және қонақжайлылығымен танымал Қазақстанның заманауи астанасы. Көрікті жерлер, фотогалерея мен турларды көру үшін Астана парақшасына өтіңіз."
+        },
+        city: { en: "Astana", ru: "Астана", kz: "Астана" },
+        population: { en: "1,300,000+", ru: "1 300 000+", kz: "1 300 000+" },
+        icon: { en: "Baiterek & Khan Shatyr", ru: "Байтерек и Хан Шатыр", kz: "Бәйтерек пен Хан Шатыр" },
+        statusText: { en: "3 City Pages Ready ✓", ru: "3 страницы готовы ✓", kz: "3 бет дайын ✓" },
+        tags: {
+            en: ["Baiterek Tower", "Khan Shatyr", "Hazret Sultan", "Nur-Alem Sphere", "Burabay Resort"],
+            ru: ["Байтерек", "Хан Шатыр", "Хазрет Султан", "Сфера Нур-Алем", "Курорт Бурабай"],
+            kz: ["Бәйтерек", "Хан Шатыр", "Әзірет Сұлтан", "Нұр-Әлем сферасы", "Бурабай курорты"]
+        }
+    },
+    almaty: {
+        available: false,
+        url: null,
+        coords: "43.24° N, 76.89° E",
+        images: [
+            { src: "images/almaty_mountains.jpg", alt: "almaty_mountains" },
+            { src: "images/charyn_canyon.jpg", alt: "charyn_canyon" },
+            { src: "images/kolsai_lakes.jpg", alt: "kolsai_lakes" }
+        ],
+        title: {
+            en: "Almaty & Zhetysu Region",
+            ru: "Алматы и область Жетысу",
+            kz: "Алматы және Жетісу өңірі"
+        },
+        tagline: {
+            en: "Cultural Metropolis & Land of Seven Rivers",
+            ru: "Культурная столица и край Семиречья",
+            kz: "Мәдени орда және Жетісу өлкесі"
+        },
+        description: {
+            en: "Nestled at the foot of the snow-capped Tian Shan mountains, Almaty and Zhetysu offer dramatic alpine lakes (Kolsai and Kaindy), the red sandstone cliffs of Charyn Canyon, Medeu ice rink, and Shymbulak ski resort. Dedicated pages for this region will be added in the next step!",
+            ru: "Расположенный у подножия снежных гор Тянь-Шаня регион Алматы и Жетысу славится высокогорными озерами Кольсай и Каинды, Чарынским каньоном, катком Медеу и курортом Шымбулак. Подробный гид по региону скоро появится!",
+            kz: "Ақ басты Тянь-Шань тауларының баурайында орналасқан Алматы мен Жетісу өңірі Көлсай мен Қайыңды көлдерімен, Шарын шатқалымен, Медеу мұз айдыны және Шымбұлақ курортымен әйгілі. Бұл аймақтың парақшасы келесі қадамда қосылады!"
+        },
+        city: { en: "Almaty & Taldykorgan", ru: "Алматы и Талдыкорган", kz: "Алматы мен Талдықорған" },
+        population: { en: "3,600,000+", ru: "3 600 000+", kz: "3 600 000+" },
+        icon: { en: "Charyn Canyon & Shymbulak", ru: "Чарын и Шымбулак", kz: "Шарын мен Шымбұлақ" },
+        statusText: { en: "Coming Soon (Step 2)", ru: "Скоро (Шаг 2)", kz: "Жақында (2-қадам)" },
+        tags: {
+            en: ["Charyn Canyon", "Kolsai Lakes", "Medeu & Shymbulak", "Altyn-Emel"],
+            ru: ["Чарынский каньон", "Озера Кольсай", "Медеу и Шымбулак", "Алтын-Эмель"],
+            kz: ["Шарын шатқалы", "Көлсай көлдері", "Медеу мен Шымбұлақ", "Алтын-Емел"]
+        }
+    },
+    turkistan: {
+        available: false,
+        url: null,
+        coords: "43.30° N, 68.25° E",
+        images: [
+            { src: "images/turkistan_mausoleum.jpg", alt: "turkistan_mausoleum" },
+            { src: "images/otrar_ruins.jpg", alt: "otrar_ruins" },
+            { src: "images/shymkent_city.jpg", alt: "shymkent_city" }
+        ],
+        title: {
+            en: "Turkistan, Shymkent & Zhambyl",
+            ru: "Туркестан, Шымкент и Жамбыл",
+            kz: "Түркістан, Шымкент және Жамбыл"
+        },
+        tagline: {
+            en: "Spiritual Capital & Ancient Silk Road Heartland",
+            ru: "Духовная столица и сердце Шелкового пути",
+            kz: "Түркі әлемінің рухани астанасы мен Ұлы Жібек жолы"
+        },
+        description: {
+            en: "Southern Kazakhstan is the cradle of Silk Road civilization, home to the 14th-century UNESCO Mausoleum of Khoja Ahmed Yasawi in Turkistan, the ancient oasis ruins of Otrar and Taraz, and Aksu-Zhabagly Nature Reserve.",
+            ru: "Южный Казахстан — колыбель цивилизации Великого Шелкового пути, где находятся мавзолей Ходжи Ахмеда Ясави (ЮНЕСКО), древний Отрар и Тараз, а также заповедник Аксу-Жабаглы.",
+            kz: "Оңтүстік Қазақстан — ЮНЕСКО тізіміндегі Қожа Ахмет Ясауи кесенесі, ежелгі Отырар мен Тараз қалашықтары және Ақсу-Жабағылы қорығы орналасқан Ұлы Жібек жолының бесігі."
+        },
+        city: { en: "Turkistan, Shymkent, Taraz", ru: "Туркестан, Шымкент, Тараз", kz: "Түркістан, Шымкент, Тараз" },
+        population: { en: "4,500,000+", ru: "4 500 000+", kz: "4 500 000+" },
+        icon: { en: "Yasawi Mausoleum", ru: "Мавзолей Ясави", kz: "Ясауи кесенесі" },
+        statusText: { en: "Coming Soon (Step 3)", ru: "Скоро (Шаг 3)", kz: "Жақында (3-қадам)" },
+        tags: {
+            en: ["Khoja Ahmed Yasawi", "Ancient Otrar", "Aksu-Zhabagly", "Silk Road Bazaars"],
+            ru: ["Мавзолей Ясави", "Древний Отрар", "Аксу-Жабаглы", "Восточные базары"],
+            kz: ["Ясауи кесенесі", "Ежелгі Отырар", "Ақсу-Жабағылы", "Жібек жолы"]
+        }
+    },
+    mangystau: {
+        available: false,
+        url: null,
+        coords: "43.65° N, 51.16° E",
+        images: [
+            { src: "images/mangystau_bozzhyra.jpg", alt: "mangystau_bozzhyra" },
+            { src: "images/aktau_caspian.jpg", alt: "aktau_caspian" },
+            { src: "images/torysh_balls.jpg", alt: "torysh_balls" }
+        ],
+        title: {
+            en: "Mangystau & Caspian West",
+            ru: "Мангистау и Прикаспийский Запад",
+            kz: "Маңғыстау және Каспий маңы Батысы"
+        },
+        tagline: {
+            en: "Caspian Sea Coast & Otherworldly Chalk Canyons",
+            ru: "Побережье Каспия и каньоны Устюрта",
+            kz: "Каспий теңізі жағалауы мен Бозжыра шатқалы"
+        },
+        description: {
+            en: "Stretching along the turquoise shores of the Caspian Sea, Western Kazakhstan features the surreal white chalk cliffs of Bozzhyra on the Ustyurt Plateau, Torysh Valley of Balls, underground Sufi mosques like Beket-Ata, and the Europe-Asia bridge in Atyrau.",
+            ru: "Протянувшийся вдоль бирюзовых берегов Каспийского моря Западный Казахстан поражает белыми меловыми скалами урочища Бозжыра, Долиной шаров Торыш и подземной мечетью Бекет-Ата.",
+            kz: "Каспий теңізінің жағалауында орналасқан Батыс Қазақстан Үстірттегі Бозжыра бор жартастарымен, Торыш шарлар алқабымен және Бекет-Ата жерасты мешітімен таңғалдырады."
+        },
+        city: { en: "Aktau, Atyrau, Uralsk", ru: "Актау, Атырау, Уральск", kz: "Ақтау, Атырау, Орал" },
+        population: { en: "2,200,000+", ru: "2 200 000+", kz: "2 200 000+" },
+        icon: { en: "Bozzhyra & Caspian Sea", ru: "Бозжыра и Каспий", kz: "Бозжыра мен Каспий" },
+        statusText: { en: "Coming Soon", ru: "Скоро", kz: "Жақында" },
+        tags: {
+            en: ["Bozzhyra Tract", "Caspian Coast", "Beket-Ata Mosque", "Valley of Balls"],
+            ru: ["Урочище Бозжыра", "Берег Каспия", "Мечеть Бекет-Ата", "Долина шаров"],
+            kz: ["Бозжыра шатқалы", "Каспий жағалауы", "Бекет-Ата мешіті", "Торыш алқабы"]
+        }
+    },
+    east: {
+        available: false,
+        url: null,
+        coords: "49.95° N, 82.61° E",
+        images: [
+            { src: "images/altai_belukha.jpg", alt: "altai_belukha" },
+            { src: "images/katon_karagay.jpg", alt: "katon_karagay" },
+            { src: "images/markakol_lake.jpg", alt: "markakol_lake" }
+        ],
+        title: {
+            en: "East Kazakhstan & Altai",
+            ru: "Восточный Казахстан и Алтай",
+            kz: "Шығыс Қазақстан және Алтай"
+        },
+        tagline: {
+            en: "Golden Altai Mountains, Taiga Forests & Abai Heritage",
+            ru: "Золотой Алтай, тайга и родина Абая",
+            kz: "Алтын Алтай таулары мен Абай елі"
+        },
+        description: {
+            en: "Crowned by sacred Mount Belukha (4,506 m), East Kazakhstan and Abai Region combine emerald taiga valleys in Katon-Karagay, Lake Markakol, Kiin-Kerish red clay formations, and the literary homeland of Abai Qunanbaiuly in Semey.",
+            ru: "Увенчанный священной горой Белуха (4506 м) Восточный Казахстан и область Абай объединяют заповедную тайгу Катон-Карагая, озеро Маркаколь и литературную родину Абая Кунанбаева в Семее.",
+            kz: "Қасиетті Мұзтау шыңымен (4506 м) көмкерілген Шығыс Қазақстан мен Абай облысы Катонқарағай табиғатын, Марқакөлді және Семейдегі ұлы Абай мұрасын біріктіреді."
+        },
+        city: { en: "Oskemen & Semey", ru: "Усть-Каменогорск и Семей", kz: "Өскемен мен Семей" },
+        population: { en: "1,350,000+", ru: "1 350 000+", kz: "1 350 000+" },
+        icon: { en: "Belukha Peak & Katon-Karagay", ru: "Гора Белуха и Катон-Карагай", kz: "Мұзтау мен Катонқарағай" },
+        statusText: { en: "Coming Soon", ru: "Скоро", kz: "Жақында" },
+        tags: {
+            en: ["Mount Belukha", "Katon-Karagay", "Lake Markakol", "Abai Museum Semey"],
+            ru: ["Гора Белуха", "Катон-Карагай", "Озеро Маркаколь", "Музей Абая"],
+            kz: ["Мұзтау шыңы", "Катонқарағай", "Марқакөл", "Абай музейі"]
+        }
+    },
+    central: {
+        available: false,
+        url: null,
+        coords: "49.80° N, 73.10° E",
+        images: [
+            { src: "images/ulytau_steppe.jpg", alt: "ulytau_steppe" },
+            { src: "images/karkaraly_oasis.jpg", alt: "karkaraly_oasis" },
+            { src: "images/balkhash_lake.jpg", alt: "balkhash_lake" }
+        ],
+        title: {
+            en: "Karaganda & Ulytau (Central Steppe)",
+            ru: "Караганда и Улытау (Сарыарка)",
+            kz: "Қарағанды және Ұлытау (Сарыарқа)"
+        },
+        tagline: {
+            en: "Golden Steppe of Saryarka & Cradle of the Nation",
+            ru: "Золотая степь Сарыарки и колыбель нации",
+            kz: "Сарыарқаның алтын даласы мен ұлт ұясы — Ұлытау"
+        },
+        description: {
+            en: "The vast heartland of Saryarka encompasses sacred Ulytau—where Kazakh khans were crowned—alongside the pine-forested granite hills of Karkaraly Oasis, Bektau-Ata volcanic rock formations, and the northern shores of Lake Balkhash.",
+            ru: "Бескрайняя Сарыарка включает священный Улытау, где поднимали на белой кошме казахских ханов, сосновый оазис Каркаралинска, скалы Бектау-Ата и северный берег озера Балхаш.",
+            kz: "Кең байтақ Сарыарқада қазақ хандары ақ киізге көтерілген қасиетті Ұлытау, Қарқаралы оазисі, Бектау-Ата жартастары мен Балқаш көлінің солтүстік жағалауы орналасқан."
+        },
+        city: { en: "Karaganda & Zhezkazgan", ru: "Караганда и Жезказган", kz: "Қарағанды мен Жезқазған" },
+        population: { en: "1,350,000+", ru: "1 350 000+", kz: "1 350 000+" },
+        icon: { en: "Ulytau & Karkaraly", ru: "Улытау и Каркаралинск", kz: "Ұлытау мен Қарқаралы" },
+        statusText: { en: "Coming Soon", ru: "Скоро", kz: "Жақында" },
+        tags: {
+            en: ["Sacred Ulytau", "Karkaraly National Park", "Bektau-Ata", "Lake Balkhash"],
+            ru: ["Священный Улытау", "Каркаралинский парк", "Бектау-Ата", "Озеро Балхаш"],
+            kz: ["Қасиетті Ұлытау", "Қарқаралы паркі", "Бектау-Ата", "Балқаш көлі"]
+        }
+    },
+    north: {
+        available: false,
+        url: null,
+        coords: "53.20° N, 69.40° E",
+        images: [
+            { src: "images/bayanaul_park.jpg", alt: "bayanaul_park" },
+            { src: "images/botai_settlement.jpg", alt: "botai_settlement" },
+            { src: "images/irtysh_river.jpg", alt: "irtysh_river" }
+        ],
+        title: {
+            en: "North Kazakhstan, Kostanay & Pavlodar",
+            ru: "Северный Казахстан, Костанай и Павлодар",
+            kz: "Солтүстік Қазақстан, Қостанай және Павлодар"
+        },
+        tagline: {
+            en: "Birch Groves, Irtysh River & Bayanaul Granite Peaks",
+            ru: "Березовые рощи, Иртыш и гранитные скалы Баянаула",
+            kz: "Ақ қайыңды ормандар, Ертіс өзені мен Баянауыл"
+        },
+        description: {
+            en: "Northern Kazakhstan blends fertile golden plains and UNESCO-protected Naurzum nature reserves with the dramatic lakeside cliffs of Bayanaul National Park, the ancient Botai settlement (where horses were first domesticated), and scenic Irtysh riverfronts.",
+            ru: "Северный Казахстан сочетает золотые нивы и Наурзумский заповедник (ЮНЕСКО) с живописными озерами и скалами Баянаула, древним поселением Ботай и набережной Иртыша.",
+            kz: "Солтүстік Қазақстан ЮНЕСКО қорғауындағы Науырзым қорығын, көркем Баянауыл ұлттық паркін, жылқы алғаш қолға үйретілген ежелгі Ботай қонысын және Ертіс жағалауын біріктіреді."
+        },
+        city: { en: "Pavlodar, Kostanay, Petropavlovsk", ru: "Павлодар, Костанай, Петропавловск", kz: "Павлодар, Қостанай, Петропавл" },
+        population: { en: "2,100,000+", ru: "2 100 000+", kz: "2 100 000+" },
+        icon: { en: "Bayanaul & Botai", ru: "Баянаул и Ботай", kz: "Баянауыл мен Ботай" },
+        statusText: { en: "Coming Soon", ru: "Скоро", kz: "Жақында" },
+        tags: {
+            en: ["Bayanaul National Park", "Botai Culture", "Naurzum Reserve", "Irtysh River"],
+            ru: ["Нацпарк Баянаул", "Ботайская культура", "Наурзумский заповедник", "Река Иртыш"],
+            kz: ["Баянауыл паркі", "Ботай мәдениеті", "Науырзым қорығы", "Ертіс өзені"]
+        }
+    },
+    kyzylorda: {
+        available: false,
+        url: null,
+        coords: "45.60° N, 63.30° E",
+        images: [
+            { src: "images/baikonur_cosmodrome.jpg", alt: "baikonur_cosmodrome" },
+            { src: "images/aral_sea.jpg", alt: "aral_sea" },
+            { src: "images/aktolagay_hills.jpg", alt: "aktolagay_hills" }
+        ],
+        title: {
+            en: "Aral, Kyzylorda & Aktobe",
+            ru: "Арал, Кызылорда и Актобе",
+            kz: "Арал, Қызылорда және Ақтөбе"
+        },
+        tagline: {
+            en: "Gateway to Space at Baikonur & Syr Darya Heritage",
+            ru: "Космическая гавань Байконур и наследие Сырдарьи",
+            kz: "Байқоңыр ғарыш айлағы және Сыр бойы мұрасы"
+        },
+        description: {
+            en: "Home to the legendary Baikonur Cosmodrome—where humanity launched the first satellite and first astronaut into orbit—this region also features the Korkyt Ata Memorial Complex, the recovering North Aral Sea, and the white chalk hills of Aktolagay.",
+            ru: "Родина легендарного космодрома Байконур, откуда человечество впервые отправилось в космос, мемориального комплекса Коркыт-Ата, Малого Аральского моря и меловых гор Актолагай.",
+            kz: "Адамзат ғарышқа алғаш жол ашқан аңызға айналған Байқоңыр ғарыш айлағы, Қорқыт Ата мемориалдық кешені, Кіші Арал теңізі мен Ақтолағай бор таулары орналасқан өлке."
+        },
+        city: { en: "Aktobe, Kyzylorda, Baikonur", ru: "Актобе, Кызылорда, Байконур", kz: "Ақтөбе, Қызылорда, Байқоңыр" },
+        population: { en: "1,750,000+", ru: "1 750 000+", kz: "1 750 000+" },
+        icon: { en: "Baikonur Cosmodrome", ru: "Космодром Байконур", kz: "Байқоңыр ғарыш айлағы" },
+        statusText: { en: "Coming Soon", ru: "Скоро", kz: "Жақында" },
+        tags: {
+            en: ["Baikonur Cosmodrome", "Korkyt Ata Complex", "North Aral Sea", "Aktolagay Plateau"],
+            ru: ["Космодром Байконур", "Комплекс Коркыт-Ата", "Малый Арал", "Плато Актолагай"],
+            kz: ["Байқоңыр ғарыш айлағы", "Қорқыт Ата кешені", "Кіші Арал теңізі", "Ақтолағай үстірті"]
+        }
+    }
+};
+
+/* =====================================================================
+   Seasons & 12-Month Calendar Data (seasons.html)
+   Note: Uses placeholder image names matching alt (season_spring, season_summer,
+   season_autumn, season_winter) so photos can be added easily later.
+   ===================================================================== */
+const kazakhstanSeasons = {
+    spring: {
+        img: "images/season_spring.jpg",
+        alt: "season_spring",
+        badge: { en: "🌸 Spring · March – May", ru: "🌸 Весна · Март – Май", kz: "🌸 Көктем · Наурыз – Мамыр" },
+        temp: { en: "🌡️ +8°C to +22°C", ru: "🌡️ +8°C … +22°C", kz: "🌡️ +8°C … +22°C" },
+        title: {
+            en: "Blooming Steppe & Nauryz Renewal",
+            ru: "Цветущая степь и праздник Наурыз",
+            kz: "Гүлдеген дала және әз-Наурыз мерекесі"
+        },
+        desc: {
+            en: "Spring awakens the vast Kazakh steppe with wild Schrenk tulips and irises. Across the country, white yurts are raised for Nauryz Meiramy (March 21–23)—the ancient festival of the spring equinox—celebrated with Nauryz Kozhe, dombra concerts, and traditional horse games.",
+            ru: "Весна пробуждает бескрайнюю казахскую степь дикими тюльпанами и ирисами. По всей стране устанавливают белые юрты на Наурыз мейрамы (21–23 марта) — праздник весеннего равноденствия с наурыз-коже, кюями на домбре и национальными играми.",
+            kz: "Көктемде қазақ даласы қызғалдақтар мен құртқашаш гүлдеріне бөленеді. Ел бойынша 21–23 наурызда Ұлыстың ұлы күні — Наурыз мейрамы тойланып, ақ киіз үйлер тігіледі, наурыз көже таратылып, ұлттық ойындар өткізіледі."
+        },
+        places: {
+            en: "Turkistan, Shymkent, Mangystau Canyons, Charyn Canyon & Astana Plazas",
+            ru: "Туркестан, Шымкент, каньоны Мангистау, Чарынский каньон и площади Астаны",
+            kz: "Түркістан, Шымкент, Маңғыстау шатқалдары, Шарын шатқалы және Астана алаңдары"
+        },
+        highlights: {
+            en: "Nauryz Meiramy festivities, wild steppe tulip fields, mild desert & canyon treks",
+            ru: "Гуляния на Наурыз, поля диких тюльпанов, треккинг по каньонам без летнего зноя",
+            kz: "Наурыз мерекесі, жабайы қызғалдақ алқаптары, шатқалдарға саяхат"
+        },
+        packing: {
+            en: ["Light windproof jacket", "Comfortable walking shoes", "Sunglasses & sunscreen", "Camera for Nauryz & tulips"],
+            ru: ["Легкая ветровка", "Удобная обувь для прогулок", "Солнцезащитные очки", "Камера для Наурыза и тюльпанов"],
+            kz: ["Жеңіл желбегей күрте", "Ыңғайлы аяқ киім", "Күннен қорғайтын көзілдірік", "Фотоаппарат"]
+        }
+    },
+    summer: {
+        img: "images/season_summer.jpg",
+        alt: "season_summer",
+        badge: { en: "☀️ Summer · June – August", ru: "☀️ Лето · Июнь – Август", kz: "☀️ Жаз · Маусым – Тамыз" },
+        temp: { en: "🌡️ +22°C to +32°C", ru: "🌡️ +22°C … +32°C", kz: "🌡️ +22°C … +32°C" },
+        title: {
+            en: "Vibrant Astana Nights, Alpine Lakes & Pine Resorts",
+            ru: "Яркое лето в Астане, горные озера и сосновые курорты",
+            kz: "Жазғы Астана кештері, тау көлдері мен Бурабай курорты"
+        },
+        desc: {
+            en: "Summer is peak season for exploring Astana's open-air boulevards, musical fountains, and Ishim River boat cruises, as well as hiking in Burabay National Park, Kolsai Lakes, and the emerald valleys of East Kazakhstan.",
+            ru: "Лето — идеальный сезон для прогулок по бульварам Астаны, поющим фонтанам и речным круизам по Ишиму, а также для отдыха в сосновых борах Бурабая, на озерах Кольсай и в Алтае.",
+            kz: "Жаз — Астананың ашық желекжолдарымен серуендеп, Есіл өзенінде кемемен жүзуге, сондай-ақ Бурабай қарағайлы орманы, Көлсай көлдері мен Алтай тауларына саяхаттауға ең қолайлы маусым."
+        },
+        places: {
+            en: "Astana, Burabay Resort, Kolsai & Kaindy Lakes, Altai & Caspian Coast",
+            ru: "Астана, курорт Бурабай, озера Кольсай и Каинды, Алтай и побережье Каспия",
+            kz: "Астана, Бурабай курорты, Көлсай мен Қайыңды көлдері, Алтай және Каспий жағалауы"
+        },
+        highlights: {
+            en: "Capital City Day (July 6), Ishim River cruises, pine forest hikes & beach resorts",
+            ru: "День столицы в Астане (6 июля), прогулки по Ишиму, походы в горы и пляжный отдых",
+            kz: "Астана күні (6 шілде), Есілдегі серуен, тау жорықтары мен жағажай демалысы"
+        },
+        packing: {
+            en: ["Breathable summer clothes", "Sun hat & UV protection", "Light evening cardigan", "Reusable water bottle"],
+            ru: ["Легкая летняя одежда", "Головной убор от солнца", "Легкая кофта на вечер", "Бутылка для воды"],
+            kz: ["Жеңіл жазғы киім", "Күннен қорғайтын бас киім", "Кешкі жеңіл жемпір", "Су бөтелкесі"]
+        }
+    },
+    autumn: {
+        img: "images/season_autumn.jpg",
+        alt: "season_autumn",
+        badge: { en: "🍂 Autumn · September – November", ru: "🍂 Осень · Сентябрь – Ноябрь", kz: "🍂 Күз · Қыркүйек – Қараша" },
+        temp: { en: "🌡️ +4°C to +20°C", ru: "🌡️ +4°C … +20°C", kz: "🌡️ +4°C … +20°C" },
+        title: {
+            en: "Golden Steppe Harvest, Canyons & Eagle Hunting",
+            ru: "Золотая осень, каньоны и турниры беркутчи",
+            kz: "Алтын күз, шатқалдар мен саятшылық маусымы"
+        },
+        desc: {
+            en: "Early autumn paints the birch groves of Northern Kazakhstan and the Tian Shan foothills in shimmering gold. Crisp, clear skies and harvest bazaars filled with sweet melons and apples make September and October a photographer's dream.",
+            ru: "Ранняя осень окрашивает березовые рощи севера и предгорья Тянь-Шаня в яркое золото. Прозрачный воздух, богатые осенние базары и соревнования беркутчи делают сентябрь и октябрь мечтой фотографа.",
+            kz: "Ерте күз солтүстіктің ақ қайыңды ормандары мен Тянь-Шань баурайын алтын түске бояйды. Ашық аспан, молшылық базарлары мен бүркітшілер сайысы қыркүйек пен қазанды ерекше әсерлі етеді."
+        },
+        places: {
+            en: "Almaty & Charyn Canyon, Astana Museums, Bayanaul & Ulytau",
+            ru: "Алматы и Чарынский каньон, музеи Астаны, Баянаул и Улытау",
+            kz: "Алматы мен Шарын шатқалы, Астана музейлері, Баянауыл және Ұлытау"
+        },
+        highlights: {
+            en: "Republic Day (Oct 25), golden foliage photography, Berkutchi eagle hunting shows",
+            ru: "День Республики (25 октября), золотая листва в горах, шоу охоты с беркутами",
+            kz: "Республика күні (25 қазан), алтын күз табиғаты, саятшылар мен бүркітшілер сайысы"
+        },
+        packing: {
+            en: ["Warm layered sweater", "Windproof trench or coat", "Hiking boots for canyons", "Portable power bank"],
+            ru: ["Теплый свитер", "Непродуваемая куртка", "Треккинговая обувь", "Внешний аккумулятор (Powerbank)"],
+            kz: ["Жылы жемпір", "Жел өткізбейтін күрте", "Тауға арналған аяқ киім", "Қуаттағыш (Powerbank)"]
+        }
+    },
+    winter: {
+        img: "images/season_winter.jpg",
+        alt: "season_winter",
+        badge: { en: "❄️ Winter · December – February", ru: "❄️ Зима · Декабрь – Февраль", kz: "❄️ Қыс · Желтоқсан – Ақпан" },
+        temp: { en: "🌡️ -20°C to -2°C", ru: "🌡️ -20°C … -2°C", kz: "🌡️ -20°C … -2°C" },
+        title: {
+            en: "Snowy Steppe Magic, Alpine Skiing & Indoor Tropical Oases",
+            ru: "Снежная сказка, горные лыжи и крытые оазисы",
+            kz: "Қысқы ертегі, тау шаңғысы және жабық тропикалық бақтар"
+        },
+        desc: {
+            en: "In winter, Astana transforms into a glittering snow capital where you can skate on ice rinks and then step straight into Khan Shatyr's +30°C indoor tropical beach! Meanwhile, Shymbulak and Altai offer world-class powder skiing.",
+            ru: "Зимой Астана превращается в сверкающую снежную столицу с ледовыми городками, где можно согреться на тропическом пляже под куполом Хан Шатыра (+30°C), а на Шымбулаке и Алтае открыт горнолыжный сезон.",
+            kz: "Қыста Астана жарқыраған мұз қалашықтарымен қарсы алады, ал Хан Шатырдың ішіндегі +30°C тропикалық жағажайда жылынуға болады. Алматыдағы Шымбұлақ пен Алтайда тау шаңғысы маусымы қызады."
+        },
+        places: {
+            en: "Astana Indoor Wonders (Khan Shatyr, Nur-Alem), Shymbulak & Medeu, Burabay Winter Forest",
+            ru: "Крытые чудеса Астаны (Хан Шатыр, Нур-Алем), Шымбулак и Медеу, зимний Бурабай",
+            kz: "Астананың жабық кешендері (Хан Шатыр, Нұр-Әлем), Шымбұлақ пен Медеу, қысқы Бурабай"
+        },
+        highlights: {
+            en: "Independence Day (Dec 16), New Year ice towns, skiing & steaming Beshbarmak feasts",
+            ru: "День Независимости (16 декабря), ледовые городки, горные лыжи и горячий бешбармак",
+            kz: "Тәуелсіздік күні (16 желтоқсан), мұз қалашықтары, шаңғы тебу және ыстық бесбармақ"
+        },
+        packing: {
+            en: ["Down winter parka", "Thermal base layers", "Warm hat, scarf & insulated gloves", "Lip balm & moisturizer"],
+            ru: ["Теплый зимний пуховик", "Термобелье", "Шапка, шарф и утепленные перчатки", "Бальзам для губ"],
+            kz: ["Қалың қысқы күрте", "Жылы іш киім (термокиім)", "Жылы бас киім, мойынорағыш пен қолғап", "Ерінге арналған бальзам"]
+        }
+    }
+};
+
+const kazakhstanMonths = [
+    {
+        season: "winter",
+        seasonTag: { en: "❄️ Winter Wonderland", ru: "❄️ Зимняя сказка", kz: "❄️ Қысқы маусым" },
+        crowd: { en: " snowy & peaceful", ru: "Снежно и спокойно", kz: "Қарлы әрі тыныш" },
+        title: { en: "January in Kazakhstan", ru: "Январь в Казахстане", kz: "Қазақстандағы Қаңтар" },
+        tempLine: { en: "Astana & North: -14°C · South & Almaty: -2°C", ru: "Астана и Север: -14°C · Юг и Алматы: -2°C", kz: "Астана мен Солтүстік: -14°C · Оңтүстік пен Алматы: -2°C" },
+        festivalTitle: { en: "Jan 1–2: New Year Celebrations & Winter Ice Towns", ru: "1–2 января: Новый год и ледовые городки", kz: "1–2 қаңтар: Жаңа жыл және мұз қалашықтары" },
+        festivalDesc: {
+            en: "Cities glow with festive lights, giant ice slides, and skating rinks along the Ishim River and at Medeu high-mountain rink.",
+            ru: "Города сияют новогодней иллюминацией, работают ледовые горки и катки на реке Ишим и высокогорном Медеу.",
+            kz: "Қалалар мерекелік шамдармен жарқырап, Есіл өзені мен биік таудағы Медеуде мұз айдындары жұмыс істейді."
+        },
+        advice: {
+            en: "Ideal for combining Astana's futuristic indoor attractions (Nur-Alem, Khan Shatyr Sky Beach, National Museum) with alpine skiing.",
+            ru: "Отличное время для посещения крытых комплексов Астаны (Нур-Алем, пляж Хан Шатыра, Национальный музей) и горнолыжных курортов.",
+            kz: "Астананың жабық кешендерін (Нұр-Әлем, Хан Шатыр жағажайы, Ұлттық музей) және тау шаңғысын тамашалауға қолайлы уақыт."
+        },
+        tags: {
+            en: ["Ice Skating", "Khan Shatyr Beach", "Ski Resorts"],
+            ru: ["Ледовые катки", "Пляж Хан Шатыр", "Горные лыжи"],
+            kz: ["Мұз айдыны", "Хан Шатыр", "Тау шаңғысы"]
+        }
+    },
+    {
+        season: "winter",
+        seasonTag: { en: "❄️ Late Winter", ru: "❄️ Конец зимы", kz: "❄️ Қыс соңы" },
+        crowd: { en: "Low crowds · Great value", ru: "Мало туристов · Выгодно", kz: "Туристер аз · Тиімді" },
+        title: { en: "February in Kazakhstan", ru: "Февраль в Казахстане", kz: "Қазақстандағы Ақпан" },
+        tempLine: { en: "Astana & North: -12°C · South & Almaty: 0°C", ru: "Астана и Север: -12°C · Юг и Алматы: 0°C", kz: "Астана мен Солтүстік: -12°C · Оңтүстік пен Алматы: 0°C" },
+        festivalTitle: { en: "Winter Eagle Hunting & Opera Season", ru: "Зимние турниры беркутчи и театральный сезон", kz: "Қысқы бүркітшілер сайысы және театр маусымы" },
+        festivalDesc: {
+            en: "Traditional winter eagle hunting competitions (Sonar) take place against snowy steppe backdrops, alongside gala performances at Astana Opera.",
+            ru: "На заснеженных просторах проходят традиционные состязания охотников с ловчими птицами («Сонар») и премьеры в театре «Астана Опера».",
+            kz: "Қарлы далада дәстүрлі «Сонар» саятшылық сайыстары және «Астана Опера» театрында гала-концерттер өтеді."
+        },
+        advice: {
+            en: "Sunny, crisp days in late February offer clear views from Baiterek Tower and quiet trails through Burabay's snow-covered pine woods.",
+            ru: "Солнечные морозные дни конца февраля дарят отличную видимость со сферы Байтерек и красивые виды зимнего Бурабая.",
+            kz: "Ақпанның ашық күндері Бәйтерек мұнарасынан қаланы тамашалауға және қысқы Бурабай орманында серуендеуге тамаша мүмкіндік береді."
+        },
+        tags: {
+            en: ["Astana Opera", "Snowy Burabay", "Eagle Hunting"],
+            ru: ["Астана Опера", "Зимний Бурабай", "Охота с беркутом"],
+            kz: ["Астана Опера", "Қысқы Бурабай", "Саятшылық"]
+        }
+    },
+    {
+        season: "spring",
+        seasonTag: { en: "🌸 Spring Highlight", ru: "🌸 Главный праздник весны", kz: "🌸 Көктемнің басты мерекесі" },
+        crowd: { en: "Festive Season", ru: "Праздничный сезон", kz: "Мерекелік маусым" },
+        title: { en: "March in Kazakhstan", ru: "Март в Казахстане", kz: "Қазақстандағы Наурыз айы" },
+        tempLine: { en: "Astana & North: -4°C · South & Almaty: +10°C", ru: "Астана и Север: -4°C · Юг и Алматы: +10°C", kz: "Астана мен Солтүстік: -4°C · Оңтүстік пен Алматы: +10°C" },
+        festivalTitle: { en: "March 21–23: Nauryz Meiramy (Nomadic New Year)", ru: "21–23 марта: Наурыз мейрамы (Кочевой Новый год)", kz: "21–23 наурыз: Ұлыстың ұлы күні — Наурыз мейрамы" },
+        festivalDesc: {
+            en: "The biggest cultural celebration of the year! Public squares fill with decorated yurts, cauldron-cooked Nauryz Kozhe, dombra competitions (aitys), and traditional swings (altybakan).",
+            ru: "Главный культурный праздник года! Площади украшают юртами, гостей угощают наурыз-коже и баурсаками, проходят айтысы и игры на алтыбакане.",
+            kz: "Жылдың ең ұлық мерекесі! Алаңдарда киіз үйлер тігіліп, наурыз көже мен бауырсақ ұсынылады, айтыс пен алтыбақан ойындары өтеді."
+        },
+        advice: {
+            en: "March marks the spring equinox. While northern steppes still have crisp mornings, southern cities like Turkistan and Shymkent burst into warm spring blossoms.",
+            ru: "Март — время весеннего равноденствия. На севере еще свежо, а в Туркестане и Шымкенте уже цветут весенние сады.",
+            kz: "Наурыз — күн мен түннің теңелетін шағы. Түркістан мен Шымкентте бақтар гүлдеп, бүкіл елде думанды мереке өтеді."
+        },
+        tags: {
+            en: ["Nauryz Meiramy", "Yurt Villages", "Traditional Cuisine"],
+            ru: ["Наурыз мейрамы", "Этноаулы и юрты", "Национальная кухня"],
+            kz: ["Наурыз мейрамы", "Киіз үйлер", "Ұлттық тағамдар"]
+        }
+    },
+    {
+        season: "spring",
+        seasonTag: { en: "🌸 Wild Tulip Season", ru: "🌸 Цветение степи", kz: "🌸 Қызғалдақ маусымы" },
+        crowd: { en: "Mild & Scenic", ru: "Мягкая погода", kz: "Жайлы ауа райы" },
+        title: { en: "April in Kazakhstan", ru: "Апрель в Казахстане", kz: "Қазақстандағы Сәуір" },
+        tempLine: { en: "Astana & North: +9°C · South & West: +18°C", ru: "Астана и Север: +9°C · Юг и Запад: +18°C", kz: "Астана мен Солтүстік: +9°C · Оңтүстік пен Батыс: +18°C" },
+        festivalTitle: { en: "April 12: Cosmonautics Day & Wild Tulip Bloom", ru: "12 апреля: День космонавтики и цветение тюльпанов", kz: "12 сәуір: Ғарышкерлер күні және қызғалдақ гүлдеуі" },
+        festivalDesc: {
+            en: "Kazakhstan celebrates its space heritage at Baikonur and Astana's Space Museum, while wild tulips carpet the southern steppes and foothills.",
+            ru: "Казахстан отмечает космическое наследие Байконура, а предгорья и южные степи покрываются коврами диких тюльпанов Грейга и Кауфмана.",
+            kz: "Байқоңыр мен Астанада ғарыш мерекесі аталып өтіп, оңтүстік дала мен тау бөктері қызыл қызғалдақтарға толады."
+        },
+        advice: {
+            en: "April is the #1 month for exploring Mangystau's chalk canyons (Bozzhyra) and Silk Road ruins before summer heat arrives.",
+            ru: "Апрель — идеальный месяц для экспедиций по каньонам Мангистау (Бозжыра) и городам Шелкового пути без летней жары.",
+            kz: "Сәуір — жазғы ыстық басталмай тұрып Маңғыстау шатқалдары (Бозжыра) мен Жібек жолы қалаларын аралауға ең қолайлы ай."
+        },
+        tags: {
+            en: ["Wild Tulips", "Mangystau Canyons", "Space Heritage"],
+            ru: ["Дикие тюльпаны", "Каньоны Мангистау", "Космос и Байконур"],
+            kz: ["Дала қызғалдағы", "Маңғыстау", "Ғарыш мұрасы"]
+        }
+    },
+    {
+        season: "spring",
+        seasonTag: { en: "🌸 Green Steppe", ru: "🌸 Изумрудная весна", kz: "🌸 Жасыл маусым" },
+        crowd: { en: "Best Shoulder Month", ru: "Один из лучших месяцев", kz: "Саяхатқа ең жайлы ай" },
+        title: { en: "May in Kazakhstan", ru: "Май в Казахстане", kz: "Қазақстандағы Мамыр" },
+        tempLine: { en: "Astana & North: +18°C · South & Almaty: +24°C", ru: "Астана и Север: +18°C · Юг и Алматы: +24°C", kz: "Астана мен Солтүстік: +18°C · Оңтүстік пен Алматы: +24°C" },
+        festivalTitle: { en: "May 1: People's Unity Day & Museum Night", ru: "1 мая: День единства народа Казахстана и Ночь музеев", kz: "1 мамыр: Қазақстан халқының бірлігі күні" },
+        festivalDesc: {
+            en: "Outdoor festivals celebrate Kazakhstan's 130+ ethnic groups with music and food fairs, while Astana's city fountains and riverfront cafes open for the season.",
+            ru: "Фестивали дружбы народов, ярмарки кухни и музыки под открытым небом, запуск городских фонтанов и открытие летних террас в Астане.",
+            kz: "Ашық аспан астындағы этномәдени фестивальдер өтіп, Астанадағы субұрқақтар мен жазғы дәмханалар маусымы ашылады."
+        },
+        advice: {
+            en: "Warm days and blooming lilac parks make May one of the very best months to visit Astana and hike Charyn Canyon.",
+            ru: "Теплые дни и цветущие парки делают май одним из лучших месяцев для поездки в Астану и похода в Чарынский каньон.",
+            kz: "Жылы күндер мен гүлдеген саябақтар мамыр айын Астанаға және Шарын шатқалына саяхаттау үшін ең тамаша уақыт етеді."
+        },
+        tags: {
+            en: ["Unity Day", "Astana Fountains", "Poppy Fields"],
+            ru: ["День единства", "Фонтаны Астаны", "Маковые поля"],
+            kz: ["Бірлік күні", "Астана субұрқақтары", "Көктемгі табиғат"]
+        }
+    },
+    {
+        season: "summer",
+        seasonTag: { en: "☀️ Early Summer", ru: "☀️ Начало лета", kz: "☀️ Жаз басы" },
+        crowd: { en: "Long Sunny Days", ru: "Белые вечера и солнце", kz: "Ұзақ шуақты күндер" },
+        title: { en: "June in Kazakhstan", ru: "Июнь в Казахстане", kz: "Қазақстандағы Маусым" },
+        tempLine: { en: "Astana & North: +24°C · South & Caspian: +29°C", ru: "Астана и Север: +24°C · Юг и Каспий: +29°C", kz: "Астана мен Солтүстік: +24°C · Оңтүстік пен Каспий: +29°C" },
+        festivalTitle: { en: "Summer Solstice & Open-Air Music Festivals", ru: "Летние фестивали под открытым небом и сезон круизов", kz: "Ашық аспан астындағы жазғы фестивальдер" },
+        festivalDesc: {
+            en: "With up to 17 hours of daylight in Astana, evenings along the Ishim River and Nurzhol Boulevard stay lively past 10 PM with street musicians and light shows.",
+            ru: "Световой день в Астане длится почти 17 часов: набережная Ишима и бульвар Нуржол наполнены музыкой, прогулочными теплоходами и вечерними огнями.",
+            kz: "Астанада күндізгі уақыт 17 сағатқа дейін созылып, Есіл жағалауы мен Нұржол желекжолында кешкі серуендер қызады."
+        },
+        advice: {
+            en: "Perfect weather for day trips from Astana to Burabay National Park and high-altitude treks in the Tian Shan and Altai mountains.",
+            ru: "Идеальная погода для экскурсии из Астаны в Бурабай и горных походов на Тянь-Шане и Алтае.",
+            kz: "Астанадан Бурабайға күндізгі турмен баруға және Тянь-Шань мен Алтай тауларына шығуға мінсіз ауа райы."
+        },
+        tags: {
+            en: ["Ishim River Cruise", "Burabay Lakes", "17h Daylight"],
+            ru: ["Круиз по Ишиму", "Озера Бурабая", "Длинные вечера"],
+            kz: ["Есілдегі круиз", "Бурабай көлдері", "Ақ түндер"]
+        }
+    },
+    {
+        season: "summer",
+        seasonTag: { en: "☀️ Peak Summer", ru: "☀️ Разгар лета", kz: "☀️ Жаз ортасы" },
+        crowd: { en: "Peak Festival Month", ru: "Пик сезона в Астане", kz: "Елордадағы мереке айы" },
+        title: { en: "July in Kazakhstan", ru: "Июль в Казахстане", kz: "Қазақстандағы Шілде" },
+        tempLine: { en: "Astana & North: +26°C · South & Caspian: +33°C", ru: "Астана и Север: +26°C · Юг и Каспий: +33°C", kz: "Астана мен Солтүстік: +26°C · Оңтүстік пен Каспий: +33°C" },
+        festivalTitle: { en: "July 6: Capital City Day (Astana Day) & National Dombra Day", ru: "6 июля: День столицы (День Астаны) и День домбры", kz: "6 шілде: Астана күні және Ұлттық домбыра күні" },
+        festivalDesc: {
+            en: "Astana's biggest summer celebration! Expect open-air concerts, drone and fireworks shows over the Ishim River, mass dombra ensembles (First Sunday of July), and nomadic sports.",
+            ru: "Главный летний праздник Астаны! Концерты под открытым небом, шоу дронов и фейерверки над Ишимом, а в первое воскресенье июля — Национальный день домбры.",
+            kz: "Астананың ең үлкен жазғы мерекесі! Ашық аспан астындағы концерттер, Есіл үстіндегі отшашулар және шілденің бірінші жексенбісінде Ұлттық домбыра күні өтеді."
+        },
+        advice: {
+            en: "Book Astana hotels and guided tours early for July 6 weekend! Also the best month for swimming in the Caspian Sea at Aktau or Lake Alakol.",
+            ru: "Бронируйте туры в Астану заранее на праздничные выходные 6 июля! Также это лучший месяц для купания на Каспии и озере Алаколь.",
+            kz: "6 шілде мерекесіне орай Астана турларына алдын ала тапсырыс беріңіз! Сондай-ақ Каспий мен Алакөлде шомылуға ең қолайлы ай."
+        },
+        tags: {
+            en: ["Astana Day (July 6)", "National Dombra Day", "Lakes & Beaches"],
+            ru: ["День Астаны (6 июля)", "День домбры", "Пляжи и озера"],
+            kz: ["Астана күні (6 шілде)", "Домбыра күні", "Көлдер мен жағажай"]
+        }
+    },
+    {
+        season: "summer",
+        seasonTag: { en: "☀️ Late Summer", ru: "☀️ Августовское солнце", kz: "☀️ Тамыз шуағы" },
+        crowd: { en: "Warm & Lively", ru: "Тепло и солнечно", kz: "Жылы әрі әсем" },
+        title: { en: "August in Kazakhstan", ru: "Август в Казахстане", kz: "Қазақстандағы Тамыз" },
+        tempLine: { en: "Astana & North: +24°C · South & Almaty: +30°C", ru: "Астана и Север: +24°C · Юг и Алматы: +30°C", kz: "Астана мен Солтүстік: +24°C · Оңтүстік пен Алматы: +30°C" },
+        festivalTitle: { en: "August 30: Constitution Day & Steppe Horse Games", ru: "30 августа: День Конституции и конноспортивные фестивали", kz: "30 тамыз: Конституция күні және ұлттық ат спорты" },
+        festivalDesc: {
+            en: "Nationwide concerts, parades, and traditional equestrian tournaments (Kokpar, Audaryspak, and Baige horse races) celebrate Constitution Day.",
+            ru: "Праздничные концерты по всей стране, этнофестивали и зрелищные конные турниры (кокпар, аударыспак и байге) в честь Дня Конституции.",
+            kz: "Конституция күніне орай бүкіл елде мерекелік концерттер мен ұлттық ат спорты ойындары (көкпар, аударыспақ, бәйге) өткізіледі."
+        },
+        advice: {
+            en: "August is the warmest month for high-mountain camping at Kolsai Lakes, Katon-Karagay in Altai, and Bayanaul.",
+            ru: "Август — лучший месяц для высокогорных маршрутов на Кольсайских озерах, в Катон-Карагае и Баянауле.",
+            kz: "Тамыз — Көлсай көлдері, Катонқарағай мен Баянауыл тауларына саяхаттауға ең қолайлы ай."
+        },
+        tags: {
+            en: ["Constitution Day", "Kokpar & Baige", "Mountain Lakes"],
+            ru: ["День Конституции", "Кокпар и байге", "Горные озера"],
+            kz: ["Конституция күні", "Көкпар мен бәйге", "Тау көлдері"]
+        }
+    },
+    {
+        season: "autumn",
+        seasonTag: { en: "🍂 Golden Velvet Season", ru: "🍂 Бархатный сезон", kz: "🍂 Алтын күз басы" },
+        crowd: { en: "Ideal Temperatures", ru: "Комфортная погода", kz: "Ең жайлы температура" },
+        title: { en: "September in Kazakhstan", ru: "Сентябрь в Казахстане", kz: "Қазақстандағы Қыркүйек" },
+        tempLine: { en: "Astana & North: +17°C · South & Almaty: +24°C", ru: "Астана и Север: +17°C · Юг и Алматы: +24°C", kz: "Астана мен Солтүстік: +17°C · Оңтүстік пен Алматы: +24°C" },
+        festivalTitle: { en: "Apple Harvest Feasts & Golden Steppe", ru: "Фестивали урожая яблок и золотая степь", kz: "Алма фестивалі және алтын дала" },
+        festivalDesc: {
+            en: "Orchards celebrate the famous Aport apple harvest, bazaars overflow with melons and dried fruits, and birch forests around Astana and Burabay turn bright gold.",
+            ru: "Праздники урожая знаменитых яблок сорта Апорт, изобилие дынь и сухофруктов на базарах и золотые березовые рощи вокруг Астаны и Бурабая.",
+            kz: "Әйгілі Апорт алмасының мерекесі, базарлардағы қауын-қарбыз молшылығы және Астана мен Бурабай маңындағы алтын қайыңды ормандар."
+        },
+        advice: {
+            en: "September offers mild, sunny days across every single region of Kazakhstan—making it the best all-around month for a multi-region trip.",
+            ru: "В сентябре комфортная солнечная погода стоит во всех регионах страны — идеальное время для большого путешествия по Казахстану.",
+            kz: "Қыркүйекте Қазақстанның барлық өңірінде жылы әрі ашық ауа райы сақталады — елді аралауға таптырмас ай."
+        },
+        tags: {
+            en: ["Golden Birch Woods", "Harvest Bazaars", "Canyon Hikes"],
+            ru: ["Золотая осень", "Восточные базары", "Походы в каньоны"],
+            kz: ["Алтын күз", "Молшылық базары", "Шатқалдар"]
+        }
+    },
+    {
+        season: "autumn",
+        seasonTag: { en: "🍂 Autumn Heritage", ru: "🍂 Золотая осень", kz: "🍂 Мерекелі күз" },
+        crowd: { en: "Crisp & Cultural", ru: "Культурный сезон", kz: "Мәдени маусым" },
+        title: { en: "October in Kazakhstan", ru: "Октябрь в Казахстане", kz: "Қазақстандағы Қазан" },
+        tempLine: { en: "Astana & North: +8°C · South & Turkistan: +17°C", ru: "Астана и Север: +8°C · Юг и Туркестан: +17°C", kz: "Астана мен Солтүстік: +8°C · Оңтүстік пен Түркістан: +17°C" },
+        festivalTitle: { en: "October 25: Republic Day of Kazakhstan", ru: "25 октября: День Республики Казахстан", kz: "25 қазан: Қазақстан Республикасы күні" },
+        festivalDesc: {
+            en: "National holiday commemorating the 1990 Declaration of State Sovereignty, celebrated with illuminated monuments in Astana, symphony concerts, and cultural exhibitions.",
+            ru: "Национальный праздник в честь Декларации о государственном суверенитете: праздничная подсветка монументов Астаны, концерты и выставки.",
+            kz: "Мемлекеттік егемендік туралы декларация қабылданған ұлттық мереке: Астана монументтерінің мерекелік иллюминациясы, концерттер мен көрмелер."
+        },
+        advice: {
+            en: "Great month for Silk Road architecture in Turkistan, desert canyons in Mangystau, and Astana's world-class museums and theaters.",
+            ru: "Отличный месяц для поездки в Туркестан, каньоны Мангистау и посещения музеев и театров Астаны.",
+            kz: "Түркістан кесенелеріне, Маңғыстау шатқалдарына және Астананың музейлері мен театрларына баруға қолайлы ай."
+        },
+        tags: {
+            en: ["Republic Day (Oct 25)", "Silk Road Cities", "Museum Tours"],
+            ru: ["День Республики (25 окт)", "Шелковый путь", "Музеи и театры"],
+            kz: ["Республика күні (25 қазан)", "Жібек жолы", "Музейлер"]
+        }
+    },
+    {
+        season: "autumn",
+        seasonTag: { en: "🍂 Late Autumn", ru: "🍂 Преддверие зимы", kz: "🍂 Қараша салқыны" },
+        crowd: { en: "Cozy Indoor Season", ru: "Уютный сезон", kz: "Жайлы мәдени маусым" },
+        title: { en: "November in Kazakhstan", ru: "Ноябрь в Казахстане", kz: "Қазақстандағы Қараша" },
+        tempLine: { en: "Astana & North: -4°C · South & Almaty: +7°C", ru: "Астана и Север: -4°C · Юг и Алматы: +7°C", kz: "Астана мен Солтүстік: -4°C · Оңтүстік пен Алматы: +7°C" },
+        festivalTitle: { en: "First Snow & Traditional Horsebreeders' Feasts", ru: "Первый снег, открытие горнолыжного сезона и согым", kz: "Алғашқы қар және қысқы маусымның ашылуы" },
+        festivalDesc: {
+            en: "Ski resorts in the mountains open their first slopes in mid-November, while families gather for traditional winter hospitality feasts featuring steaming Beshbarmak.",
+            ru: "В середине ноября открываются горнолыжные трассы, а в городах начинается сезон традиционных зимних застолий с горячим бешбармаком.",
+            kz: "Қарашаның ортасында тау шаңғысы маусымы ашылып, қонақжай дастарқандарда ыстық бесбармақ пен қымыз ұсынылады."
+        },
+        advice: {
+            en: "Enjoy quiet, queue-free visits to Astana's Baiterek Tower, Hazret Sultan Mosque, and the 8-floor Nur-Alem Future Energy sphere.",
+            ru: "Насладитесь спокойным посещением Байтерека, мечети Хазрет Султан и 8 этажей музея энергии будущего Нур-Алем без очередей.",
+            kz: "Бәйтерек мұнарасын, Әзірет Сұлтан мешітін және 8 қабатты Нұр-Әлем сферасын кезексіз, асықпай тамашалаңыз."
+        },
+        tags: {
+            en: ["Nur-Alem EXPO", "Early Skiing", "Warm Dastarkhan"],
+            ru: ["Сфера Нур-Алем", "Начало лыжного сезона", "Традиционный дастархан"],
+            kz: ["Нұр-Әлем ЭКСПО", "Шаңғы маусымы", "Қонақжай дастарқан"]
+        }
+    },
+    {
+        season: "winter",
+        seasonTag: { en: "❄️ Festive Winter", ru: "❄️ Праздничный декабрь", kz: "❄️ Мерекелі Желтоқсан" },
+        crowd: { en: "Holiday Lights & Snow", ru: "Праздничные огни", kz: "Мерекелік шамдар" },
+        title: { en: "December in Kazakhstan", ru: "Декабрь в Казахстане", kz: "Қазақстандағы Желтоқсан" },
+        tempLine: { en: "Astana & North: -11°C · South & Almaty: +1°C", ru: "Астана и Север: -11°C · Юг и Алматы: +1°C", kz: "Астана мен Солтүстік: -11°C · Оңтүстік пен Алматы: +1°C" },
+        festivalTitle: { en: "December 16: Independence Day & Winter Wonderland", ru: "16 декабря: День Независимости и зимние ярмарки", kz: "16 желтоқсан: Тәуелсіздік күні және қысқы жәрмеңкелер" },
+        festivalDesc: {
+            en: "Kazakhstan celebrates Independence Day on December 16 with grand concerts and illuminated avenues, followed by New Year tree lightings at EXPO and Khan Shatyr.",
+            ru: "16 декабря страна отмечает День Независимости, а площади у ЭКСПО и Хан Шатыра превращаются в зимнюю сказку с новогодними елками и катками.",
+            kz: "16 желтоқсанда ел Тәуелсіздік күнін атап өтеді, ал ЭКСПО мен Хан Шатыр алаңдарында мерекелік шыршалар жағылып, мұз айдындары ашылады."
+        },
+        advice: {
+            en: "Bundle up for Astana's sparkling winter skyline, then warm up with hot milk tea, baursaks, and indoor tropical gardens.",
+            ru: "Одевайтесь теплее для прогулок по сияющей зимней Астане и согревайтесь горячим чаем с баурсаками и в крытых тропических садах.",
+            kz: "Қысқы Астананың жарқыраған кештерін тамашалап, ыстық бауырсақ пен сүтті шайдан дәм татыңыз."
+        },
+        tags: {
+            en: ["Independence Day (Dec 16)", "EXPO Ice Rink", "Winter Illumination"],
+            ru: ["День Независимости (16 дек)", "Каток ЭКСПО", "Зимняя иллюминация"],
+            kz: ["Тәуелсіздік күні (16 жел)", "ЭКСПО мұз айдыны", "Қысқы иллюминация"]
         }
     }
 ];

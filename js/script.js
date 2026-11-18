@@ -246,9 +246,9 @@ $(document).ready(function () {
         $container.find(".extra-dish-card").remove();
         extraDishes.forEach((dish) => {
             const $card = $(`<article class="pure-card extra-dish-card">
-                    <img class="food-img-badge" src="${dish.image}" alt=""><h3></h3><p></p>
+                    <img class="food-img-badge img-placeholder" src="${dish.image}" alt=""><h3></h3><p></p>
                 </article>`);
-            $card.find("img").attr("alt", pick(dish.name));
+            $card.find("img").attr("alt", dish.alt || pick(dish.name));
             $card.find("h3").text(pick(dish.name));
             $card.find("p").text(pick(dish.description));
             $container.append($card);
@@ -711,6 +711,441 @@ $(document).ready(function () {
     });
 
     /* =================================================================
+       Interactive Map of Kazakhstan (Home / index.html)
+       ================================================================= */
+    let selectedKzRegion = "astana";
+    const $kzPlaceCard = $("#kz-place-card");
+
+    function renderKzRegionDetail(regionKey, animate = false) {
+        if (!$kzPlaceCard.length || typeof kazakhstanRegions === "undefined") return;
+        const data = kazakhstanRegions[regionKey] || kazakhstanRegions.astana;
+        selectedKzRegion = kazakhstanRegions[regionKey] ? regionKey : "astana";
+
+        // Highlight active SVG region & pill button
+        $(".kz-region").removeClass("selected")
+            .filter(`[data-region="${selectedKzRegion}"]`).addClass("selected");
+        $(".kz-pill-btn").removeClass("active")
+            .filter(`[data-region="${selectedKzRegion}"]`).addClass("active");
+
+        // Update badge, title, tagline, description
+        $("#kz-place-badge")
+            .text(t(data.available ? "statusBadgeLive" : "statusBadgeSoon"))
+            .toggleClass("badge-available", !!data.available)
+            .toggleClass("badge-coming-soon", !data.available);
+        $("#kz-place-coords").text(data.coords);
+        $("#kz-place-title").text(pick(data.title));
+        $("#kz-place-tagline").text(pick(data.tagline));
+        $("#kz-place-desc").text(pick(data.description));
+
+        // Update main preview image and clickable thumbnails
+        const images = data.images || [{ src: "images/welcome_to_Astana.jpg", alt: "welcome_to_Astana" }];
+        const firstImg = typeof images[0] === "string" ? { src: images[0], alt: pick(data.title) } : images[0];
+        $("#kz-place-img").attr({ src: firstImg.src, alt: firstImg.alt });
+
+        const $thumbsBox = $("#kz-place-thumbs").empty();
+        images.forEach((imgItem, idx) => {
+            const item = typeof imgItem === "string" ? { src: imgItem, alt: `${pick(data.title)} ${idx + 1}` } : imgItem;
+            $('<img class="kz-mini-thumb img-placeholder" alt="">')
+                .attr({ src: item.src, alt: item.alt })
+                .toggleClass("active", idx === 0)
+                .appendTo($thumbsBox);
+        });
+
+        // Update 4 key facts
+        $("#kz-fact-city").text(pick(data.city));
+        $("#kz-fact-pop").text(pick(data.population));
+        $("#kz-fact-icon").text(pick(data.icon));
+        $("#kz-fact-status")
+            .text(pick(data.statusText))
+            .toggleClass("msg-success", !!data.available)
+            .toggleClass("text-muted", !data.available);
+
+        // Update highlight chips
+        const $tags = $("#kz-place-tags").empty();
+        (pick(data.tags) || []).forEach((tag) => {
+            $('<span class="chip"></span>').text(tag).appendTo($tags);
+        });
+
+        // Update action button
+        const $mainBtn = $("#kz-jump-main-btn");
+        if (data.available && data.url) {
+            $mainBtn.attr("href", data.url)
+                .removeClass("btn-outline-secondary disabled")
+                .addClass("btn-primary")
+                .removeAttr("aria-disabled")
+                .text(t("btnExploreAstana"));
+        } else {
+            $mainBtn.attr({ href: "#kz-map-section", "aria-disabled": "true" })
+                .removeClass("btn-primary")
+                .addClass("btn-outline-secondary disabled")
+                .text(t("btnRegionSoon"));
+        }
+
+        $("#kz-map-hover-indicator").text(pick(data.title));
+        if (animate) pop($kzPlaceCard);
+    }
+
+    // Click on map region, city pin, or region pill
+    $(".kz-region, .kz-city-pin, .kz-pill-btn").on("click", function () {
+        const regionKey = $(this).data("region");
+        if (!regionKey) return;
+        playUiSound(regionKey === "astana" ? "success" : "click");
+        renderKzRegionDetail(regionKey, true);
+    });
+
+    // Keyboard Enter/Space on SVG regions and Astana pin
+    $(".kz-region, #pin-astana").on("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            $(this).trigger("click");
+        }
+    });
+
+    // Double-click on Astana region or capital pin jumps straight to astana.html
+    $("#region-astana, #pin-astana").on("dblclick", function () {
+        window.location.href = "astana.html";
+    });
+
+    // Hover indicator on map regions & pins
+    $(".kz-region, .kz-city-pin").on("mouseenter", function () {
+        const regionKey = $(this).data("region");
+        const data = (typeof kazakhstanRegions !== "undefined") && kazakhstanRegions[regionKey];
+        if (data) $("#kz-map-hover-indicator").text(pick(data.title));
+    });
+
+    // Clickable mini-thumbnails inside the place detail panel
+    $("#kz-place-thumbs").on("click", ".kz-mini-thumb", function () {
+        playUiSound();
+        const $thumb = $(this);
+        $thumb.siblings().removeClass("active");
+        $thumb.addClass("active");
+        const $img = $("#kz-place-img").attr({
+            src: $thumb.attr("src"),
+            alt: $thumb.attr("alt")
+        });
+        pop($img);
+    });
+
+    // "Preview on Map ↑" buttons in the roadmap cards
+    $(".kz-preview-map-btn").on("click", function () {
+        const regionKey = $(this).data("region");
+        playUiSound();
+        renderKzRegionDetail(regionKey, true);
+        const $mapSection = $("#kz-map-section");
+        if ($mapSection.length) {
+            $("html, body").animate({ scrollTop: $mapSection.offset().top - 90 }, 500);
+        }
+    });
+
+    /* =================================================================
+       Seasons & Interactive 12-Month Calendar (seasons.html)
+       ================================================================= */
+    let activeSeasonKey = "spring";
+    let activeMonthIndex = 2; // March (Nauryz) by default
+    const packedState = { spring: {}, summer: {}, autumn: {}, winter: {} };
+    const $seasonSpotlight = $("#season-spotlight");
+    const $calMonthDetail = $("#cal-month-detail");
+
+    function updatePackingCounter(seasonKey, total) {
+        const count = Object.values(packedState[seasonKey] || {}).filter(Boolean).length;
+        $("#packing-progress-text").text(`${count} / ${total}`);
+    }
+
+    function renderSeasonSpotlight(seasonKey, animate = false) {
+        if (!$seasonSpotlight.length || typeof kazakhstanSeasons === "undefined") return;
+        const data = kazakhstanSeasons[seasonKey] || kazakhstanSeasons.spring;
+        activeSeasonKey = kazakhstanSeasons[seasonKey] ? seasonKey : "spring";
+
+        $(".season-tab-card").each(function () {
+            const isMatch = $(this).data("season") === activeSeasonKey;
+            $(this).toggleClass("active", isMatch).attr("aria-selected", isMatch);
+        });
+
+        $seasonSpotlight.attr("data-theme-season", activeSeasonKey);
+        $("#season-main-img").attr({ src: data.img, alt: data.alt });
+        $("#season-badge").text(pick(data.badge));
+        $("#season-temp-badge").text(pick(data.temp));
+        $("#season-title").text(pick(data.title));
+        $("#season-desc").text(pick(data.desc));
+        $("#season-places").text(pick(data.places));
+        $("#season-highlights").text(pick(data.highlights));
+
+        const items = pick(data.packing) || [];
+        const $list = $("#packing-list").empty();
+        items.forEach((itemText, idx) => {
+            const isPacked = !!(packedState[activeSeasonKey] && packedState[activeSeasonKey][idx]);
+            $('<button type="button" class="packing-item-btn"></button>')
+                .attr("data-idx", idx)
+                .toggleClass("packed", isPacked)
+                .text((isPacked ? "✓ " : "○ ") + itemText)
+                .appendTo($list);
+        });
+        updatePackingCounter(activeSeasonKey, items.length);
+
+        if (animate) pop($seasonSpotlight);
+    }
+
+    $(".season-tab-card").on("click", function () {
+        playUiSound();
+        renderSeasonSpotlight($(this).data("season"), true);
+    });
+
+    // Clicking a season slice in the top Hero Ribbon jumps to that season
+    $(".season-ribbon-slice, .hero-mosaic-tile").on("click", function () {
+        const seasonKey = $(this).data("jump-season");
+        playUiSound("success");
+        renderSeasonSpotlight(seasonKey, true);
+        const $target = $("#seasons-explorer");
+        if ($target.length) {
+            $("html, body").animate({ scrollTop: $target.offset().top - 90 }, 500);
+        }
+    });
+
+    $("#packing-list").on("click", ".packing-item-btn", function () {
+        playUiSound("success");
+        const idx = Number($(this).data("idx"));
+        packedState[activeSeasonKey] = packedState[activeSeasonKey] || {};
+        packedState[activeSeasonKey][idx] = !packedState[activeSeasonKey][idx];
+        renderSeasonSpotlight(activeSeasonKey, false);
+    });
+
+    function renderMonthDetail(monthIdx, animate = false) {
+        if (!$calMonthDetail.length || typeof kazakhstanMonths === "undefined") return;
+        activeMonthIndex = (monthIdx >= 0 && monthIdx < kazakhstanMonths.length) ? monthIdx : 2;
+        const m = kazakhstanMonths[activeMonthIndex];
+
+        $(".kz-month-btn").removeClass("active")
+            .filter(`[data-month="${activeMonthIndex}"]`).addClass("active");
+
+        $("#cal-month-season-tag").text(pick(m.seasonTag));
+        $("#cal-month-crowd").text(pick(m.crowd));
+        $("#cal-month-title").text(pick(m.title));
+        $("#cal-month-temp-line").text(pick(m.tempLine));
+        $("#cal-festival-title").text(pick(m.festivalTitle));
+        $("#cal-festival-desc").text(pick(m.festivalDesc));
+        $("#cal-month-advice").text(pick(m.advice));
+
+        const $tags = $("#cal-month-tags").empty();
+        (pick(m.tags) || []).forEach((tag) => {
+            $('<span class="chip"></span>').text(tag).appendTo($tags);
+        });
+
+        if (animate) pop($calMonthDetail);
+    }
+
+    $(".kz-month-btn").on("click", function () {
+        playUiSound();
+        const idx = Number($(this).data("month"));
+        renderMonthDetail(idx, true);
+    });
+
+    $("#cal-current-month-btn").on("click", function () {
+        playUiSound("success");
+        const nowMonth = new Date().getMonth();
+        renderMonthDetail(nowMonth, true);
+    });
+
+    // Clicking "Explore Matching Season ↑" in the 12-Month Calendar jumps to the season of that month
+    $("#cal-jump-season-btn").on("click", function () {
+        playUiSound("success");
+        const m = kazakhstanMonths[activeMonthIndex];
+        const seasonKey = (m && m.season) ? m.season : "spring";
+        renderSeasonSpotlight(seasonKey, true);
+        const $target = $("#seasons-explorer");
+        if ($target.length) {
+            $("html, body").animate({ scrollTop: $target.offset().top - 90 }, 550);
+        }
+    });
+
+    $("#save-month-plan-btn").on("click", function () {
+        playUiSound("success");
+        const m = kazakhstanMonths[activeMonthIndex];
+        const title = m ? pick(m.title) : "";
+        pop($(this));
+        showToast(t("monthSavedToast", { month: title }));
+    });
+
+    /* ---------- Interactive Trip Compass & Live Boarding Pass ---------- */
+    let wizardVibe = "spring";
+    let wizardTemp = "mild";
+    let wizardStyle = "culture";
+    let matchedSeasonKey = "spring";
+    let matchedMonthIdx = 3;
+    const $matcherTicket = $("#matcher-ticket");
+
+    const wizardRoutes = {
+        spring: {
+            culture: {
+                en: "Turkistan Yasawi Mausoleum → Shymkent Nauryz Plazas → Ancient Otrar → Astana National Museum",
+                ru: "Мавзолей Ясави в Туркестане → Площади Наурыза в Шымкенте → Древний Отрар → Нацмузей в Астане",
+                kz: "Түркістан Ясауи кесенесі → Шымкент Наурыз алаңы → Ежелгі Отырар → Астана Ұлттық музейі"
+            },
+            nature: {
+                en: "Aksu-Zhabagly Wild Tulip Valleys → Charyn Red Canyon → Altyn-Emel Singing Dune",
+                ru: "Долины диких тюльпанов Аксу-Жабаглы → Чарынский каньон → Поющий бархан Алтын-Эмель",
+                kz: "Ақсу-Жабағылы қызғалдақ алқабы → Шарын шатқалы → Алтын-Емел Айғайқұмы"
+            },
+            adventure: {
+                en: "Mangystau Bozzhyra Chalk Cliffs → Torysh Valley of Balls → Caspian Sea Coast Expedition",
+                ru: "Меловые скалы Бозжыра в Мангистау → Долина шаров Торыш → Берег Каспия",
+                kz: "Маңғыстау Бозжыра жартастары → Торыш шарлар алқабы → Каспий жағалауы"
+            }
+        },
+        summer: {
+            culture: {
+                en: "Astana Nurzhol Boulevard → Ishim River Evening Cruise → EXPO Nur-Alem → Ethno-Aul Yurt Camp",
+                ru: "Бульвар Нуржол в Астане → Вечерний круиз по Ишиму → Сфера Нур-Алем → Этноаул",
+                kz: "Астана Нұржол желекжолы → Есілдегі кешкі круиз → ЭКСПО Нұр-Әлем → Этноауыл"
+            },
+            nature: {
+                en: "Burabay Pine Lakes & Okzhetpes → Kolsai & Kaindy Alpine Lakes → Lake Balkhash",
+                ru: "Сосновые озера Бурабая и Окжетпес → Горные озера Кольсай и Каинды → Озеро Балхаш",
+                kz: "Бурабай көлдері мен Оқжетпес → Көлсай мен Қайыңды көлдері → Балқаш көлі"
+            },
+            adventure: {
+                en: "Altai Katon-Karagay Trek → Mount Belukha Base Camp → Bayanaul Granite Peaks",
+                ru: "Треккинг в Катон-Карагае на Алтае → Базовый лагерь Белухи → Скалы Баянаула",
+                kz: "Алтай Катонқарағай жорығы → Мұзтау шыңы → Баянауыл шыңдары"
+            }
+        },
+        autumn: {
+            culture: {
+                en: "Almaty Aport Harvest Bazaars → Sacred Ulytau Steppes → Turkistan Silk Road Caravanserai",
+                ru: "Осенние базары Алматы → Священный Улытау → Караван-сарай в Туркестане",
+                kz: "Алматы күзгі жәрмеңкесі → Қасиетті Ұлытау → Түркістан Керуен-сарайы"
+            },
+            nature: {
+                en: "Golden Birch Woods of Burabay → Charyn Canyon Sunset → Karkaraly Mountain Oasis",
+                ru: "Золотые березовые рощи Бурабая → Закат в Чарынском каньоне → Оазис Каркаралинска",
+                kz: "Бурабайдың алтын қайыңды орманы → Шарын шатқалы → Қарқаралы оазисі"
+            },
+            adventure: {
+                en: "Berkutchi Eagle Hunting Tournament → Tian Shan Foothill Trails → Bektau-Ata Rocks",
+                ru: "Турнир беркутчи → Горные тропы Тянь-Шаня → Скалы Бектау-Ата",
+                kz: "Бүркітшілер сайысы → Тянь-Шань тау соқпақтары → Бектау-Ата жартастары"
+            }
+        },
+        winter: {
+            culture: {
+                en: "Astana Opera Gala → Khan Shatyr +30°C Tropical Beach → Steaming Beshbarmak Feast",
+                ru: "Гала-вечер в Астана Опера → Тропический пляж Хан Шатыра (+30°C) → Зимний дастархан",
+                kz: "Астана Опера театры → Хан Шатыр тропикалық жағажайы (+30°C) → Қысқы дастарқан"
+            },
+            nature: {
+                en: "Snow-Covered Pines of Burabay → Frozen Kolsai Panorama → Ile-Alatau Snowy Peaks",
+                ru: "Заснеженные сосны Бурабая → Зимняя панорама Кольсая → Снежные пики Заилийского Алатау",
+                kz: "Қарлы Бурабай орманы → Қысқы Көлсай панорамасы → Іле Алатауы шыңдары"
+            },
+            adventure: {
+                en: "Shymbulak Alpine Ski Slopes → Medeu High-Mountain Ice Rink → Altai Powder Skiing",
+                ru: "Горнолыжные трассы Шымбулака → Высокогорный каток Медеу → Фрирайд на Алтае",
+                kz: "Шымбұлақ тау шаңғысы → Медеу мұз айдыны → Алтай шаңғы трассалары"
+            }
+        }
+    };
+
+    const seasonMeta = {
+        spring: {
+            icon: "🌸",
+            bestMonthIdx: 3,
+            bestMonths: { en: "Best Months: March, April & May", ru: "Лучшие месяцы: Март, Апрель и Май", kz: "Үздік айлар: Наурыз, Сәуір және Мамыр" }
+        },
+        summer: {
+            icon: "☀️",
+            bestMonthIdx: 6,
+            bestMonths: { en: "Best Months: June, July & August", ru: "Лучшие месяцы: Июнь, Июль и Август", kz: "Үздік айлар: Маусым, Шілде және Тамыз" }
+        },
+        autumn: {
+            icon: "🍂",
+            bestMonthIdx: 8,
+            bestMonths: { en: "Best Months: September & October", ru: "Лучшие месяцы: Сентябрь и Октябрь", kz: "Үздік айлар: Қыркүйек және Қазан" }
+        },
+        winter: {
+            icon: "❄️",
+            bestMonthIdx: 11,
+            bestMonths: { en: "Best Months: December, January & February", ru: "Лучшие месяцы: Декабрь, Январь и Февраль", kz: "Үздік айлар: Желтоқсан, Қаңтар және Ақпан" }
+        }
+    };
+
+    function renderWizardTicket(animate = false) {
+        if (!$matcherTicket.length || typeof kazakhstanSeasons === "undefined") return;
+
+        // Combine vibe + temperature preference to pick the best season
+        let sKey = wizardVibe;
+        let score = 98;
+        if (wizardTemp === "snow" && sKey !== "winter") {
+            sKey = "winter";
+            score = 95;
+        } else if (wizardTemp === "warm" && (sKey === "winter" || sKey === "autumn")) {
+            sKey = "summer";
+            score = 96;
+        } else if (wizardTemp === "mild" && sKey === "winter") {
+            sKey = "spring";
+            score = 94;
+        }
+
+        matchedSeasonKey = sKey;
+        const sData = kazakhstanSeasons[sKey];
+        const meta = seasonMeta[sKey];
+        matchedMonthIdx = meta.bestMonthIdx;
+
+        $("#ticket-match-score").text(`★ ${score}% Match`);
+        $("#ticket-season-icon").text(meta.icon);
+        $("#ticket-best-months").text(pick(meta.bestMonths));
+        $("#ticket-season-title").text(pick(sData.title));
+        $("#ticket-season-summary").text(pick(sData.desc));
+
+        const routeObj = (wizardRoutes[sKey] && wizardRoutes[sKey][wizardStyle]) || wizardRoutes.spring.culture;
+        $("#ticket-route-text").text(pick(routeObj));
+
+        const $tags = $("#ticket-tags").empty();
+        [pick(sData.temp), pick(sData.badge)].forEach((txt) => {
+            $('<span class="ticket-chip"></span>').text(txt).appendTo($tags);
+        });
+
+        if (animate) pop($matcherTicket);
+    }
+
+    $("#wizard-vibe-grid").on("click", ".wizard-vibe-card", function () {
+        playUiSound("success");
+        $("#wizard-vibe-grid .wizard-vibe-card").removeClass("active");
+        wizardVibe = $(this).addClass("active").data("vibe");
+        renderWizardTicket(true);
+    });
+
+    $("#wizard-temp-pills").on("click", ".wizard-pill-btn", function () {
+        playUiSound();
+        $("#wizard-temp-pills .wizard-pill-btn").removeClass("active");
+        wizardTemp = $(this).addClass("active").data("temp");
+        renderWizardTicket(true);
+    });
+
+    $("#wizard-style-pills").on("click", ".wizard-pill-btn", function () {
+        playUiSound();
+        $("#wizard-style-pills .wizard-pill-btn").removeClass("active");
+        wizardStyle = $(this).addClass("active").data("style");
+        renderWizardTicket(true);
+    });
+
+    $("#ticket-open-season-btn").on("click", function () {
+        playUiSound("success");
+        renderSeasonSpotlight(matchedSeasonKey, true);
+        const $target = $("#seasons-explorer");
+        if ($target.length) {
+            $("html, body").animate({ scrollTop: $target.offset().top - 90 }, 550);
+        }
+    });
+
+    $("#ticket-open-month-btn").on("click", function () {
+        playUiSound("success");
+        renderMonthDetail(matchedMonthIdx, true);
+        const $target = $("#interactive-calendar-section");
+        if ($target.length) {
+            $("html, body").animate({ scrollTop: $target.offset().top - 90 }, 550);
+        }
+    });
+
+    /* =================================================================
        Language switching (EN / RU / KZ)
        ================================================================= */
     const $langSwitch = $(".lang-switch");
@@ -761,6 +1196,10 @@ $(document).ready(function () {
         updateReadMoreLabel();
         renderExtraDishes();
         renderToursTable();
+        renderKzRegionDetail(selectedKzRegion, false);
+        renderSeasonSpotlight(activeSeasonKey, false);
+        renderMonthDetail(activeMonthIndex, false);
+        renderWizardTicket(false);
         if ($("#step-indicator").length) showStep(formStep);
         $(".copy-btn:not(.copied) .copy-label").text(t("copyBtn"));
         if ($search.length) filterLandmarks($search.val());
