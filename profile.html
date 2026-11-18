@@ -55,13 +55,25 @@
     </header>
 
     <main class="container my-4 my-lg-5 px-sm-3">
+        <!-- Profile Header Banner -->
+        <section class="p-4 p-md-5 mb-4 panel">
+            <span class="badge badge-brand mb-2" data-i18n="profileBadge">👤 Traveler Portal · LocalStorage Authentication</span>
+            <br>
+            <h1 class="section-heading mb-2" data-i18n="profilePageTitle">Traveler Account &amp; Personal Profile</h1>
+            <p class="text-muted mb-0" data-i18n="profilePageDesc">Sign up or log in to manage your Kazakhstan travel profile, view your saved travel months, and track your booked guided tours.</p>
+        </section>
+
         <!-- View 1: Authentication (Sign Up & Log In Forms) — Shown when logged out -->
         <section id="auth-section" class="mb-5">
             <div class="row g-4 align-items-stretch">
                 <!-- Sign Up Card -->
                 <div class="col-12 col-lg-7">
                     <div class="p-4 p-md-5 panel h-100">
-                        <h1 class="h3 mb-3" data-i18n="signUpHeading">Sign Up</h1>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+                            <h2 class="h3 mb-0" data-i18n="signUpHeading">Create Traveler Account (Sign Up)</h2>
+                            <span class="badge badge-available" data-i18n="badgeNewTraveler">New Traveler</span>
+                        </div>
+                        <p class="small text-muted mb-3" data-i18n="signUpSub">All fields are validated with JavaScript.</p>
 
                         <!-- Note: novalidate is used and no HTML validation attributes are used -->
                         <form id="signup-form" novalidate>
@@ -109,7 +121,7 @@
 
                                 <div class="col-12 pt-2">
                                     <p id="signup-form-status" class="fw-semibold mb-2"></p>
-                                    <button type="submit" id="signup-submit-btn" class="btn btn-primary px-4 py-2" data-i18n="btnSignUp">Create Account</button>
+                                    <button type="submit" id="signup-submit-btn" class="btn btn-primary px-4 py-2" data-i18n="btnSignUp">Sign Up &amp; Open Profile →</button>
                                 </div>
                             </div>
                         </form>
@@ -118,25 +130,35 @@
 
                 <!-- Log In Card -->
                 <div class="col-12 col-lg-5">
-                    <div class="p-4 p-md-5 panel h-100">
-                        <h2 class="h3 mb-3" data-i18n="loginHeading">Log In</h2>
-
-                        <form id="login-form" novalidate>
-                            <div class="mb-3">
-                                <label for="login-email" class="form-label fw-semibold" data-i18n="labelEmail">Email Address *</label>
-                                <input type="text" id="login-email" class="form-control" placeholder="name@example.com">
-                                <small id="err-login-email" class="msg-error d-block mt-1"></small>
+                    <div class="p-4 p-md-5 panel h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+                                <h2 class="h3 mb-0" data-i18n="loginHeading">Log In</h2>
+                                <span class="badge badge-muted" data-i18n="badgeReturning">Returning Member</span>
                             </div>
+                            <p class="small text-muted mb-3" data-i18n="loginSub">Already created an account? Enter your email and password to access your stored profile.</p>
 
-                            <div class="mb-3">
-                                <label for="login-password" class="form-label fw-semibold" data-i18n="labelLoginPass">Password *</label>
-                                <input type="password" id="login-password" class="form-control" placeholder="Enter password">
-                                <small id="err-login-password" class="msg-error d-block mt-1"></small>
-                            </div>
+                            <form id="login-form" novalidate>
+                                <div class="mb-3">
+                                    <label for="login-email" class="form-label fw-semibold" data-i18n="labelEmail">Email Address *</label>
+                                    <input type="text" id="login-email" class="form-control" placeholder="name@example.com">
+                                    <small id="err-login-email" class="msg-error d-block mt-1"></small>
+                                </div>
 
-                            <p id="login-form-status" class="fw-semibold mb-2"></p>
-                            <button type="submit" id="login-submit-btn" class="btn btn-outline-primary w-100 py-2 fw-semibold" data-i18n="btnLogin">Log In</button>
-                        </form>
+                                <div class="mb-3">
+                                    <label for="login-password" class="form-label fw-semibold" data-i18n="labelLoginPass">Password *</label>
+                                    <input type="password" id="login-password" class="form-control" placeholder="Enter password">
+                                    <small id="err-login-password" class="msg-error d-block mt-1"></small>
+                                </div>
+
+                                <p id="login-form-status" class="fw-semibold mb-2"></p>
+                                <button type="submit" id="login-submit-btn" class="btn btn-outline-primary w-100 py-2 fw-semibold" data-i18n="btnLogin">Log In to Profile →</button>
+                            </form>
+                        </div>
+
+                        <div class="panel-soft p-3 mt-4">
+                            <small class="text-muted d-block" data-i18n="authStorageNote">🔒 Your profile credentials, saved travel months, and tour bookings are stored locally in your browser's localStorage.</small>
+                        </div>
                     </div>
                 </div>
             </div>
