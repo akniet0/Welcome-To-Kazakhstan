@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Kazakhstan - Seasons &amp; Interactive Calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.ico">
+    <!-- jQuery from CDN, then our scripts (defer = run after the HTML is parsed, in this order) -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navbar (Main Kazakhstan Level) -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-xl custom-navbar py-2 px-3 px-sm-4" aria-label="Main Navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                    <img src="images/astana-logo.svg" alt="Visit Kazakhstan Logo" class="logo-badge">
+                    <div>
+                        <span class="brand-title d-block" data-i18n="kzBrandTitle">Visit Kazakhstan</span>
+                        <small class="brand-sub" data-i18n="kzBrandSub">Explore the Great Steppe</small>
+                    </div>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                    <ul class="navbar-nav gap-xl-1 mt-3 mt-xl-0" id="keyboard-nav-menu">
+                        <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="navKzMap">Kazakhstan Map</a></li>
+                        <li class="nav-item"><a class="nav-link" href="history.html" data-i18n="navHistory">History &amp; Culture</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="seasons.html" data-i18n="navSeasons" aria-current="page">Seasons &amp; Calendar</a></li>
+                    </ul>
+
+                    <div class="nav-tools">
+                        <span id="live-datetime" class="datetime-badge">Loading date...</span>
+                        <button id="change-bg-btn" class="tool-btn" type="button" data-i18n-title="bgBtn" title="Change Background" aria-label="Change Background">🎨</button>
+                        <button id="theme-toggle-btn" class="tool-btn" type="button" title="Night Mode" aria-label="Night Mode" aria-pressed="false">🌙</button>
+                        <div class="lang-switch" role="group" aria-label="Language" data-active="en">
+                            <span class="lang-indicator" aria-hidden="true"></span>
+                            <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+                            <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+                            <button type="button" class="lang-btn" data-lang="kz" aria-pressed="false">KZ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container kz-wide-container my-4 my-lg-5 px-sm-3">
+        <!-- Creative 4-Season Color-Split Hero Card (Distinct from Main Page) -->
+        <section class="mb-5 seasons-editorial-hero p-4 p-md-5 panel">
+            <div class="text-center mx-auto seasons-hero-header mb-4">
+                <span class="badge badge-brand mb-2" data-i18n="seasonsBadge">🗓️ Year-Round Kazakhstan Travel Planner</span>
+                <h1 class="display-5 fw-bold mb-2" data-i18n="seasonsPageTitle">Four Seasons &amp; Interactive Calendar of Kazakhstan</h1>
+                <p class="lead text-muted mb-3" data-i18n="seasonsPageDesc">From wild tulip blooms across the southern steppe and turquoise alpine lakes in summer to golden autumn canyons and snowy mountain peaks—plan the ideal time for your journey across Kazakhstan.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <a href="#interactive-calendar-section" class="btn btn-primary px-4" data-i18n="btnExploreCalendar">Explore Interactive Calendar ↓</a>
+                    <a href="#season-matcher" class="btn btn-outline-primary px-4" data-i18n="btnFindSeasonHero">Find My Perfect Season ✨</a>
+                </div>
+            </div>
+
+            <!-- 4-Season Color-Tinted Horizontal Ribbon -->
+            <div class="seasons-ribbon-grid">
+                <button type="button" class="season-ribbon-slice slice-spring" data-jump-season="spring">
+                    <span class="slice-num">01</span>
+                    <span class="slice-icon" aria-hidden="true">🌸</span>
+                    <strong class="slice-title" data-i18n="seasonSpringName">Spring</strong>
+                    <span class="slice-months" data-i18n="seasonSpringMonths">March – May</span>
+                    <span class="slice-temp">+8°C … +22°C</span>
+                </button>
+                <button type="button" class="season-ribbon-slice slice-summer" data-jump-season="summer">
+                    <span class="slice-num">02</span>
+                    <span class="slice-icon" aria-hidden="true">☀️</span>
+                    <strong class="slice-title" data-i18n="seasonSummerName">Summer</strong>
+                    <span class="slice-months" data-i18n="seasonSummerMonths">June – August</span>
+                    <span class="slice-temp">+22°C … +32°C</span>
+                </button>
+                <button type="button" class="season-ribbon-slice slice-autumn" data-jump-season="autumn">
+                    <span class="slice-num">03</span>
+                    <span class="slice-icon" aria-hidden="true">🍂</span>
+                    <strong class="slice-title" data-i18n="seasonAutumnName">Autumn</strong>
+                    <span class="slice-months" data-i18n="seasonAutumnMonths">September – November</span>
+                    <span class="slice-temp">+4°C … +20°C</span>
+                </button>
+                <button type="button" class="season-ribbon-slice slice-winter" data-jump-season="winter">
+                    <span class="slice-num">04</span>
+                    <span class="slice-icon" aria-hidden="true">❄️</span>
+                    <strong class="slice-title" data-i18n="seasonWinterName">Winter</strong>
+                    <span class="slice-months" data-i18n="seasonWinterMonths">December – February</span>
+                    <span class="slice-temp">-2°C … -20°C</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 1: Interactive 4-Seasons Explorer -->
+        <section id="seasons-explorer" class="p-4 p-md-5 mb-5 panel">
+            <h2 class="section-heading" data-i18n="seasonsExplorerTitle">Explore Kazakhstan by Season</h2>
+            <p class="text-muted mb-4" data-i18n="seasonsExplorerSub">Select a season below to inspect temperatures, top destinations across Kazakhstan, seasonal activities, and an interactive packing checklist:</p>
+
+            <!-- 4 Season Selector Cards -->
+            <div class="row g-3 mb-4" role="tablist" aria-label="Select Season">
+                <div class="col-6 col-lg-3">
+                    <button type="button" class="season-tab-card active" data-season="spring" role="tab" aria-selected="true">
+                        <span class="season-tab-icon" aria-hidden="true">🌸</span>
+                        <strong class="season-tab-name" data-i18n="seasonSpringName">Spring</strong>
+                        <small class="season-tab-months" data-i18n="seasonSpringMonths">March – May</small>
+                    </button>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <button type="button" class="season-tab-card" data-season="summer" role="tab" aria-selected="false">
+                        <span class="season-tab-icon" aria-hidden="true">☀️</span>
+                        <strong class="season-tab-name" data-i18n="seasonSummerName">Summer</strong>
+                        <small class="season-tab-months" data-i18n="seasonSummerMonths">June – August</small>
+                    </button>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <button type="button" class="season-tab-card" data-season="autumn" role="tab" aria-selected="false">
+                        <span class="season-tab-icon" aria-hidden="true">🍂</span>
+                        <strong class="season-tab-name" data-i18n="seasonAutumnName">Autumn</strong>
+                        <small class="season-tab-months" data-i18n="seasonAutumnMonths">September – November</small>
+                    </button>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <button type="button" class="season-tab-card" data-season="winter" role="tab" aria-selected="false">
+                        <span class="season-tab-icon" aria-hidden="true">❄️</span>
+                        <strong class="season-tab-name" data-i18n="seasonWinterName">Winter</strong>
+                        <small class="season-tab-months" data-i18n="seasonWinterMonths">December – February</small>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dynamic Season Spotlight Panel -->
+            <div id="season-spotlight" class="season-spotlight-box p-4" data-theme-season="spring">
+                <div class="row g-4 align-items-center">
+                    <div class="col-12 col-lg-5">
+                        <!-- Placeholder image matching alt name so user can drop in season_spring.jpg, season_summer.jpg, etc. -->
+                        <img id="season-main-img" src="images/season_spring.jpg" alt="season_spring" class="season-feature-img img-placeholder shadow-sm">
+                    </div>
+
+                    <div class="col-12 col-lg-7">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+                            <span id="season-badge" class="badge badge-brand">🌸 Spring &middot; March – May</span>
+                            <span id="season-temp-badge" class="badge badge-muted">🌡️ +8°C to +22°C</span>
+                        </div>
+
+                        <h3 id="season-title" class="h3 mb-2">Blooming Steppe &amp; Nauryz Renewal</h3>
+                        <p id="season-desc" class="mb-3">Spring awakens the vast Kazakh steppe with wild tulips and irises. Across the country, yurts are raised for Nauryz Meiramy (March 21–23)—the ancient festival of the spring equinox—celebrated with Nauryz Kozhe, dombra concerts, and traditional horse games.</p>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-12 col-md-6">
+                                <div class="kz-fact-tile h-100">
+                                    <small class="text-muted d-block fw-semibold mb-1" data-i18n="seasonBestPlacesLabel">📍 Best Places to Visit</small>
+                                    <p id="season-places" class="mb-0 small fw-semibold">Turkistan, Shymkent, Mangystau Canyons, Charyn Canyon &amp; Astana Plazas</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="kz-fact-tile h-100">
+                                    <small class="text-muted d-block fw-semibold mb-1" data-i18n="seasonHighlightsLabel">✨ Top Seasonal Highlights</small>
+                                    <p id="season-highlights" class="mb-0 small fw-semibold">Nauryz Festival, wild tulip fields, Charyn &amp; Bozzhyra canyon treks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Packing Checklist for Selected Season -->
+                        <div class="packing-box p-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <strong class="small" data-i18n="packingTitle">🎒 Interactive Seasonal Packing Checklist (Click to pack):</strong>
+                                <span id="packing-progress-text" class="badge badge-brand">0 / 4</span>
+                            </div>
+                            <div id="packing-list" class="d-flex flex-wrap gap-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Interactive 12-Month Calendar & Festival Wheel -->
+        <section id="interactive-calendar-section" class="p-4 p-md-5 mb-5 panel">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-2 mb-4">
+                <div>
+                    <h2 class="section-heading mb-1" data-i18n="calHeading">Interactive 12-Month Festival &amp; Weather Calendar</h2>
+                    <p class="text-muted mb-0" data-i18n="calSubheading">Click any month below to discover national holidays, cultural festivals, average temperatures across Kazakhstan, and travel tips:</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="button" id="cal-current-month-btn" class="btn btn-outline-primary btn-sm" data-i18n="btnJumpCurrentMonth">Jump to Current Month</button>
+                </div>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <!-- Left Column: 12-Month Interactive Grid -->
+                <div class="col-12 col-lg-7">
+                    <div id="kz-months-grid" class="kz-months-grid h-100">
+                        <button type="button" class="kz-month-btn" data-month="0">
+                            <span class="month-season-dot dot-winter"></span>
+                            <span class="month-short" data-i18n="mJanShort">JAN</span>
+                            <strong class="month-name" data-i18n="mJan">January</strong>
+                            <small class="month-temp">-14°C / -2°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn" data-month="1">
+                            <span class="month-season-dot dot-winter"></span>
+                            <span class="month-short" data-i18n="mFebShort">FEB</span>
+                            <strong class="month-name" data-i18n="mFeb">February</strong>
+                            <small class="month-temp">-12°C / 0°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn active" data-month="2">
+                            <span class="month-season-dot dot-spring"></span>
+                            <span class="month-short" data-i18n="mMarShort">MAR</span>
+                            <strong class="month-name" data-i18n="mMar">March</strong>
+                            <small class="month-temp">-4°C / +10°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn" data-month="3">
+                            <span class="month-season-dot dot-spring"></span>
+                            <span class="month-short" data-i18n="mAprShort">APR</span>
+                            <strong class="month-name" data-i18n="mApr">April</strong>
+                            <small class="month-temp">+9°C / +18°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn" data-month="4">
+                            <span class="month-season-dot dot-spring"></span>
+                            <span class="month-short" data-i18n="mMayShort">MAY</span>
+                            <strong class="month-name" data-i18n="mMay">May</strong>
+                            <small class="month-temp">+18°C / +25°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn" data-month="5">
+                            <span class="month-season-dot dot-summer"></span>
+                            <span class="month-short" data-i18n="mJunShort">JUN</span>
+                            <strong class="month-name" data-i18n="mJun">June</strong>
+                            <small class="month-temp">+24°C / +30°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn" data-month="6">
+                            <span class="month-season-dot dot-summer"></span>
+                            <span class="month-short" data-i18n="mJulShort">JUL</span>
+                            <strong class="month-name" data-i18n="mJul">July</strong>
+                            <small class="month-temp">+26°C / +33°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn" data-month="7">
+                            <span class="month-season-dot dot-summer"></span>
+                            <span class="month-short" data-i18n="mAugShort">AUG</span>
+                            <strong class="month-name" data-i18n="mAug">August</strong>
+                            <small class="month-temp">+24°C / +31°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn" data-month="8">
+                            <span class="month-season-dot dot-autumn"></span>
+                            <span class="month-short" data-i18n="mSepShort">SEP</span>
+                            <strong class="month-name" data-i18n="mSep">September</strong>
+                            <small class="month-temp">+17°C / +24°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn" data-month="9">
+                            <span class="month-season-dot dot-autumn"></span>
+                            <span class="month-short" data-i18n="mOctShort">OCT</span>
+                            <strong class="month-name" data-i18n="mOct">October</strong>
+                            <small class="month-temp">+8°C / +16°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn" data-month="10">
+                            <span class="month-season-dot dot-autumn"></span>
+                            <span class="month-short" data-i18n="mNovShort">NOV</span>
+                            <strong class="month-name" data-i18n="mNov">November</strong>
+                            <small class="month-temp">-4°C / +7°C</small>
+                        </button>
+                        <button type="button" class="kz-month-btn" data-month="11">
+                            <span class="month-season-dot dot-winter"></span>
+                            <span class="month-short" data-i18n="mDecShort">DEC</span>
+                            <strong class="month-name" data-i18n="mDec">December</strong>
+                            <small class="month-temp">-11°C / +1°C</small>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Selected Month Details & Festivals -->
+                <div class="col-12 col-lg-5">
+                    <aside id="cal-month-detail" class="kz-place-card h-100 d-flex flex-column justify-content-between" aria-live="polite">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span id="cal-month-season-tag" class="badge badge-available">🌸 Spring Highlight</span>
+                                <span id="cal-month-crowd" class="small text-muted fw-semibold">Festive Season</span>
+                            </div>
+
+                            <h3 id="cal-month-title" class="h3 mb-1">March in Kazakhstan</h3>
+                            <p id="cal-month-temp-line" class="text-accent-2 fw-semibold small mb-3">North &amp; Steppe: -4°C &middot; South &amp; Mountains: +10°C</p>
+
+                            <!-- Holidays / Festivals Box -->
+                            <div class="cal-festival-card p-3 mb-3">
+                                <small class="text-muted d-block fw-bold mb-1" data-i18n="calHolidayLabel">🎉 Key Holidays &amp; Cultural Events</small>
+                                <h4 id="cal-festival-title" class="h6 mb-1">March 21–23: Nauryz Meiramy (Nomadic New Year)</h4>
+                                <p id="cal-festival-desc" class="small mb-0">The biggest cultural celebration of the year! Public squares fill with decorated yurts, cauldron-cooked Nauryz Kozhe, dombra competitions (aitys), and traditional swings (altybakan).</p>
+                            </div>
+
+                            <p id="cal-month-advice" class="mb-3">March marks the spring equinox. While northern steppes still have crisp mornings, southern cities like Turkistan and Shymkent burst into warm spring blossoms—making it the best month for cultural festivals.</p>
+
+                            <div id="cal-month-tags" class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="chip">Nauryz Meiramy</span>
+                                <span class="chip">Yurt Villages</span>
+                                <span class="chip">Traditional Cuisine</span>
+                            </div>
+                        </div>
+
+                        <!-- Jumps to the matching Season in the Interactive Season Explorer above -->
+                        <div class="pt-3 border-top d-flex flex-wrap gap-2">
+                            <button type="button" id="cal-jump-season-btn" class="btn btn-primary flex-fill fw-semibold" data-i18n="btnGoToMonthSeason">Explore Matching Season ↑</button>
+                            <button type="button" id="save-month-plan-btn" class="btn btn-outline-secondary" data-i18n="btnSaveMonthPlan">⭐ Bookmark</button>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Clean, Streamlined "Find Your Perfect Season" Compass -->
+        <section id="season-matcher" class="p-4 p-md-5 panel season-wizard-panel">
+            <div class="mb-4">
+                <span class="badge badge-brand mb-2" data-i18n="wizardBadge">🧭 Interactive Trip Compass</span>
+                <br>
+                <h2 class="section-heading mb-1" data-i18n="matcherHeading">Not Sure When to Visit? Find Your Perfect Season</h2>
+                <p class="text-muted mb-0" data-i18n="matcherSub">Select your favorite experience and weather preference below to get a personalized recommendation:</p>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <!-- Left Column: Clean 2-Step Selector -->
+                <div class="col-12 col-lg-7 d-flex flex-column justify-content-between">
+                    <!-- Step 1: 4 Clean Experience Cards -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold small text-uppercase letter-wide text-muted mb-2" data-i18n="matcherActivityLabel">1. Choose Your Dream Kazakhstan Experience</label>
+                        <div class="row g-3" id="wizard-vibe-grid">
+                            <div class="col-6">
+                                <button type="button" class="wizard-vibe-card active" data-vibe="spring">
+                                    <span class="wizard-vibe-icon">🌷</span>
+                                    <strong data-i18n="vibeSpringTitle">Nauryz &amp; Blooming Steppe</strong>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="wizard-vibe-card" data-vibe="summer">
+                                    <span class="wizard-vibe-icon">🏞️</span>
+                                    <strong data-i18n="vibeSummerTitle">Turquoise Lakes &amp; City Nights</strong>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="wizard-vibe-card" data-vibe="autumn">
+                                    <span class="wizard-vibe-icon">🦅</span>
+                                    <strong data-i18n="vibeAutumnTitle">Golden Canyons &amp; Eagle Hunters</strong>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="wizard-vibe-card" data-vibe="winter">
+                                    <span class="wizard-vibe-icon">⛷️</span>
+                                    <strong data-i18n="vibeWinterTitle">Snow Peaks &amp; Winter Magic</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: 3 Clean Weather Buttons -->
+                    <div>
+                        <label class="form-label fw-bold small text-uppercase letter-wide text-muted mb-2" data-i18n="matcherWeatherLabel">2. Pick Your Comfort Temperature</label>
+                        <div class="row g-2" id="wizard-temp-pills">
+                            <div class="col-12 col-sm-4">
+                                <button type="button" class="wizard-pill-btn w-100 active" data-temp="mild" data-i18n="optWeatherMild">🌤️ Mild (+10°…+22°C)</button>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <button type="button" class="wizard-pill-btn w-100" data-temp="warm" data-i18n="optWeatherWarm">☀️ Warm (+22°…+32°C)</button>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <button type="button" class="wizard-pill-btn w-100" data-temp="snow" data-i18n="optWeatherSnow">❄️ Snowy (-2°C…-20°C)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Clean, Uncluttered Result Card -->
+                <div class="col-12 col-lg-5">
+                    <div id="matcher-ticket" class="wizard-ticket-card h-100 d-flex flex-column justify-content-between p-4">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge kz-hero-pill" data-i18n="matcherBestMatchBadge">✓ Your Custom Kazakhstan Match</span>
+                                <span id="ticket-match-score" class="ticket-score-badge">★ 98% Match</span>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div id="ticket-season-icon" class="ticket-big-icon">🌸</div>
+                                <div>
+                                    <small id="ticket-best-months" class="text-warning fw-bold d-block">Best Months: March, April &amp; May</small>
+                                    <h3 id="ticket-season-title" class="h4 text-white mb-0">Blooming Steppe &amp; Nauryz</h3>
+                                </div>
+                            </div>
+
+                            <div class="ticket-route-box p-3 mb-3">
+                                <small class="text-warning fw-bold d-block mb-1" data-i18n="ticketRouteLabel">🗺️ Recommended Route for You</small>
+                                <p id="ticket-route-text" class="text-white small mb-0">Turkistan Mausoleum → Shymkent Nauryz Plazas → Mangystau Canyons → Astana</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" id="ticket-open-season-btn" class="btn btn-primary flex-fill fw-semibold" data-i18n="btnViewSeasonAbove">Open Season Guide ↑</button>
+                            <button type="button" id="ticket-open-month-btn" class="btn btn-outline-light" data-i18n="btnInspectMonth">View Best Month ↑</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-1">Academic Group: <strong>SE-2503</strong></p>
+            <p class="mb-1">Project Team Members: <strong>Akniyet Zhanarbek</strong>, <strong>Zhanserik Abilgali</strong></p>
+            <p class="mb-0 text-white-50"><small>&copy; Visit Kazakhstan &amp; Astana Travel Portal</small></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

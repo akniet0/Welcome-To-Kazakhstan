@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Astana - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.ico">
+    <!-- jQuery from CDN, then our scripts (defer = run after the HTML is parsed, in this order) -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-xl custom-navbar py-2 px-3 px-sm-4" aria-label="Main Navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                    <img src="images/astana-logo.svg" alt="Visit Kazakhstan Logo" class="logo-badge">
+                    <div>
+                        <span class="brand-title d-block" data-i18n="kzBrandTitle">Visit Kazakhstan</span>
+                        <small class="brand-sub" data-i18n="kzBrandSub">Explore the Great Steppe</small>
+                    </div>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                    <ul class="navbar-nav gap-xl-1 mt-3 mt-xl-0" id="keyboard-nav-menu">
+                        <li class="nav-item"><a class="nav-link active" href="astana.html" data-i18n="navHome" aria-current="page">Astana</a></li>
+                        <li class="nav-item"><a class="nav-link" href="attractions.html" data-i18n="navAttractions">Attractions</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tours.html" data-i18n="navTours">Tours</a></li>
+                    </ul>
+
+                    <div class="nav-tools">
+                        <span id="live-datetime" class="datetime-badge">Loading date...</span>
+                        <button id="change-bg-btn" class="tool-btn" type="button" data-i18n-title="bgBtn" title="Change Background" aria-label="Change Background">🎨</button>
+                        <button id="theme-toggle-btn" class="tool-btn" type="button" title="Night Mode" aria-label="Night Mode" aria-pressed="false">🌙</button>
+                        <div class="lang-switch" role="group" aria-label="Language" data-active="en">
+                            <span class="lang-indicator" aria-hidden="true"></span>
+                            <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+                            <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+                            <button type="button" class="lang-btn" data-lang="kz" aria-pressed="false">KZ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-4 my-lg-5 px-sm-2">
+        <!-- Hero -->
+        <section class="p-4 mb-5 panel">
+            <img src="images/welcome_to_Astana.jpg" alt="Welcome to Astana" class="hero-card-img shadow-sm mb-4">
+            <span id="time-of-day-greeting" class="badge badge-brand mb-2">Welcome Traveler!</span>
+            <h1 id="personalized-greeting" class="display-6 fw-bold" data-i18n="heroTitle">Welcome to Astana</h1>
+            <p class="lead text-muted mb-3" data-i18n="heroDesc">Astana is a unique blend of futuristic architecture, rich nomadic heritage, and warm steppe hospitality.</p>
+
+            <!-- Dynamic Greeting Input & Time Check Button -->
+            <div class="row g-2 align-items-center mb-3 pt-2 border-top">
+                <div class="col-12 col-sm-auto">
+                    <input type="text" id="visitor-name-input" class="form-control form-control-sm" placeholder="Enter your name for a custom greeting">
+                </div>
+                <div class="col-12 col-sm-auto">
+                    <button id="update-greeting-btn" class="btn btn-primary btn-sm" type="button">Greet Me</button>
+                    <button id="show-time-btn" class="btn btn-outline-secondary btn-sm ms-1" type="button">Check Local Time</button>
+                </div>
+                <div class="col-12 col-sm-auto">
+                    <span id="clicked-time-output" class="small fw-semibold msg-success"></span>
+                </div>
+            </div>
+
+            <div class="btn-group hero-btn-group mt-2" role="group" aria-label="Quick Navigation">
+                <a href="attractions.html" class="btn btn-primary btn-sm" data-i18n="btnLandmarks">View Landmarks</a>
+                <a href="tours.html" class="btn btn-outline-secondary btn-sm" data-i18n="btnBookTour">Book a Tour</a>
+                <button id="open-popup-btn" class="btn btn-outline-primary btn-sm" type="button" data-i18n="btnSupport">Contact Support</button>
+            </div>
+        </section>
+
+        <!-- Dynamic Random Fact Box (DOM Selection & Content Modification) -->
+        <section class="p-4 mb-5 panel">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                <div>
+                    <h2 class="h5 mb-1" data-i18n="factHeading">Did You Know? Astana Cultural & Architecture Facts</h2>
+                    <p id="astana-fact-box" class="text-muted mb-0">Baiterek Tower stands at 97 meters to the observation deck, symbolizing 1997—the year Astana became the capital of Kazakhstan.</p>
+                </div>
+                <button id="new-fact-btn" class="btn btn-primary btn-sm align-self-start align-self-md-center flex-shrink-0" type="button">Discover Random Fact</button>
+            </div>
+        </section>
+
+        <!-- Assignment 6 / Task 5: Animated Number Counter -->
+        <section id="stats-section" class="mb-5">
+            <h2 class="section-heading">Astana in Numbers</h2>
+            <div class="row g-3 g-md-4">
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card">
+                        <span class="stat-icon" aria-hidden="true">🏰</span>
+                        <div class="stat-number"><span class="counter" data-target="1830">0</span></div>
+                        <p class="stat-label">Year Akmola fortress was founded</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card">
+                        <span class="stat-icon" aria-hidden="true">👥</span>
+                        <div class="stat-number"><span class="counter" data-target="1300000" data-format="comma">0</span><span class="stat-suffix">+</span></div>
+                        <p class="stat-label">Residents call Astana home</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card">
+                        <span class="stat-icon" aria-hidden="true">🗼</span>
+                        <div class="stat-number"><span class="counter" data-target="97">0</span><span class="stat-suffix"> m</span></div>
+                        <p class="stat-label">Height of Baiterek's observation deck</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card">
+                        <span class="stat-icon" aria-hidden="true">🕌</span>
+                        <div class="stat-number"><span class="counter" data-target="10000" data-format="comma">0</span></div>
+                        <p class="stat-label">Worshippers fit in Hazret Sultan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carousel -->
+        <section class="mb-5">
+            <h2 class="section-heading">Astana Gallery in 9 Frames</h2>
+            <div class="carousel-box border">
+                <div id="astanaCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                    </div>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/baiterek.jpg" class="carousel-img" alt="Baiterek Tower">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2">
+                                <h5>1. Baiterek Tower</h5>
+                                <p class="m-0">Symbol of modern Kazakhstan</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/khan-shatyr.jpg" class="carousel-img lazy-slide" alt="Khan Shatyr">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2">
+                                <h5>2. Khan Shatyr</h5>
+                                <p class="m-0">World's largest tensile tent</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/hazret-sultan.jpg" class="carousel-img lazy-slide" alt="Hazret Sultan">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2">
+                                <h5>3. Hazret Sultan Mosque</h5>
+                                <p class="m-0">Grand oriental marble mosque</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/nuralem.jpg" class="carousel-img lazy-slide" alt="Nur-Alem Sphere">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2">
+                                <h5>4. Nur-Alem</h5>
+                                <p class="m-0">The iconic EXPO sphere</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/tour-night.jpg" class="carousel-img lazy-slide" alt="Astana Night">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2">
+                                <h5>5. Astana by Night</h5>
+                                <p class="m-0">Lively illuminated skyline</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/tour-burabay.jpg" class="carousel-img lazy-slide" alt="Burabay">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2">
+                                <h5>6. Burabay Nature</h5>
+                                <p class="m-0">Kazakhstan's natural forest resort</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/welcome_to_Astana.jpg" class="carousel-img lazy-slide" alt="City Center">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2">
+                                <h5>7. City Center</h5>
+                                <p class="m-0">Nurzhol Boulevard and open plazas</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/skyview.jpg" class="carousel-img lazy-slide" alt="Sky View">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2">
+                                <h5>8. Observation Sky View</h5>
+                                <p class="m-0">Panoramic city panorama</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/oasis.jpg" class="carousel-img lazy-slide" alt="Indoor Oasis">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2">
+                                <h5>9. Indoor Oasis</h5>
+                                <p class="m-0">Year-round tropical gardens</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#astanaCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#astanaCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Highlights -->
+        <section class="mb-5">
+            <h2 class="section-heading">Featured Highlights</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/baiterek.jpg" class="card-img-top lazy" alt="Baiterek">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Baiterek Tower</h3>
+                            <p class="card-text flex-grow-1">Ascend the iconic golden sphere for a bird's-eye view across the capital's central axis.</p>
+                            <a href="attractions.html" class="btn btn-outline-primary btn-sm align-self-start mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/khan-shatyr.jpg" class="card-img-top lazy" alt="Khan Shatyr">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Khan Shatyr</h3>
+                            <p class="card-text flex-grow-1">A monumental transparent tent featuring shopping, an indoor tropical beach, and entertainment.</p>
+                            <a href="attractions.html" class="btn btn-outline-primary btn-sm align-self-start mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/hazret-sultan.jpg" class="card-img-top lazy" alt="Hazret Sultan">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Hazret Sultan</h3>
+                            <p class="card-text flex-grow-1">Marvel at pure white marble domes and traditional Kazakh decorative craftsmanship.</p>
+                            <a href="attractions.html" class="btn btn-outline-primary btn-sm align-self-start mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Accordion -->
+        <section id="faq-section" class="p-4 p-md-5 panel mb-4">
+            <h2 class="section-heading">Frequently Asked Questions</h2>
+            <p class="text-muted">Click any question to view details:</p>
+
+            <!-- Assignment 6 / Task 3: Search Highlighting -->
+            <div class="faq-search-box mb-3">
+                <input type="search" id="faq-search" class="form-control" placeholder="Search the FAQ (e.g. bus, weather, English)" autocomplete="off" aria-label="Search the FAQ">
+                <small id="faq-search-status" class="search-status d-block mt-1"></small>
+            </div>
+            
+            <div class="accordion-item-simple">
+                <button class="accordion-question" type="button">What is the best time to visit Astana?</button>
+                <p class="accordion-answer">May through September provides pleasant warm weather, outdoor cafes, and open city fountains.</p>
+            </div>
+
+            <div class="accordion-item-simple">
+                <button class="accordion-question" type="button">How do public buses work for tourists?</button>
+                <p class="accordion-answer">Buses accept contactless card and QR payments. Bus 10 runs directly from the airport through Baiterek Tower.</p>
+            </div>
+
+            <div class="accordion-item-simple">
+                <button class="accordion-question" type="button">Is English spoken at major landmarks?</button>
+                <p class="accordion-answer">Yes, major sites like Baiterek, EXPO Nur-Alem, and tourist kiosks offer services in Kazakh, Russian, and English.</p>
+            </div>
+
+            <div class="accordion-item-simple">
+                <button class="accordion-question" type="button">How cold does Astana get in winter?</button>
+                <p class="accordion-answer">Winter temperatures often drop below -25°C with strong steppe winds. Pack a warm coat, hat, and gloves, and plan indoor stops like Khan Shatyr.</p>
+            </div>
+
+            <div class="accordion-item-simple">
+                <button class="accordion-question" type="button">Which currency should I use in Astana?</button>
+                <p class="accordion-answer">The local currency is the Kazakhstani tenge (KZT). Bank cards and QR payments work almost everywhere, including taxis and buses.</p>
+            </div>
+
+            <div class="accordion-item-simple">
+                <button class="accordion-question" type="button">How do I get from the airport to the city center?</button>
+                <p class="accordion-answer">Take bus 10 or 12, or order a taxi through an app. The ride to Baiterek Tower takes about 25 minutes.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Support Modal (Async Callback Form) -->
+    <div id="popup-modal" class="modal-overlay">
+        <div class="modal-content-box">
+            <button id="close-popup-btn" class="close-btn" type="button">&times;</button>
+            <h3 class="h5 mb-3">Contact Visitor Helpdesk</h3>
+            <form id="popup-form">
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold" for="support-name">Your Name</label>
+                    <input type="text" id="support-name" class="form-control" required placeholder="Enter name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold" for="support-email">Your Email</label>
+                    <input type="email" id="support-email" class="form-control" required placeholder="Enter email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold" for="support-msg">Message</label>
+                    <textarea id="support-msg" class="form-control" rows="3" required placeholder="Ask a question..."></textarea>
+                </div>
+                <p id="popup-callback-status" class="small fw-semibold mb-2"></p>
+                <button type="submit" id="popup-submit-btn" class="btn btn-primary w-100">Send Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-1">Academic Group: <strong>SE-2503</strong></p>
+            <p class="mb-1">Project Team Members: <strong>Akniyet Zhanarbek</strong>, <strong>Zhanserik Abilgali</strong></p>
+            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #6</small></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
