@@ -477,7 +477,10 @@ body.dark-theme .form-select {
 .pure-card-row { display: flex; flex-wrap: wrap; gap: 20px; }
 .pure-card {
     flex: 1 1 calc((100% - 40px) / 3);
-    padding: 20px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     background-color: var(--bg-soft);
     border: 1px solid var(--border);
@@ -487,11 +490,12 @@ body.dark-theme .form-select {
 @media (max-width: 991px) and (min-width: 576px) { .pure-card { flex-basis: calc((100% - 20px) / 2); } }
 @media (max-width: 575px) { .pure-card { flex-basis: 100%; } }
 .food-img-badge {
-    width: 85px;
-    height: 85px;
-    margin-bottom: 12px;
+    width: 145px;
+    height: 145px;
+    display: block;
+    margin: 0 auto 16px auto;
     border-radius: 50%;
-    border: 3px solid var(--accent-line);
+    border: 3.5px solid var(--accent-line);
     object-fit: cover;
 }
 
@@ -875,6 +879,739 @@ img.lazy-slide {
 img.lazy-loaded { background: none; animation: fade-in 0.6s ease forwards; }
 @keyframes shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* =====================================================================
+   9. Kazakhstan Home & Interactive Map
+   ===================================================================== */
+@media (min-width: 1200px) {
+    .kz-wide-container {
+        max-width: 1460px;
+    }
+}
+
+/* Full-Bleed Cinematic Hero Card on Kazakhstan Main Page */
+.kz-hero-banner {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    min-height: 460px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(200, 150, 46, 0.45);
+    background-color: #132820;
+}
+.kz-hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+.kz-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, rgba(14, 30, 23, 0.90) 0%, rgba(20, 43, 33, 0.76) 52%, rgba(17, 37, 30, 0.52) 100%);
+    z-index: 1;
+}
+.kz-hero-content {
+    z-index: 2;
+    width: 100%;
+}
+.kz-hero-pill {
+    background: rgba(200, 150, 46, 0.25);
+    border: 1px solid #e0b354;
+    color: #ffe6a3;
+    font-weight: 600;
+    padding: 0.45em 0.9em;
+}
+.kz-hero-lead {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.08rem;
+}
+.kz-hero-glass-card {
+    background: rgba(18, 37, 29, 0.76);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 18px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+}
+.kz-hero-stat-box {
+    padding: 10px 6px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.badge-available {
+    background: linear-gradient(135deg, #23704f, #1a543b);
+    color: #ffffff;
+    font-weight: 600;
+}
+.badge-coming-soon {
+    background-color: var(--bg-soft);
+    color: var(--accent);
+    border: 1px solid var(--accent-line);
+    font-weight: 600;
+}
+
+/* Map Legend */
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    font-weight: 500;
+}
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.legend-dot-available {
+    background: #2f7d5b;
+    box-shadow: 0 0 0 3px rgba(47, 125, 91, 0.25);
+}
+.legend-dot-selected {
+    background: var(--accent);
+}
+.legend-dot-soon {
+    background: #d8cbb8;
+    border: 1px solid var(--border-strong);
+}
+
+/* Quick Region Filter Pills */
+.kz-pill-btn {
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background-color: var(--bg-soft);
+    color: var(--text);
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.kz-pill-btn:hover {
+    border-color: var(--accent-line);
+    transform: translateY(-1px);
+}
+.kz-pill-btn.is-available {
+    border-color: #2f7d5b;
+}
+.kz-pill-btn.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+    box-shadow: 0 4px 12px rgba(168, 77, 28, 0.28);
+}
+
+/* Interactive Map Stage & SVG */
+.kz-map-stage {
+    padding: 16px;
+    border-radius: 16px;
+    background: radial-gradient(circle at 55% 38%, var(--bg-surface) 0%, var(--bg-soft) 100%);
+    border: 1px solid var(--border);
+}
+#kazakhstan-svg-map {
+    width: 100%;
+    min-height: 440px;
+    height: auto;
+    display: block;
+    user-select: none;
+}
+@media (max-width: 768px) {
+    #kazakhstan-svg-map {
+        min-height: 260px;
+    }
+}
+.kz-map-grid line {
+    stroke: var(--border);
+    stroke-width: 1;
+    stroke-dasharray: 4 6;
+    opacity: 0.65;
+}
+.kz-water-body {
+    fill: url(#waterGrad);
+    stroke: #5da3c2;
+    stroke-width: 1.2;
+    stroke-dasharray: 3 2;
+}
+.kz-water-label,
+.kz-water-label-sm {
+    fill: #2d6f8e;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 12px;
+    pointer-events: none;
+}
+.kz-water-label-sm { font-size: 10.5px; }
+body.dark-theme .kz-water-label,
+body.dark-theme .kz-water-label-sm { fill: #8ec5db; }
+
+/* Regional Polygons */
+#kazakhstan-svg-map *:focus,
+#kazakhstan-svg-map *:focus-visible,
+.kz-region,
+.kz-region:focus,
+.kz-region:focus-visible,
+.kz-city-pin,
+.kz-city-pin:focus,
+.kz-city-pin:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent;
+}
+.kz-region {
+    fill: #e7dbc9;
+    stroke: var(--bg-surface);
+    stroke-width: 2.2;
+    stroke-linejoin: round;
+    cursor: pointer;
+    transition: fill 0.22s ease, transform 0.22s ease, stroke 0.22s ease;
+}
+body.dark-theme .kz-region {
+    fill: #283b32;
+    stroke: #15201b;
+}
+.kz-region:hover,
+.kz-region:focus-visible {
+    fill: #d8c3a5;
+    outline: none;
+}
+body.dark-theme .kz-region:hover,
+body.dark-theme .kz-region:focus-visible {
+    fill: #355043;
+}
+
+/* Astana Capital Region (Available Now) */
+.kz-region.region-available {
+    fill: #78b898;
+    stroke: #1a3328;
+    stroke-width: 2.5;
+}
+body.dark-theme .kz-region.region-available {
+    fill: #2f6c50;
+    stroke: #a8dcc3;
+}
+.kz-region.region-available:hover {
+    fill: #5ea682;
+}
+
+/* Selected Region on Map */
+.kz-region.selected {
+    fill: #d67138 !important;
+    stroke: #ffffff !important;
+    stroke-width: 3;
+}
+body.dark-theme .kz-region.selected {
+    fill: #c8642c !important;
+    stroke: #fff4e6 !important;
+}
+
+.kz-map-region-text {
+    fill: var(--text);
+    opacity: 0.55;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-anchor: middle;
+    pointer-events: none;
+}
+
+/* City Pins */
+.kz-city-pin {
+    cursor: pointer;
+}
+.kz-city-pin .pin-dot {
+    fill: var(--bg-surface);
+    stroke: var(--primary);
+    stroke-width: 2.4;
+    transition: r 0.2s ease, fill 0.2s ease;
+}
+.kz-city-pin:hover .pin-dot {
+    fill: var(--gold);
+    r: 7.5px;
+}
+.kz-city-pin .pin-label {
+    fill: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    paint-order: stroke;
+    stroke: var(--bg-surface);
+    stroke-width: 3.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Astana Capital Star Pin */
+.pin-pulse-ring {
+    fill: rgba(200, 150, 46, 0.28);
+    stroke: #c8962e;
+    stroke-width: 1.5;
+    animation: kzPulse 2.2s infinite ease-out;
+}
+@keyframes kzPulse {
+    0% { transform: scale(0.65); opacity: 0.95; }
+    75% { transform: scale(1.45); opacity: 0; }
+    100% { transform: scale(1.45); opacity: 0; }
+}
+.pin-capital-bg {
+    fill: #1a3328;
+    stroke: #f6c453;
+    stroke-width: 3;
+    transition: transform 0.2s ease;
+}
+.kz-pin-capital:hover .pin-capital-bg {
+    transform: scale(1.15);
+    fill: #a84d1c;
+}
+.pin-capital-star {
+    fill: #ffd166;
+    font-size: 14px;
+    font-weight: 700;
+    pointer-events: none;
+}
+.pin-capital-tag {
+    fill: #1a3328;
+    stroke: #f6c453;
+    stroke-width: 1.5;
+}
+.pin-capital-label {
+    fill: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+/* Right Column: Detailed Place Card */
+.kz-place-card {
+    padding: 22px;
+    border-radius: 16px;
+    background-color: var(--bg-soft);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow);
+}
+.kz-place-main-img {
+    width: 100%;
+    height: 195px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: block;
+}
+.kz-mini-thumb {
+    width: calc(20% - 6.5px);
+    height: 48px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    opacity: 0.72;
+    cursor: pointer;
+    transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.kz-mini-thumb:hover,
+.kz-mini-thumb.active {
+    opacity: 1;
+    border-color: var(--accent-line);
+    transform: translateY(-1px);
+}
+.kz-fact-tile {
+    padding: 9px 12px;
+    border-radius: 10px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    font-size: 0.88rem;
+}
+.kz-dest-active {
+    border: 2px solid #2f7d5b;
+}
+
+/* Styled placeholder state for images yet to be added (displays alt text cleanly) */
+img.img-placeholder {
+    background-color: var(--bg-soft);
+    background-image: linear-gradient(135deg, var(--bg-soft) 0%, var(--border) 100%);
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* =====================================================================
+   10. Seasons & Interactive Calendar Page (seasons.html)
+   ===================================================================== */
+.seasons-editorial-hero {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 0%, var(--bg-soft) 0%, var(--bg-surface) 75%);
+}
+.seasons-hero-header {
+    max-width: 780px;
+}
+.seasons-ribbon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+@media (min-width: 992px) {
+    .seasons-ribbon-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.season-ribbon-slice {
+    position: relative;
+    padding: 22px 18px;
+    border-radius: 18px;
+    border: 1.5px solid var(--border);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.season-ribbon-slice:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+.slice-spring {
+    background: linear-gradient(145deg, #e7f5ec 0%, #d4ede0 100%);
+    border-color: #a9d9be;
+    color: #163d2a;
+}
+.slice-summer {
+    background: linear-gradient(145deg, #fdf3dc 0%, #f8e4b6 100%);
+    border-color: #e8c675;
+    color: #4a3306;
+}
+.slice-autumn {
+    background: linear-gradient(145deg, #fbe9de 0%, #f5d2be 100%);
+    border-color: #e2a684;
+    color: #4f210b;
+}
+.slice-winter {
+    background: linear-gradient(145deg, #e4f0f8 0%, #cce2f2 100%);
+    border-color: #9bc4e2;
+    color: #12354e;
+}
+body.dark-theme .slice-spring {
+    background: linear-gradient(145deg, #1b3629 0%, #14281f 100%);
+    border-color: #2f6c50;
+    color: #d6f5e3;
+}
+body.dark-theme .slice-summer {
+    background: linear-gradient(145deg, #382d14 0%, #29200d 100%);
+    border-color: #7a5f22;
+    color: #fce8b8;
+}
+body.dark-theme .slice-autumn {
+    background: linear-gradient(145deg, #3b2116 0%, #2a170f 100%);
+    border-color: #824428;
+    color: #fad8c5;
+}
+body.dark-theme .slice-winter {
+    background: linear-gradient(145deg, #162c3d 0%, #10202d 100%);
+    border-color: #2c5b7d;
+    color: #d4eaf7;
+}
+.slice-num {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    opacity: 0.25;
+}
+.slice-icon {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+.slice-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+}
+.slice-months {
+    font-size: 0.82rem;
+    opacity: 0.82;
+    font-weight: 600;
+}
+.slice-temp {
+    margin-top: 6px;
+    align-self: flex-start;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+body.dark-theme .slice-temp {
+    background: rgba(0, 0, 0, 0.32);
+}
+
+.season-tab-card {
+    width: 100%;
+    padding: 18px 14px;
+    border-radius: 16px;
+    border: 2px solid var(--border);
+    background-color: var(--bg-soft);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+}
+.season-tab-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-line);
+    box-shadow: var(--shadow);
+}
+.season-tab-card.active {
+    background-color: var(--bg-surface);
+    border-color: var(--accent);
+    box-shadow: 0 8px 22px rgba(168, 77, 28, 0.18);
+}
+.season-tab-icon {
+    font-size: 2rem;
+    line-height: 1.1;
+}
+.season-tab-name {
+    font-size: 1.05rem;
+    color: var(--primary);
+}
+.season-tab-months {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.season-spotlight-box {
+    border-radius: 18px;
+    background-color: var(--bg-soft);
+    border: 1px solid var(--border-strong);
+    transition: border-color 0.3s ease;
+}
+.season-feature-img {
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    display: block;
+}
+
+/* Interactive Packing Checklist */
+.packing-box {
+    border-radius: 12px;
+    background-color: var(--bg-surface);
+    border: 1px dashed var(--border-strong);
+}
+.packing-item-btn {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background-color: var(--bg-soft);
+    color: var(--text);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.packing-item-btn:hover {
+    border-color: var(--accent-line);
+}
+.packing-item-btn.packed {
+    background-color: var(--success);
+    border-color: var(--success);
+    color: #ffffff;
+    text-decoration: line-through;
+}
+
+/* 12-Month Interactive Calendar Grid */
+.kz-months-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+@media (min-width: 576px) {
+    .kz-months-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (min-width: 992px) {
+    .kz-months-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.kz-month-btn {
+    position: relative;
+    padding: 16px 12px;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    background-color: var(--bg-soft);
+    color: var(--text);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.kz-month-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-line);
+    background-color: var(--bg-surface);
+}
+.kz-month-btn.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+    box-shadow: 0 6px 18px rgba(168, 77, 28, 0.28);
+}
+.kz-month-btn.active .month-short,
+.kz-month-btn.active .month-name,
+.kz-month-btn.active .month-temp {
+    color: var(--on-accent);
+}
+.month-season-dot {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.dot-spring { background-color: #2f9e66; }
+.dot-summer { background-color: #e09f2d; }
+.dot-autumn { background-color: #d66838; }
+.dot-winter { background-color: #4f95c9; }
+
+.month-short {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}
+.month-name {
+    font-size: 1rem;
+    color: var(--primary);
+}
+.month-temp {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.cal-festival-card {
+    border-radius: 12px;
+    background-color: var(--bg-surface);
+    border-left: 4px solid var(--gold);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+/* Creative Season Compass & Live Match Boarding Pass */
+.letter-wide {
+    letter-spacing: 0.06em;
+}
+.wizard-vibe-card {
+    width: 100%;
+    height: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 2px solid var(--border);
+    background-color: var(--bg-soft);
+    color: var(--text);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.wizard-vibe-card:hover {
+    border-color: var(--accent-line);
+    transform: translateY(-2px);
+}
+.wizard-vibe-card.active {
+    background-color: var(--bg-surface);
+    border-color: var(--accent);
+    box-shadow: 0 6px 18px rgba(168, 77, 28, 0.16);
+}
+.wizard-vibe-icon {
+    font-size: 1.85rem;
+    flex-shrink: 0;
+}
+
+.wizard-pill-btn {
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1.5px solid var(--border-strong);
+    background-color: var(--bg-soft);
+    color: var(--text);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.wizard-pill-btn:hover {
+    border-color: var(--accent-line);
+}
+.wizard-pill-btn.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+    box-shadow: 0 4px 12px rgba(168, 77, 28, 0.24);
+}
+
+.wizard-ticket-card {
+    border-radius: 20px;
+    background: linear-gradient(135deg, #163025 0%, #10231b 100%);
+    border: 2px solid rgba(224, 179, 84, 0.45);
+    box-shadow: var(--shadow-lg);
+    color: #ffffff;
+}
+.ticket-score-badge {
+    padding: 4px 11px;
+    border-radius: 999px;
+    background-color: #23704f;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+.ticket-big-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+.ticket-route-box {
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px dashed rgba(224, 179, 84, 0.5);
+}
+.ticket-chip {
+    display: inline-block;
+    padding: 0.3em 0.75em;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.12);
+    color: #f1eae0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
