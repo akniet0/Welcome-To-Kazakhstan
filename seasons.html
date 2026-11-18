@@ -35,6 +35,7 @@
                         <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="navKzMap">Kazakhstan Map</a></li>
                         <li class="nav-item"><a class="nav-link" href="history.html" data-i18n="navHistory">History &amp; Culture</a></li>
                         <li class="nav-item"><a class="nav-link active" href="seasons.html" data-i18n="navSeasons" aria-current="page">Seasons &amp; Calendar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.html" data-i18n="navProfile">Profile</a></li>
                     </ul>
 
                     <div class="nav-tools">
@@ -54,15 +55,14 @@
     </header>
 
     <main class="container kz-wide-container my-4 my-lg-5 px-sm-3">
-        <!-- Creative 4-Season Color-Split Hero Card (Distinct from Main Page) -->
+        <!-- Creative 4-Season Color-Split Hero Card -->
         <section class="mb-5 seasons-editorial-hero p-4 p-md-5 panel">
             <div class="text-center mx-auto seasons-hero-header mb-4">
-                <span class="badge badge-brand mb-2" data-i18n="seasonsBadge">🗓️ Year-Round Kazakhstan Travel Planner</span>
-                <h1 class="display-5 fw-bold mb-2" data-i18n="seasonsPageTitle">Four Seasons &amp; Interactive Calendar of Kazakhstan</h1>
-                <p class="lead text-muted mb-3" data-i18n="seasonsPageDesc">From wild tulip blooms across the southern steppe and turquoise alpine lakes in summer to golden autumn canyons and snowy mountain peaks—plan the ideal time for your journey across Kazakhstan.</p>
+                <h1 class="display-5 fw-bold mb-2" data-i18n="seasonsPageTitle">Seasons &amp; Calendar</h1>
+                <p class="lead text-muted mb-3" data-i18n="seasonsPageDesc">Discover the best time to visit Kazakhstan across all four seasons.</p>
                 <div class="d-flex flex-wrap justify-content-center gap-2">
-                    <a href="#interactive-calendar-section" class="btn btn-primary px-4" data-i18n="btnExploreCalendar">Explore Interactive Calendar ↓</a>
-                    <a href="#season-matcher" class="btn btn-outline-primary px-4" data-i18n="btnFindSeasonHero">Find My Perfect Season ✨</a>
+                    <a href="#interactive-calendar-section" class="btn btn-primary px-4" data-i18n="btnExploreCalendar">Explore Calendar ↓</a>
+                    <a href="#season-matcher" class="btn btn-outline-primary px-4" data-i18n="btnFindSeasonHero">Find My Season</a>
                 </div>
             </div>
 
@@ -101,8 +101,7 @@
 
         <!-- Section 1: Interactive 4-Seasons Explorer -->
         <section id="seasons-explorer" class="p-4 p-md-5 mb-5 panel">
-            <h2 class="section-heading" data-i18n="seasonsExplorerTitle">Explore Kazakhstan by Season</h2>
-            <p class="text-muted mb-4" data-i18n="seasonsExplorerSub">Select a season below to inspect temperatures, top destinations across Kazakhstan, seasonal activities, and an interactive packing checklist:</p>
+            <h2 class="section-heading mb-4" data-i18n="seasonsExplorerTitle">Four Seasons</h2>
 
             <!-- 4 Season Selector Cards -->
             <div class="row g-3 mb-4" role="tablist" aria-label="Select Season">
@@ -181,16 +180,11 @@
             </div>
         </section>
 
-        <!-- Section 2: Interactive 12-Month Calendar & Festival Wheel -->
+        <!-- Section 2: Interactive 12-Month Calendar -->
         <section id="interactive-calendar-section" class="p-4 p-md-5 mb-5 panel">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-2 mb-4">
-                <div>
-                    <h2 class="section-heading mb-1" data-i18n="calHeading">Interactive 12-Month Festival &amp; Weather Calendar</h2>
-                    <p class="text-muted mb-0" data-i18n="calSubheading">Click any month below to discover national holidays, cultural festivals, average temperatures across Kazakhstan, and travel tips:</p>
-                </div>
-                <div class="d-flex gap-2">
-                    <button type="button" id="cal-current-month-btn" class="btn btn-outline-primary btn-sm" data-i18n="btnJumpCurrentMonth">Jump to Current Month</button>
-                </div>
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+                <h2 class="section-heading mb-0" data-i18n="calHeading">12-Month Calendar</h2>
+                <button type="button" id="cal-current-month-btn" class="btn btn-outline-primary btn-sm" data-i18n="btnJumpCurrentMonth">Current Month</button>
             </div>
 
             <div class="row g-4 align-items-stretch">
@@ -310,14 +304,9 @@
             </div>
         </section>
 
-        <!-- Section 3: Clean, Streamlined "Find Your Perfect Season" Compass -->
+        <!-- Section 3: Clean, Streamlined "Find Your Perfect Season" -->
         <section id="season-matcher" class="p-4 p-md-5 panel season-wizard-panel">
-            <div class="mb-4">
-                <span class="badge badge-brand mb-2" data-i18n="wizardBadge">🧭 Interactive Trip Compass</span>
-                <br>
-                <h2 class="section-heading mb-1" data-i18n="matcherHeading">Not Sure When to Visit? Find Your Perfect Season</h2>
-                <p class="text-muted mb-0" data-i18n="matcherSub">Select your favorite experience and weather preference below to get a personalized recommendation:</p>
-            </div>
+            <h2 class="section-heading mb-4" data-i18n="matcherHeading">Find Your Best Season</h2>
 
             <div class="row g-4 align-items-stretch">
                 <!-- Left Column: Clean 2-Step Selector -->

@@ -35,6 +35,7 @@
                         <li class="nav-item"><a class="nav-link active" href="index.html" data-i18n="navKzMap" aria-current="page">Kazakhstan Map</a></li>
                         <li class="nav-item"><a class="nav-link" href="history.html" data-i18n="navHistory">History &amp; Culture</a></li>
                         <li class="nav-item"><a class="nav-link" href="seasons.html" data-i18n="navSeasons">Seasons &amp; Calendar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.html" data-i18n="navProfile">Profile</a></li>
                     </ul>
 
                     <div class="nav-tools">
@@ -63,46 +64,20 @@
             <div class="kz-hero-content position-relative p-4 p-md-5">
                 <div class="row g-4 align-items-center">
                     <div class="col-12 col-lg-7">
-                        <span class="badge kz-hero-pill mb-3" data-i18n="kzHeroBadge">🌏 National Travel Portal &middot; Step-by-Step Guide</span>
-                        <h1 class="display-5 fw-bold text-white mb-3" data-i18n="kzHeroTitle">Discover Kazakhstan: From the Caspian Sea to the Altai Peaks</h1>
-                        <p class="lead kz-hero-lead mb-4" data-i18n="kzHeroDesc">Welcome to the interactive travel guide to Kazakhstan, the world's ninth-largest country. Click any region on the map below to inspect its landmarks and travel highlights, then jump into that city's dedicated guide—starting with our capital, Astana!</p>
+                        <h1 class="display-5 fw-bold text-white mb-3" data-i18n="kzHeroTitle">Explore Kazakhstan</h1>
+                        <p class="lead kz-hero-lead mb-4" data-i18n="kzHeroDesc">From the Caspian Sea to the Altai Mountains. Select a region on the map below to start exploring.</p>
                         <div class="d-flex flex-wrap gap-2">
-                            <a href="#kz-map-section" class="btn btn-primary btn-lg px-4" data-i18n="kzBtnExploreMap">Explore Interactive Map ↓</a>
-                            <a href="history.html" class="btn btn-outline-light btn-lg px-4" data-i18n="navHistory">History &amp; Culture</a>
-                            <button id="open-popup-btn" class="btn btn-outline-light btn-lg px-3" type="button" data-i18n="btnSupport">Contact Support</button>
+                            <a href="#kz-map-section" class="btn btn-primary px-4" data-i18n="kzBtnExploreMap">Explore Map ↓</a>
+                            <a href="astana.html" class="btn btn-outline-light px-4" data-i18n="kzOpenAstanaBtn">Visit Astana →</a>
+                            <button id="open-popup-btn" class="btn btn-outline-light px-3" type="button" data-i18n="btnSupport">Contact Support</button>
                         </div>
                     </div>
 
                     <div class="col-12 col-lg-5">
                         <div class="kz-hero-glass-card p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge badge-available" data-i18n="kzFeaturedNow">★ Great Steppe &amp; Mountains</span>
-                                <span class="small text-white-50 fw-semibold">2,724,900 km²</span>
-                            </div>
-                            <h2 class="h4 text-white mb-2" data-i18n="kzSpotlightTitle">Republic of Kazakhstan</h2>
-                            <p class="small text-white-50 mb-3" data-i18n="kzSpotlightDesc">Select a region on the interactive map below to open its travel guide.</p>
-
-                            <div class="kz-hero-mini-stats row g-2 mb-3 text-center">
-                                <div class="col-4">
-                                    <div class="kz-hero-stat-box">
-                                        <strong class="d-block text-white">#9</strong>
-                                        <small class="text-white-50">World Size</small>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="kz-hero-stat-box">
-                                        <strong class="d-block text-white">20M+</strong>
-                                        <small class="text-white-50">Population</small>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="kz-hero-stat-box">
-                                        <strong class="d-block text-warning">★ Astana</strong>
-                                        <small class="text-white-50">Live Now</small>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <span class="badge badge-available mb-2" data-i18n="badgeAvailableNow">Available Now</span>
+                            <h2 class="h4 text-white mb-2" data-i18n="destAstanaTitle">Astana &amp; Capital Region</h2>
+                            <p class="small text-white-50 mb-3" data-i18n="destAstanaDesc">Modern architecture, landmarks, and guided city tours.</p>
                             <a href="astana.html" class="btn btn-primary w-100 fw-semibold" data-i18n="kzOpenAstanaBtn">Open Astana Guide →</a>
                         </div>
                     </div>
@@ -112,38 +87,34 @@
 
         <!-- Interactive Map of Kazakhstan Section -->
         <section id="kz-map-section" class="p-4 p-md-5 mb-5 panel">
-            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-3">
                 <div>
-                    <h2 class="section-heading mb-2" data-i18n="kzMapHeading">Interactive Map of Kazakhstan</h2>
-                    <p class="text-muted mb-0" data-i18n="kzMapInstructions">Click any region or city pin on the map to view detailed information on the right. Click <strong>Astana</strong> to preview the capital and jump directly to the full Astana website.</p>
+                    <h2 class="section-heading mb-1" data-i18n="kzMapHeading">Map of Kazakhstan</h2>
+                    <p class="text-muted mb-0" data-i18n="kzMapInstructions">Click a region on the map to view details.</p>
                 </div>
                 <div class="kz-map-legend d-flex flex-wrap gap-3 small">
-                    <span class="legend-item"><span class="legend-dot legend-dot-available"></span> <span data-i18n="legendAvailable">Available Now (Astana)</span></span>
-                    <span class="legend-item"><span class="legend-dot legend-dot-selected"></span> <span data-i18n="legendSelected">Selected Region</span></span>
+                    <span class="legend-item"><span class="legend-dot legend-dot-available"></span> <span data-i18n="legendAvailable">Available (Astana)</span></span>
+                    <span class="legend-item"><span class="legend-dot legend-dot-selected"></span> <span data-i18n="legendSelected">Selected</span></span>
                     <span class="legend-item"><span class="legend-dot legend-dot-soon"></span> <span data-i18n="legendSoon">Coming Soon</span></span>
                 </div>
             </div>
 
             <!-- Quick Region Selector Pills -->
             <div class="kz-region-pills d-flex flex-wrap gap-2 mb-4" role="tablist" aria-label="Kazakhstan Regions">
-                <button type="button" class="kz-pill-btn active is-available" data-region="astana" data-i18n="pillAstana">★ Astana &amp; Capital Region (Live)</button>
+                <button type="button" class="kz-pill-btn active is-available" data-region="astana" data-i18n="pillAstana">Astana</button>
                 <button type="button" class="kz-pill-btn" data-region="almaty" data-i18n="pillAlmaty">Almaty &amp; Zhetysu</button>
                 <button type="button" class="kz-pill-btn" data-region="turkistan" data-i18n="pillTurkistan">Turkistan &amp; South</button>
-                <button type="button" class="kz-pill-btn" data-region="mangystau" data-i18n="pillMangystau">Mangystau &amp; Caspian West</button>
-                <button type="button" class="kz-pill-btn" data-region="east" data-i18n="pillEast">East Kazakhstan &amp; Altai</button>
-                <button type="button" class="kz-pill-btn" data-region="central" data-i18n="pillCentral">Karaganda &amp; Central Steppe</button>
-                <button type="button" class="kz-pill-btn" data-region="north" data-i18n="pillNorth">North &amp; Kostanay</button>
+                <button type="button" class="kz-pill-btn" data-region="mangystau" data-i18n="pillMangystau">Mangystau &amp; West</button>
+                <button type="button" class="kz-pill-btn" data-region="east" data-i18n="pillEast">East &amp; Altai</button>
+                <button type="button" class="kz-pill-btn" data-region="central" data-i18n="pillCentral">Central Steppe</button>
+                <button type="button" class="kz-pill-btn" data-region="north" data-i18n="pillNorth">North</button>
                 <button type="button" class="kz-pill-btn" data-region="kyzylorda" data-i18n="pillKyzylorda">Aral &amp; Baikonur</button>
             </div>
 
             <div class="row g-4 align-items-stretch">
                 <!-- Left Column: Interactive SVG Map -->
                 <div class="col-12 col-xl-7">
-                    <div class="kz-map-stage h-100 d-flex flex-column justify-content-between">
-                        <div class="kz-map-topbar d-flex justify-content-between align-items-center mb-2">
-                            <span class="small fw-semibold text-muted" data-i18n="kzMapCoordLabel">40°N – 55°N &middot; 46°E – 87°E &middot; Republic of Kazakhstan</span>
-                            <span id="kz-map-hover-indicator" class="badge badge-muted" data-i18n="kzMapHoverDefault">Click an area on the map</span>
-                        </div>
+                    <div class="kz-map-stage h-100 d-flex flex-column justify-content-center">
 
                         <div class="kz-svg-wrapper position-relative my-auto">
                             <svg id="kazakhstan-svg-map" viewBox="18 24 945 500" role="img" aria-label="Interactive Map of Kazakhstan">
@@ -302,25 +273,18 @@
                                 </g>
                             </svg>
                         </div>
-
-                        <div class="kz-map-footer d-flex flex-wrap justify-content-between align-items-center gap-2 pt-2 border-top">
-                            <span class="small text-muted" data-i18n="kzMapTip">💡 Tip: Click any area on the map to see its details, then click the button on the right to open that city's website!</span>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Detailed Information Panel for Selected Area -->
+                <!-- Right Column: Clean, Concise Information Panel for Selected Area -->
                 <div class="col-12 col-xl-5">
                     <aside id="kz-place-card" class="kz-place-card h-100 d-flex flex-column justify-content-between" aria-live="polite">
                         <div>
-                            <!-- Status & Region Header -->
-                            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
-                                <span id="kz-place-badge" class="badge badge-available">★ Available Now &middot; Full Website Live</span>
-                                <span id="kz-place-coords" class="small text-muted fw-semibold">51.16° N, 71.43° E</span>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span id="kz-place-badge" class="badge badge-available">Available Now</span>
                             </div>
 
-                            <h3 id="kz-place-title" class="h3 mb-1">Astana (Capital Region)</h3>
-                            <p id="kz-place-tagline" class="text-accent-2 fw-semibold small mb-3">Futuristic Capital &amp; Heart of the Great Steppe</p>
+                            <h3 id="kz-place-title" class="h3 mb-2">Astana</h3>
 
                             <!-- Main Photo + Mini Thumbnails -->
                             <div class="kz-place-media mb-3">
@@ -334,51 +298,30 @@
                                 </div>
                             </div>
 
-                            <!-- Detailed Place Description -->
-                            <p id="kz-place-desc" class="mb-3">Astana is the modern capital of Kazakhstan, renowned for its bold futuristic skyline designed by world-leading architects, vibrant nomadic culture, and warm steppe hospitality. Click below to jump to the Astana website for its landmarks, photo galleries, and guided tours.</p>
+                            <p id="kz-place-desc" class="mb-3">Modern capital known for its futuristic architecture, cultural centers, and steppe hospitality.</p>
 
-                            <!-- Key Facts Grid -->
+                            <!-- Clean 2-Item Key Facts -->
                             <div class="kz-place-facts row g-2 mb-3">
                                 <div class="col-6">
                                     <div class="kz-fact-tile">
-                                        <small class="text-muted d-block" data-i18n="factLabelCenter">Key City</small>
+                                        <small class="text-muted d-block" data-i18n="factLabelCenter">Main City</small>
                                         <strong id="kz-fact-city">Astana</strong>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="kz-fact-tile">
-                                        <small class="text-muted d-block" data-i18n="factLabelPop">Population</small>
-                                        <strong id="kz-fact-pop">1,300,000+</strong>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="kz-fact-tile">
-                                        <small class="text-muted d-block" data-i18n="factLabelHighlight">Top Icon</small>
-                                        <strong id="kz-fact-icon">Baiterek &amp; Khan Shatyr</strong>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="kz-fact-tile">
-                                        <small class="text-muted d-block" data-i18n="factLabelStatus">Guide Status</small>
-                                        <strong id="kz-fact-status" class="msg-success">3 City Pages Ready ✓</strong>
+                                        <small class="text-muted d-block" data-i18n="factLabelHighlight">Highlights</small>
+                                        <strong id="kz-fact-icon">Baiterek, Khan Shatyr</strong>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Highlight Chips -->
-                            <div id="kz-place-tags" class="d-flex flex-wrap gap-1 mb-3">
-                                <span class="chip">Baiterek Tower</span>
-                                <span class="chip">Khan Shatyr</span>
-                                <span class="chip">Hazret Sultan</span>
-                                <span class="chip">Nur-Alem Sphere</span>
-                                <span class="chip">Burabay Resort</span>
-                            </div>
+                            <div id="kz-place-tags" class="d-flex flex-wrap gap-1 mb-3"></div>
                         </div>
 
-                        <!-- Action Buttons to Jump to Area Page -->
                         <div id="kz-place-actions" class="pt-3 border-top">
                             <a id="kz-jump-main-btn" href="astana.html" class="btn btn-primary w-100 fw-semibold">
-                                Explore Astana Website →
+                                Explore Astana →
                             </a>
                         </div>
                     </aside>
@@ -421,62 +364,89 @@
             </div>
         </section>
 
-        <!-- Step-by-Step Expansion Roadmap -->
-        <section class="mb-5">
-            <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
-                <div>
-                    <h2 class="section-heading mb-1" data-i18n="kzRoadmapHeading">Explore Destinations Step by Step</h2>
-                    <p class="text-muted mb-0" data-i18n="kzRoadmapSub">We are expanding our travel portal across every region of Kazakhstan. Start with our complete Astana guide today!</p>
-                </div>
+        <!-- Destinations & Live Weather / Country Info -->
+        <section id="live-api-section" class="p-4 p-md-5 mb-5 panel">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+                <h2 class="section-heading mb-0" data-i18n="apiHeading">Live Weather &amp; Country Info</h2>
+                <button type="button" id="refresh-api-btn" class="btn btn-outline-primary btn-sm" data-i18n="btnRefreshApi">Refresh</button>
             </div>
 
-            <div class="row g-4">
-                <!-- Active Destination: Astana (uses existing Astana image) -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 kz-dest-card kz-dest-active">
-                        <img src="images/baiterek.jpg" class="card-img-top img-placeholder" alt="baiterek">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge badge-available" data-i18n="badgeAvailableNow">★ Available Now</span>
-                                <small class="text-muted fw-semibold">Step 1</small>
+            <div class="row g-4 align-items-stretch">
+                <!-- Live Weather API Widget -->
+                <div class="col-12 col-lg-6">
+                    <div class="kz-place-card h-100">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                            <h3 class="h5 mb-0" data-i18n="weatherApiTitle">Current Weather</h3>
+                            <select id="api-weather-city" class="form-select form-select-sm w-auto" aria-label="Select city for live weather">
+                                <option value="astana" data-lat="51.1694" data-lon="71.4491">Astana</option>
+                                <option value="almaty" data-lat="43.2389" data-lon="76.8897">Almaty</option>
+                                <option value="turkistan" data-lat="43.2973" data-lon="68.2517">Turkistan</option>
+                                <option value="aktau" data-lat="43.6532" data-lon="51.1975">Aktau</option>
+                                <option value="oskemen" data-lat="49.9483" data-lon="82.6278">Oskemen</option>
+                                <option value="karaganda" data-lat="49.8047" data-lon="73.1094">Karaganda</option>
+                            </select>
+                        </div>
+
+                        <div id="weather-api-loading" class="text-muted small py-2" style="display: none;">
+                            <span class="btn-spinner me-2" aria-hidden="true"></span> <span data-i18n="apiLoading">Loading…</span>
+                        </div>
+                        <p id="weather-api-error" class="msg-error small fw-semibold mb-2" style="display: none;"></p>
+
+                        <div id="weather-api-content" class="row g-2">
+                            <div class="col-4">
+                                <div class="kz-fact-tile">
+                                    <small class="text-muted d-block" data-i18n="weatherTempLabel">Temperature</small>
+                                    <strong id="api-temp-val">— °C</strong>
+                                </div>
                             </div>
-                            <h3 class="card-title h5" data-i18n="destAstanaTitle">Astana &amp; Akmola Region</h3>
-                            <p class="card-text flex-grow-1" data-i18n="destAstanaDesc">Full city guide featuring Astana's 14 searchable landmarks, interactive photo galleries, and guided tour bookings.</p>
-                            <div class="d-flex gap-2 mt-2">
-                                <a href="astana.html" class="btn btn-primary btn-sm" data-i18n="kzOpenAstanaBtn">Open Astana Guide →</a>
+                            <div class="col-4">
+                                <div class="kz-fact-tile">
+                                    <small class="text-muted d-block" data-i18n="weatherCondLabel">Sky</small>
+                                    <strong id="api-cond-val">—</strong>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="kz-fact-tile">
+                                    <small class="text-muted d-block" data-i18n="weatherWindLabel">Wind</small>
+                                    <strong id="api-wind-val">— km/h</strong>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Next Step Preview: Almaty (placeholder with matching alt & filename) -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 kz-dest-card">
-                        <img src="images/almaty_mountains.jpg" class="card-img-top img-placeholder" alt="almaty_mountains">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge badge-muted" data-i18n="badgeComingSoon">⏳ Coming Soon</span>
-                                <small class="text-muted fw-semibold">Step 2</small>
-                            </div>
-                            <h3 class="card-title h5" data-i18n="destAlmatyTitle">Almaty &amp; Zhetysu</h3>
-                            <p class="card-text flex-grow-1" data-i18n="destAlmatyDesc">Snow-capped Tian Shan peaks, Shymbulak ski resort, Charyn Canyon, and the alpine Kolsai &amp; Kaindy Lakes.</p>
-                            <button type="button" class="btn btn-outline-primary btn-sm align-self-start mt-2 kz-preview-map-btn" data-region="almaty" data-i18n="btnPreviewOnMap">Preview on Map ↑</button>
+                <!-- Live REST Countries API Widget -->
+                <div class="col-12 col-lg-6">
+                    <div class="kz-place-card h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 class="h5 mb-0" data-i18n="countryApiTitle">Country Overview</h3>
+                            <span id="api-country-flag" class="badge badge-available">KAZ</span>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Next Step Preview: Turkistan (placeholder with matching alt & filename) -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 kz-dest-card">
-                        <img src="images/turkistan_mausoleum.jpg" class="card-img-top img-placeholder" alt="turkistan_mausoleum">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge badge-muted" data-i18n="badgeComingSoon">⏳ Coming Soon</span>
-                                <small class="text-muted fw-semibold">Step 3</small>
+                        <div id="country-api-loading" class="text-muted small py-2" style="display: none;">
+                            <span class="btn-spinner me-2" aria-hidden="true"></span> <span data-i18n="apiLoading">Loading…</span>
+                        </div>
+                        <p id="country-api-error" class="msg-error small fw-semibold mb-2" style="display: none;"></p>
+
+                        <div id="country-api-content" class="row g-2">
+                            <div class="col-4">
+                                <div class="kz-fact-tile">
+                                    <small class="text-muted d-block" data-i18n="apiCurrency">Currency</small>
+                                    <strong id="api-country-currency">Tenge (₸)</strong>
+                                </div>
                             </div>
-                            <h3 class="card-title h5" data-i18n="destTurkistanTitle">Turkistan &amp; Silk Road South</h3>
-                            <p class="card-text flex-grow-1" data-i18n="destTurkistanDesc">UNESCO-listed Mausoleum of Khoja Ahmed Yasawi, ancient Otrar ruins, and vibrant southern bazaars.</p>
-                            <button type="button" class="btn btn-outline-primary btn-sm align-self-start mt-2 kz-preview-map-btn" data-region="turkistan" data-i18n="btnPreviewOnMap">Preview on Map ↑</button>
+                            <div class="col-4">
+                                <div class="kz-fact-tile">
+                                    <small class="text-muted d-block" data-i18n="apiLanguages">Languages</small>
+                                    <strong id="api-country-langs">Kazakh, Russian</strong>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="kz-fact-tile">
+                                    <small class="text-muted d-block" data-i18n="apiRegionSub">Capital</small>
+                                    <strong id="api-country-capital">Astana</strong>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -484,23 +454,27 @@
         </section>
     </main>
 
-    <!-- Contact Support Modal (Async Callback Form) -->
+    <!-- Contact Support Modal (novalidate + JS validation for Name, Email, Phone, Message) -->
     <div id="popup-modal" class="modal-overlay">
         <div class="modal-content-box">
             <button id="close-popup-btn" class="close-btn" type="button">&times;</button>
             <h3 class="h5 mb-3">Contact Visitor Helpdesk</h3>
-            <form id="popup-form">
-                <div class="mb-3">
-                    <label class="form-label small fw-semibold" for="support-name">Your Name</label>
-                    <input type="text" id="support-name" class="form-control" required placeholder="Enter name">
+            <form id="popup-form" novalidate>
+                <div class="mb-2">
+                    <label class="form-label small fw-semibold" for="support-name">Your Name *</label>
+                    <input type="text" id="support-name" class="form-control" placeholder="Enter name">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label small fw-semibold" for="support-email">Your Email *</label>
+                    <input type="text" id="support-email" class="form-control" placeholder="name@example.com">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label small fw-semibold" for="support-phone" data-i18n="labelPhone">Phone Number *</label>
+                    <input type="text" id="support-phone" class="form-control" placeholder="+7 701 123 4567">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label small fw-semibold" for="support-email">Your Email</label>
-                    <input type="email" id="support-email" class="form-control" required placeholder="Enter email">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label small fw-semibold" for="support-msg">Message</label>
-                    <textarea id="support-msg" class="form-control" rows="3" required placeholder="Ask a question..."></textarea>
+                    <label class="form-label small fw-semibold" for="support-msg">Message *</label>
+                    <textarea id="support-msg" class="form-control" rows="3" placeholder="Ask a question..."></textarea>
                 </div>
                 <p id="popup-callback-status" class="small fw-semibold mb-2"></p>
                 <button type="submit" id="popup-submit-btn" class="btn btn-primary w-100">Send Inquiry</button>

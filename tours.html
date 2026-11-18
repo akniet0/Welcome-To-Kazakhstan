@@ -35,6 +35,7 @@
                         <li class="nav-item"><a class="nav-link" href="astana.html" data-i18n="navHome">Astana</a></li>
                         <li class="nav-item"><a class="nav-link" href="attractions.html" data-i18n="navAttractions">Attractions</a></li>
                         <li class="nav-item"><a class="nav-link active" href="tours.html" data-i18n="navTours" aria-current="page">Tours</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.html" data-i18n="navProfile">Profile</a></li>
                     </ul>
 
                     <div class="nav-tools">
@@ -101,18 +102,23 @@
                         <span id="step-indicator" class="badge badge-muted">Step 1 of 2: Account Details</span>
                     </div>
                     
-                    <form id="booking-form">
+                    <form id="booking-form" novalidate>
                         <!-- Step 1: Account & Personal Info -->
                         <div id="form-step-1" class="form-step active-step">
                             <div class="row g-3">
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-4">
                                     <label for="user-name" class="form-label fw-semibold">Full Name *</label>
                                     <input type="text" class="form-control" id="user-name" placeholder="Name">
                                 </div>
 
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-4">
                                     <label for="user-email" class="form-label fw-semibold">Email Address *</label>
-                                    <input type="email" class="form-control" id="user-email" placeholder="name@example.com">
+                                    <input type="text" class="form-control" id="user-email" placeholder="name@example.com">
+                                </div>
+
+                                <div class="col-12 col-md-4">
+                                    <label for="user-phone" class="form-label fw-semibold" data-i18n="labelPhone">Phone Number *</label>
+                                    <input type="text" class="form-control" id="user-phone" placeholder="+7 701 123 4567">
                                 </div>
 
                                 <div class="col-12 col-md-6">

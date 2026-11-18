@@ -35,6 +35,7 @@
                         <li class="nav-item"><a class="nav-link active" href="astana.html" data-i18n="navHome" aria-current="page">Astana</a></li>
                         <li class="nav-item"><a class="nav-link" href="attractions.html" data-i18n="navAttractions">Attractions</a></li>
                         <li class="nav-item"><a class="nav-link" href="tours.html" data-i18n="navTours">Tours</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.html" data-i18n="navProfile">Profile</a></li>
                     </ul>
 
                     <div class="nav-tools">
@@ -305,23 +306,27 @@
         </section>
     </main>
 
-    <!-- Contact Support Modal (Async Callback Form) -->
+    <!-- Contact Support Modal (novalidate + JS validation for Name, Email, Phone, Message) -->
     <div id="popup-modal" class="modal-overlay">
         <div class="modal-content-box">
             <button id="close-popup-btn" class="close-btn" type="button">&times;</button>
             <h3 class="h5 mb-3">Contact Visitor Helpdesk</h3>
-            <form id="popup-form">
-                <div class="mb-3">
-                    <label class="form-label small fw-semibold" for="support-name">Your Name</label>
-                    <input type="text" id="support-name" class="form-control" required placeholder="Enter name">
+            <form id="popup-form" novalidate>
+                <div class="mb-2">
+                    <label class="form-label small fw-semibold" for="support-name">Your Name *</label>
+                    <input type="text" id="support-name" class="form-control" placeholder="Enter name">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label small fw-semibold" for="support-email">Your Email *</label>
+                    <input type="text" id="support-email" class="form-control" placeholder="name@example.com">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label small fw-semibold" for="support-phone" data-i18n="labelPhone">Phone Number *</label>
+                    <input type="text" id="support-phone" class="form-control" placeholder="+7 701 123 4567">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label small fw-semibold" for="support-email">Your Email</label>
-                    <input type="email" id="support-email" class="form-control" required placeholder="Enter email">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label small fw-semibold" for="support-msg">Message</label>
-                    <textarea id="support-msg" class="form-control" rows="3" required placeholder="Ask a question..."></textarea>
+                    <label class="form-label small fw-semibold" for="support-msg">Message *</label>
+                    <textarea id="support-msg" class="form-control" rows="3" placeholder="Ask a question..."></textarea>
                 </div>
                 <p id="popup-callback-status" class="small fw-semibold mb-2"></p>
                 <button type="submit" id="popup-submit-btn" class="btn btn-primary w-100">Send Inquiry</button>

@@ -240,16 +240,52 @@ body.dark-theme .form-select {
     background: var(--nav-bg);
     box-shadow: 0 4px 18px rgba(18, 35, 29, 0.18);
 }
-.brand-title { color: #ffffff; font-size: 1.15rem; font-weight: 600; }
-.brand-sub { color: #b9c9c0; }
+.navbar-brand {
+    padding: 2px 0;
+    background: transparent;
+    border: none;
+    transition: opacity 0.2s ease;
+}
+.navbar-brand:hover,
+.navbar-brand:focus-visible {
+    opacity: 0.92;
+}
+.brand-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #fffdf8;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.12;
+    transition: color 0.2s ease;
+}
+.navbar-brand:hover .brand-title {
+    color: #f6d57e;
+}
+.brand-sub {
+    display: block;
+    margin-top: 3px;
+    color: #e5c168;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    line-height: 1.15;
+}
 @media (min-width: 1200px) and (max-width: 1399.98px) { .brand-sub { display: none; } } /* room for long RU menu labels */
 .logo-badge {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    border: 2.5px solid var(--accent-line);
+    border: 2px solid #e0b354;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
     object-fit: cover;
-    background-color: #ffffff;
+    background-color: #0b1913;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.navbar-brand:hover .logo-badge {
+    transform: scale(1.04);
+    border-color: #f6d57e;
 }
 .navbar-toggler { border-color: rgba(255, 255, 255, 0.5); }
 .navbar-toggler-icon { filter: invert(1); }
@@ -1611,6 +1647,36 @@ body.dark-theme .slice-temp {
     background: rgba(255, 255, 255, 0.12);
     color: #f1eae0;
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* =====================================================================
+   11. Traveler Profile & Authentication Page (profile.html)
+   ===================================================================== */
+.profile-avatar-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2f5d4a, #b4531f);
+    color: #ffffff;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid var(--gold);
+    box-shadow: var(--shadow);
+}
+.saved-plan-item {
+    padding: 12px 14px;
+    border-radius: 12px;
+    background-color: var(--bg-soft);
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }
 
 @media (prefers-reduced-motion: reduce) {

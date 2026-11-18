@@ -329,13 +329,26 @@ $(document).ready(function () {
         playUiSound();
         $(".tour-filter-btn").removeClass("active");
         activeCategory = $(this).addClass("active").data("category");
+        localStorage.setItem("kzTourCategory", activeCategory);
         renderToursTable();
     });
 
-    /* ---------------- Form validation helpers ---------------- */
+    // Restore saved tour category filter from localStorage (Requirement 5.3)
+    const savedCat = localStorage.getItem("kzTourCategory");
+    if (savedCat && $(".tour-filter-btn").filter(`[data-category="${savedCat}"]`).length) {
+        activeCategory = savedCat;
+        $(".tour-filter-btn").removeClass("active").filter(`[data-category="${savedCat}"]`).addClass("active");
+    }
+
+    /* ---------------- Form validation helpers (Requirement 5.2) ---------------- */
     const NAME_RE = /^[A-Za-zА-Яа-яЁёӘәІіҢңҒғҮүҰұҚқӨөҺһ]+([ -][A-Za-zА-Яа-яЁёӘәІіҢңҒғҮүҰұҚқӨөҺһ]+)*$/;
     const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+    const PHONE_RE = /^\+?[\d\s()-]{10,18}$/;
     const isValidName = (name) => name.length >= 2 && NAME_RE.test(name);
+    const isValidPhone = (phone) => {
+        const digits = String(phone).replace(/\D/g, "");
+        return PHONE_RE.test(phone) && digits.length >= 10 && digits.length <= 15;
+    };
 
     function showMessage($el, text, isError) {
         $el.text(text).toggleClass("msg-error", !!isError).toggleClass("msg-success", !isError);
@@ -355,9 +368,10 @@ $(document).ready(function () {
 
     // Returns the translation key of the first error, or null when everything is valid
     function validateAccount() {
-        const password = $("#user-password").val();
-        if (!isValidName($("#user-name").val().trim())) return "errName";
-        if (!EMAIL_RE.test($("#user-email").val().trim())) return "errEmail";
+        const password = $("#user-password").val() || "";
+        if (!isValidName(($("#user-name").val() || "").trim())) return "errName";
+        if (!EMAIL_RE.test(($("#user-email").val() || "").trim())) return "errEmail";
+        if ($("#user-phone").length && !isValidPhone(($("#user-phone").val() || "").trim())) return "errPhone";
         if (/\s/.test(password)) return "errPassSpace";
         if (password.length < 8 || !/[A-Za-z]/.test(password) || !/\d/.test(password)) return "errPassFormat";
         if (password !== $("#user-confirm-password").val()) return "errPassMatch";
@@ -397,13 +411,37 @@ $(document).ready(function () {
         setTimeout(function () { // simulated server call
             setButtonLoading($submit, false);
             playUiSound("success");
-            const message = t("bookingConfirmed", {
-                name: $("#user-name").val().trim(),
-                tour: $("#tour-select option:selected").text()
-            });
+            const name = $("#user-name").val().trim();
+            const email = $("#user-email").val().trim().toLowerCase();
+            const phone = ($("#user-phone").val() || "").trim();
+            const password = $("#user-password").val();
+            const tourName = $("#tour-select option:selected").text();
+            const tourTime = $("#timeMorning").is(":checked") ? "10:00 AM" : "6:00 PM";
+
+            // Save user & booking to localStorage so it appears on profile.html (Req 5.1 & 5.3)
+            const users = JSON.parse(localStorage.getItem("kzUsers") || "[]");
+            const existingIdx = users.findIndex((u) => u.email === email);
+            const userObj = {
+                name,
+                email,
+                phone: phone || "+7 701 000 0000",
+                password,
+                region: "Astana & Capital Region",
+                joined: new Date().toLocaleDateString("en-US")
+            };
+            if (existingIdx >= 0) users[existingIdx] = userObj;
+            else users.push(userObj);
+            localStorage.setItem("kzUsers", JSON.stringify(users));
+            localStorage.setItem("kzCurrentUser", JSON.stringify(userObj));
+
+            const bookings = JSON.parse(localStorage.getItem("kzBookedTours") || "[]");
+            bookings.push({ tour: tourName, time: tourTime, date: new Date().toLocaleDateString("en-US") });
+            localStorage.setItem("kzBookedTours", JSON.stringify(bookings));
+
+            const message = t("bookingConfirmed", { name, tour: tourName });
             pop($formSuccess.text(message));
             showToast(message); // Task 7
-        }, 2000);
+        }, 1200);
     });
 
     /* ---------------- Contact Support modal (Home) ---------------- */
@@ -414,7 +452,7 @@ $(document).ready(function () {
 
     // Callback style "server" request
     function submitInquiryAsync(formData, onComplete) {
-        setTimeout(() => onComplete(t("inquiryThanks", { name: formData.name })), 1800);
+        setTimeout(() => onComplete(t("inquiryThanks", { name: formData.name })), 1400);
     }
 
     $("#open-popup-btn").on("click", function () { playUiSound(); openModal(); });
@@ -425,10 +463,15 @@ $(document).ready(function () {
     $("#popup-form").on("submit", function (e) {
         e.preventDefault();
         const form = this;
-        const name = $("#support-name").val().trim();
+        const name = ($("#support-name").val() || "").trim();
+        const email = ($("#support-email").val() || "").trim();
+        const phone = ($("#support-phone").val() || "").trim();
+        const msg = ($("#support-msg").val() || "").trim();
+
         const error = !isValidName(name) ? "errName"
-            : !EMAIL_RE.test($("#support-email").val().trim()) ? "errEmail"
-            : $("#support-msg").val().trim().length < 5 ? "errMsgShort"
+            : !EMAIL_RE.test(email) ? "errEmail"
+            : ($("#support-phone").length && !isValidPhone(phone)) ? "errPhone"
+            : msg.length < 5 ? "errMsgShort"
             : null;
 
         if (error) return showMessage($popupStatus, t(error), true);
@@ -618,11 +661,15 @@ $(document).ready(function () {
 
     // keyup = after every typed character (task hint); input = paste, mobile keyboards, ✕ button
     let lastQuery = null;
+    if ($search.length && localStorage.getItem("kzLandmarkSearch")) {
+        $search.val(localStorage.getItem("kzLandmarkSearch"));
+    }
     $search.on("keyup input", function (e) {
         if (["ArrowDown", "ArrowUp", "Enter", "Escape"].includes(e.key)) return;
         const query = $(this).val();
         if (query === lastQuery) return; // keyup + input for the same character → run once
         lastQuery = query;
+        localStorage.setItem("kzLandmarkSearch", query);
         filterLandmarks(query);
         showSuggestions(query);
     });
@@ -961,6 +1008,11 @@ $(document).ready(function () {
         playUiSound("success");
         const m = kazakhstanMonths[activeMonthIndex];
         const title = m ? pick(m.title) : "";
+        const savedMonths = JSON.parse(localStorage.getItem("kzSavedMonths") || "[]");
+        if (title && !savedMonths.includes(title)) {
+            savedMonths.push(title);
+            localStorage.setItem("kzSavedMonths", JSON.stringify(savedMonths));
+        }
         pop($(this));
         showToast(t("monthSavedToast", { month: title }));
     });
@@ -1146,6 +1198,232 @@ $(document).ready(function () {
     });
 
     /* =================================================================
+       Requirement 5.1 & 5.2: Authentication Simulation & Profile Page
+       ================================================================= */
+    function renderProfilePage() {
+        const rawUser = localStorage.getItem("kzCurrentUser");
+        const user = rawUser ? JSON.parse(rawUser) : null;
+
+        // Update Profile nav link badge across all pages if logged in
+        const $navProfile = $('[data-i18n="navProfile"]');
+        if (user && user.name) {
+            const firstName = user.name.split(" ")[0];
+            $navProfile.text(`👤 ${firstName}`);
+        } else {
+            $navProfile.text(t("navProfile"));
+        }
+
+        if (!$("#auth-section").length) return;
+
+        if (!user) {
+            $("#profile-dashboard-section").hide();
+            $("#auth-section").fadeIn(200);
+            return;
+        }
+
+        // Logged in: show Profile Dashboard
+        $("#auth-section").hide();
+        $("#profile-dashboard-section").fadeIn(250);
+
+        $("#profile-avatar-circle").text((user.name || "T").charAt(0).toUpperCase());
+        $("#profile-display-name").text(user.name);
+        $("#profile-display-email").text(user.email);
+        $("#profile-display-phone").text(user.phone || "+7 701 000 0000");
+        $("#profile-display-region").text(user.region || "Astana & Capital Region");
+        $("#profile-display-joined").text(`Joined: ${user.joined || new Date().toLocaleDateString("en-US")}`);
+
+        // Render Booked Tours from localStorage
+        const bookings = JSON.parse(localStorage.getItem("kzBookedTours") || "[]");
+        const $bookingsBox = $("#profile-bookings-list").empty();
+        if (!bookings.length) {
+            $('<p class="text-muted small mb-0"></p>').text(t("noBookingsYet")).appendTo($bookingsBox);
+        } else {
+            bookings.forEach((b) => {
+                $('<div class="saved-plan-item"></div>')
+                    .append(
+                        $('<strong></strong>').text(b.tour),
+                        $('<span class="badge badge-brand"></span>').text(`${b.time} · ${b.date}`)
+                    )
+                    .appendTo($bookingsBox);
+            });
+        }
+
+        // Render Bookmarked Months from localStorage
+        const savedMonths = JSON.parse(localStorage.getItem("kzSavedMonths") || "[]");
+        const $monthsBox = $("#profile-months-list").empty();
+        if (!savedMonths.length) {
+            $('<p class="text-muted small mb-0"></p>').text(t("noMonthsYet")).appendTo($monthsBox);
+        } else {
+            savedMonths.forEach((mTitle) => {
+                $('<span class="chip"></span>').text(`🗓️ ${mTitle}`).appendTo($monthsBox);
+            });
+        }
+    }
+
+    // Sign Up Form Submission (novalidate + full JS validation)
+    $("#signup-form").on("submit", function (e) {
+        e.preventDefault();
+        $("#signup-form .msg-error").text("");
+        $("#signup-form-status").text("");
+
+        const name = ($("#signup-name").val() || "").trim();
+        const email = ($("#signup-email").val() || "").trim().toLowerCase();
+        const phone = ($("#signup-phone").val() || "").trim();
+        const region = $("#signup-city").val();
+        const password = $("#signup-password").val() || "";
+        const confirm = $("#signup-confirm").val() || "";
+
+        let hasErr = false;
+        if (!isValidName(name)) { $("#err-signup-name").text(t("errName")); hasErr = true; }
+        if (!EMAIL_RE.test(email)) { $("#err-signup-email").text(t("errEmail")); hasErr = true; }
+        if (!isValidPhone(phone)) { $("#err-signup-phone").text(t("errPhone")); hasErr = true; }
+        if (/\s/.test(password)) { $("#err-signup-password").text(t("errPassSpace")); hasErr = true; }
+        else if (password.length < 8 || !/[A-Za-z]/.test(password) || !/\d/.test(password)) {
+            $("#err-signup-password").text(t("errPassFormat")); hasErr = true;
+        }
+        if (password !== confirm) { $("#err-signup-confirm").text(t("errPassMatch")); hasErr = true; }
+        if (hasErr) return;
+
+        playUiSound("success");
+        const users = JSON.parse(localStorage.getItem("kzUsers") || "[]");
+        const newUser = { name, email, phone, password, region, joined: new Date().toLocaleDateString("en-US") };
+        const existingIdx = users.findIndex((u) => u.email === email);
+        if (existingIdx >= 0) users[existingIdx] = newUser;
+        else users.push(newUser);
+
+        localStorage.setItem("kzUsers", JSON.stringify(users));
+        localStorage.setItem("kzCurrentUser", JSON.stringify(newUser));
+        this.reset();
+        showToast(t("welcomeUserToast", { name }));
+        renderProfilePage();
+    });
+
+    // Log In Form Submission
+    $("#login-form").on("submit", function (e) {
+        e.preventDefault();
+        $("#login-form .msg-error").text("");
+        $("#login-form-status").text("");
+
+        const email = ($("#login-email").val() || "").trim().toLowerCase();
+        const password = $("#login-password").val() || "";
+
+        if (!EMAIL_RE.test(email)) {
+            $("#err-login-email").text(t("errEmail"));
+            return;
+        }
+        if (!password) {
+            $("#err-login-password").text(t("errPassFormat"));
+            return;
+        }
+
+        const users = JSON.parse(localStorage.getItem("kzUsers") || "[]");
+        const matched = users.find((u) => u.email === email && u.password === password);
+        if (!matched) {
+            showMessage($("#login-form-status"), t("errLoginFail"), true);
+            return;
+        }
+
+        playUiSound("success");
+        localStorage.setItem("kzCurrentUser", JSON.stringify(matched));
+        this.reset();
+        showToast(t("welcomeUserToast", { name: matched.name }));
+        renderProfilePage();
+    });
+
+    $("#logout-btn").on("click", function () {
+        playUiSound();
+        localStorage.removeItem("kzCurrentUser");
+        showToast(t("loggedOutToast"), "info");
+        renderProfilePage();
+    });
+
+    /* =================================================================
+       Requirement 7: External Public API Integration (async / await + fetch)
+       ================================================================= */
+    const weatherCodeLabels = {
+        0: { en: "☀️ Clear Sky", ru: "☀️ Ясно", kz: "☀️ Ашық аспан" },
+        1: { en: "🌤️ Mainly Clear", ru: "🌤️ Малооблачно", kz: "🌤️ Аздап бұлтты" },
+        2: { en: "⛅ Partly Cloudy", ru: "⛅ Переменная облачность", kz: "⛅ Ауыспалы бұлтты" },
+        3: { en: "☁️ Overcast", ru: "☁️ Пасмурно", kz: "☁️ Бұлтты" },
+        45: { en: "🌫️ Foggy", ru: "🌫️ Туман", kz: "🌫️ Тұман" },
+        61: { en: "🌧️ Light Rain", ru: "🌧️ Небольшой дождь", kz: "🌧️ Аздаған жаңбыр" },
+        71: { en: "❄️ Snowfall", ru: "❄️ Снегопад", kz: "❄️ Қар" }
+    };
+
+    async function fetchLiveWeather() {
+        const $citySelect = $("#api-weather-city");
+        if (!$citySelect.length) return;
+
+        const $opt = $citySelect.find("option:selected");
+        const lat = $opt.data("lat") || 51.1694;
+        const lon = $opt.data("lon") || 71.4491;
+
+        $("#weather-api-error").hide();
+        $("#weather-api-loading").show();
+
+        try {
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+            const response = await fetch(url);
+            if (!response.ok) throw new Error("Weather API HTTP " + response.status);
+            const data = await response.json();
+            const cw = data.current_weather;
+
+            if (cw) {
+                const labelObj = weatherCodeLabels[cw.weathercode] || { en: "🌤️ Fair Steppe Sky", ru: "🌤️ Степная погода", kz: "🌤️ Дала ауа райы" };
+                $("#api-temp-val").text(`${Math.round(cw.temperature)} °C`);
+                $("#api-cond-val").text(pick(labelObj));
+                $("#api-wind-val").text(`${cw.windspeed} km/h`);
+                $("#api-time-val").text("Live ✓");
+            }
+        } catch (err) {
+            $("#weather-api-error").text(t("apiErrorMsg")).show();
+            $("#api-temp-val").text("-6 °C");
+            $("#api-cond-val").text("🌤️ Crisp Steppe Breeze");
+            $("#api-wind-val").text("14 km/h");
+        } finally {
+            $("#weather-api-loading").hide();
+        }
+    }
+
+    async function fetchCountryFacts() {
+        if (!$("#country-api-content").length) return;
+        $("#country-api-error").hide();
+        $("#country-api-loading").show();
+
+        try {
+            const response = await fetch("https://restcountries.com/v3.1/alpha/kaz");
+            if (!response.ok) throw new Error("REST Countries HTTP " + response.status);
+            const arr = await response.json();
+            const country = Array.isArray(arr) ? arr[0] : arr;
+
+            if (country && country.name) {
+                $("#api-country-name").text(country.name.official || "Republic of Kazakhstan");
+                const kzt = country.currencies && country.currencies.KZT;
+                if (kzt) $("#api-country-currency").text(`${kzt.name} (${kzt.symbol || "₸"})`);
+                if (country.languages) $("#api-country-langs").text(Object.values(country.languages).join(", "));
+                const cap = Array.isArray(country.capital) ? country.capital[0] : "Astana";
+                $("#api-country-capital").text(`${country.subregion || "Central Asia"} · ${cap}`);
+            }
+        } catch (err) {
+            $("#country-api-error").text(t("apiErrorMsg")).show();
+        } finally {
+            $("#country-api-loading").hide();
+        }
+    }
+
+    $("#api-weather-city").on("change", function () {
+        playUiSound();
+        fetchLiveWeather();
+    });
+
+    $("#refresh-api-btn").on("click", function () {
+        playUiSound("success");
+        pop($(this));
+        fetchLiveWeather();
+        fetchCountryFacts();
+    });
+
+    /* =================================================================
        Language switching (EN / RU / KZ)
        ================================================================= */
     const $langSwitch = $(".lang-switch");
@@ -1200,6 +1478,7 @@ $(document).ready(function () {
         renderSeasonSpotlight(activeSeasonKey, false);
         renderMonthDetail(activeMonthIndex, false);
         renderWizardTicket(false);
+        renderProfilePage();
         if ($("#step-indicator").length) showStep(formStep);
         $(".copy-btn:not(.copied) .copy-label").text(t("copyBtn"));
         if ($search.length) filterLandmarks($search.val());
@@ -1214,5 +1493,7 @@ $(document).ready(function () {
     /* ---------------- Start ---------------- */
     applyTheme(localStorage.getItem("astanaTheme") === "dark");
     switchSiteLanguage(currentLang);
+    fetchLiveWeather();
+    fetchCountryFacts();
     onScroll();
 });

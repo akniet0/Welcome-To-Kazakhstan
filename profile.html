@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Kazakhstan - Traveler Profile &amp; Authentication</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.ico">
+    <!-- jQuery from CDN, then our scripts (defer = run after the HTML is parsed, in this order) -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navbar (Main Kazakhstan Level) -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-xl custom-navbar py-2 px-3 px-sm-4" aria-label="Main Navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                    <img src="images/astana-logo.svg" alt="Visit Kazakhstan Logo" class="logo-badge">
+                    <div>
+                        <span class="brand-title d-block" data-i18n="kzBrandTitle">Visit Kazakhstan</span>
+                        <small class="brand-sub" data-i18n="kzBrandSub">Explore the Great Steppe</small>
+                    </div>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                    <ul class="navbar-nav gap-xl-1 mt-3 mt-xl-0" id="keyboard-nav-menu">
+                        <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="navKzMap">Kazakhstan Map</a></li>
+                        <li class="nav-item"><a class="nav-link" href="history.html" data-i18n="navHistory">History &amp; Culture</a></li>
+                        <li class="nav-item"><a class="nav-link" href="seasons.html" data-i18n="navSeasons">Seasons &amp; Calendar</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="profile.html" data-i18n="navProfile" aria-current="page">Profile</a></li>
+                    </ul>
+
+                    <div class="nav-tools">
+                        <span id="live-datetime" class="datetime-badge">Loading date...</span>
+                        <button id="change-bg-btn" class="tool-btn" type="button" data-i18n-title="bgBtn" title="Change Background" aria-label="Change Background">🎨</button>
+                        <button id="theme-toggle-btn" class="tool-btn" type="button" title="Night Mode" aria-label="Night Mode" aria-pressed="false">🌙</button>
+                        <div class="lang-switch" role="group" aria-label="Language" data-active="en">
+                            <span class="lang-indicator" aria-hidden="true"></span>
+                            <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+                            <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+                            <button type="button" class="lang-btn" data-lang="kz" aria-pressed="false">KZ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-4 my-lg-5 px-sm-3">
+        <!-- View 1: Authentication (Sign Up & Log In Forms) — Shown when logged out -->
+        <section id="auth-section" class="mb-5">
+            <div class="row g-4 align-items-stretch">
+                <!-- Sign Up Card -->
+                <div class="col-12 col-lg-7">
+                    <div class="p-4 p-md-5 panel h-100">
+                        <h1 class="h3 mb-3" data-i18n="signUpHeading">Sign Up</h1>
+
+                        <!-- Note: novalidate is used and no HTML validation attributes are used -->
+                        <form id="signup-form" novalidate>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="signup-name" class="form-label fw-semibold" data-i18n="labelFullName">Full Name *</label>
+                                    <input type="text" id="signup-name" class="form-control" placeholder="e.g. Aigerim Nurlan">
+                                    <small id="err-signup-name" class="msg-error d-block mt-1"></small>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="signup-email" class="form-label fw-semibold" data-i18n="labelEmail">Email Address *</label>
+                                    <input type="text" id="signup-email" class="form-control" placeholder="name@example.com">
+                                    <small id="err-signup-email" class="msg-error d-block mt-1"></small>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="signup-phone" class="form-label fw-semibold" data-i18n="labelPhone">Phone Number *</label>
+                                    <input type="text" id="signup-phone" class="form-control" placeholder="+7 701 123 4567">
+                                    <small id="err-signup-phone" class="msg-error d-block mt-1"></small>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="signup-city" class="form-label fw-semibold" data-i18n="labelFavRegion">Favorite Region *</label>
+                                    <select id="signup-city" class="form-select">
+                                        <option value="Astana">Astana</option>
+                                        <option value="Almaty & Zhetysu">Almaty &amp; Zhetysu</option>
+                                        <option value="Turkistan">Turkistan</option>
+                                        <option value="Mangystau">Mangystau</option>
+                                        <option value="East & Altai">East &amp; Altai</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="signup-password" class="form-label fw-semibold" data-i18n="labelPassword">Password *</label>
+                                    <input type="password" id="signup-password" class="form-control" placeholder="Min. 8 chars (letter + number)">
+                                    <small id="err-signup-password" class="msg-error d-block mt-1"></small>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="signup-confirm" class="form-label fw-semibold" data-i18n="labelConfirmPass">Confirm Password *</label>
+                                    <input type="password" id="signup-confirm" class="form-control" placeholder="Repeat password">
+                                    <small id="err-signup-confirm" class="msg-error d-block mt-1"></small>
+                                </div>
+
+                                <div class="col-12 pt-2">
+                                    <p id="signup-form-status" class="fw-semibold mb-2"></p>
+                                    <button type="submit" id="signup-submit-btn" class="btn btn-primary px-4 py-2" data-i18n="btnSignUp">Create Account</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Log In Card -->
+                <div class="col-12 col-lg-5">
+                    <div class="p-4 p-md-5 panel h-100">
+                        <h2 class="h3 mb-3" data-i18n="loginHeading">Log In</h2>
+
+                        <form id="login-form" novalidate>
+                            <div class="mb-3">
+                                <label for="login-email" class="form-label fw-semibold" data-i18n="labelEmail">Email Address *</label>
+                                <input type="text" id="login-email" class="form-control" placeholder="name@example.com">
+                                <small id="err-login-email" class="msg-error d-block mt-1"></small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="login-password" class="form-label fw-semibold" data-i18n="labelLoginPass">Password *</label>
+                                <input type="password" id="login-password" class="form-control" placeholder="Enter password">
+                                <small id="err-login-password" class="msg-error d-block mt-1"></small>
+                            </div>
+
+                            <p id="login-form-status" class="fw-semibold mb-2"></p>
+                            <button type="submit" id="login-submit-btn" class="btn btn-outline-primary w-100 py-2 fw-semibold" data-i18n="btnLogin">Log In</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View 2: Logged-In Traveler Profile Dashboard -->
+        <section id="profile-dashboard-section" class="mb-5" style="display: none;">
+            <div class="row g-4">
+                <!-- Left Column: Stored User Details Card -->
+                <div class="col-12 col-lg-5">
+                    <div class="p-4 p-md-5 panel h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center gap-3 mb-4">
+                                <div id="profile-avatar-circle" class="profile-avatar-circle">A</div>
+                                <div>
+                                    <span class="badge badge-available mb-1" data-i18n="badgeVerifiedTraveler">✓ Verified Kazakhstan Traveler</span>
+                                    <h2 id="profile-display-name" class="h4 mb-0">Traveler Name</h2>
+                                    <small id="profile-display-joined" class="text-muted">Member</small>
+                                </div>
+                            </div>
+
+                            <div class="kz-place-facts row g-3 mb-4">
+                                <div class="col-12">
+                                    <div class="kz-fact-tile">
+                                        <small class="text-muted d-block" data-i18n="labelEmail">Email Address</small>
+                                        <strong id="profile-display-email">—</strong>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="kz-fact-tile">
+                                        <small class="text-muted d-block" data-i18n="labelPhone">Phone Number</small>
+                                        <strong id="profile-display-phone">—</strong>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="kz-fact-tile">
+                                        <small class="text-muted d-block" data-i18n="labelFavRegion">Dream Destination</small>
+                                        <strong id="profile-display-region">Astana &amp; Capital Region</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2 pt-3 border-top">
+                            <a href="tours.html" class="btn btn-primary flex-fill" data-i18n="btnBookTour">Book a Tour</a>
+                            <button type="button" id="logout-btn" class="btn btn-outline-secondary" data-i18n="btnLogout">Log Out</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Saved Travel Plan & Booked Tours from localStorage -->
+                <div class="col-12 col-lg-7">
+                    <div class="p-4 p-md-5 panel h-100">
+                        <h3 class="h4 mb-3" data-i18n="profileSavedPlansTitle">Your Saved Kazakhstan Travel Plans</h3>
+
+                        <div class="mb-4">
+                            <h4 class="h6 text-muted text-uppercase letter-wide mb-2" data-i18n="profileBookedToursHeading">🎟️ Booked Guided Tours</h4>
+                            <div id="profile-bookings-list" class="d-flex flex-column gap-2"></div>
+                        </div>
+
+                        <div>
+                            <h4 class="h6 text-muted text-uppercase letter-wide mb-2" data-i18n="profileSavedMonthsHeading">🗓️ Bookmarked Travel Months</h4>
+                            <div id="profile-months-list" class="d-flex flex-wrap gap-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-1">Academic Group: <strong>SE-2503</strong></p>
+            <p class="mb-1">Project Team Members: <strong>Akniyet Zhanarbek</strong>, <strong>Zhanserik Abilgali</strong></p>
+            <p class="mb-0 text-white-50"><small>&copy; Visit Kazakhstan &amp; Astana Travel Portal</small></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
